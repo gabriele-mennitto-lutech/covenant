@@ -1,0 +1,84 @@
+<header class="top-header">
+    <div class="search-container"></div>
+    <div class="user-profile" style="display: flex; align-items: center; gap: 15px;">
+
+        <!-- Notification Bell -->
+        <div style="position: relative;">
+            <button
+                type="button"
+                (click)="toggleNotifications($event)"
+                class="notif-bell-btn"
+                [class.notif-bell-active]="isNotifOpen"
+                aria-label="Apri notifiche"
+            >
+                <i class="fa-regular fa-bell"></i>
+                <span *ngIf="(notif.unreadCount$ | async)! > 0" class="notif-badge">
+                    {{ (notif.unreadCount$ | async)! > 99 ? '99+' : (notif.unreadCount$ | async) }}
+                </span>
+            </button>
+
+            <!-- Notification Panel -->
+            <div *ngIf="isNotifOpen" class="notif-panel" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                <div class="notif-panel-header">
+                    <span>Notifiche</span>
+                    <button
+                        class="notif-clear-btn"
+                        (click)="clearAll()"
+                        *ngIf="(notif.notifications$ | async)?.length"
+                    >
+                        <i class="fa-solid fa-check-double"></i> Segna tutto come letto
+                    </button>
+                </div>
+                <div class="notif-list">
+                    <ng-container *ngIf="(notif.notifications$ | async) as notifications">
+                        <div *ngIf="notifications.length === 0" class="notif-empty">
+                            <i class="fa-regular fa-bell-slash"></i>
+                            <span>Nessuna notifica</span>
+                        </div>
+                        <div
+                            *ngFor="let n of notifications; trackBy: trackById"
+                            class="notif-item"
+                            [class]="getNotifTypeClass(n)"
+                        >
+                            <div class="notif-item-icon">
+                                <i [class]="getNotifIcon(n)"></i>
+                            </div>
+                            <div class="notif-item-body">
+                                <span class="notif-item-msg">{{ n.message }}</span>
+                                <span class="notif-item-meta">
+                                    <i class="fa-solid fa-user" style="font-size: 0.65rem;"></i> {{ n.actor }}
+                                    &nbsp;·&nbsp;
+                                    {{ formatTime(n.timestamp) }}
+                                </span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: flex-end; line-height: 1.1;">
+            <strong style="font-size: 0.82rem; color: var(--text-main);">{{ auth.getCurrentUser()?.username }}</strong>
+            <small style="font-size: 0.72rem; color: var(--text-muted);">{{ auth.getCurrentUser()?.role === 'admin' ? 'Amministrazione' : 'Lettura' }}</small>
+        </div>
+        <div style="position: relative;">
+            <button
+                type="button"
+                (click)="toggleUserMenu($event)"
+                style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent-primary); display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; font-size: 0.9rem; user-select: none; transition: transform 0.2s; border: none; color: white;"
+                [style.transform]="isUserMenuOpen ? 'scale(1.1)' : 'scale(1)'"
+                attr.aria-label="Apri menu utente: {{ userInitials }}"
+            >
+                {{ userInitials }}
+            </button>
+            
+            <div *ngIf="isUserMenuOpen" style="position: absolute; top: calc(100% + 10px); right: 0; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); z-index: 100; min-width: 150px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <button type="button" (click)="logout()" style="border: none; background: transparent; color: var(--text-main); border-radius: 6px; padding: 8px 12px; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 10px; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='var(--bg-surface-hover)'" onmouseout="this.style.background='transparent'">
+                        <i class="fa-solid fa-right-from-bracket" style="color: var(--accent-primary);"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

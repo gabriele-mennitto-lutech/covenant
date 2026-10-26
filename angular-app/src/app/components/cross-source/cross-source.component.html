@@ -1,0 +1,52 @@
+<section class="cross-source" aria-label="Riferimenti cross source">
+  <header>
+    <button type="button" class="title-toggle" (click)="toggleCollapsed()"
+      [attr.aria-expanded]="!collapsed" aria-controls="cross-source-content">
+      <h3>Riferimenti cross source</h3>
+      <span class="chevron" [class.collapsed]="collapsed" aria-hidden="true">⌄</span>
+    </button>
+    <button type="button" (click)="load()" [disabled]="loading">Aggiorna</button>
+  </header>
+  <div *ngIf="!collapsed" id="cross-source-content">
+    <p class="hint">Solo dati salvati. Le corrispondenze potenziali, incluse le CVE, richiedono verifica:
+      non dimostrano vulnerabilità né presenza di una versione software. Sono utilizzati solo dati persistiti.</p>
+    <div *ngIf="currentType !== sourceType || currentId !== sourceId" class="exploring">
+      <button type="button" (click)="reset()">Torna alla sorgente</button>
+      <span *ngIf="result">{{ label(currentType) }}: {{ result.source.label }}</span>
+    </div>
+    <div class="filters">
+      <button type="button" [class.active]="!target" (click)="filter('')" [disabled]="loading">Tutti</button>
+      <button *ngFor="let category of categories" type="button" [class.active]="target === category.type"
+        (click)="filter(category.type)" [disabled]="loading">
+        {{ category.label }} <span *ngIf="result">({{ result.counts[category.type] }})</span>
+      </button>
+      <input type="search" aria-label="Cerca nei riferimenti" placeholder="Cerca nei riferimenti..."
+        maxlength="200" [(ngModel)]="search" (ngModelChange)="searchChanged()" />
+    </div>
+    <p *ngIf="loading" role="status">Caricamento riferimenti...</p>
+    <div *ngIf="error" role="alert" class="error">{{ error }} <button type="button" (click)="load()">Riprova</button></div>
+    <ng-container *ngIf="!loading && result">
+      <p *ngIf="!result.items.length" class="hint">Nessuna corrispondenza nei dati disponibili.
+        L'assenza di riferimenti non esclude un impatto.</p>
+      <article *ngFor="let item of result.items">
+        <div class="reference-heading">
+          <strong>{{ label(item.type) }} · {{ item.label }}</strong>
+          <span class="badge" [class.direct]="item.confidence === 'direct'">
+            {{ item.confidence === 'direct' ? 'Riferimento diretto' : 'Potenziale / da verificare' }}
+          </span>
+        </div>
+        <p *ngIf="item.context" class="hint">{{ item.context }}</p>
+        <ul><li *ngFor="let reason of item.reasons">{{ reason }}</li></ul>
+        <div class="actions">
+          <a [routerLink]="route(item)" [queryParams]="query(item)">Apri scheda</a>
+          <button type="button" (click)="explore(item)">Esplora collegamenti</button>
+        </div>
+      </article>
+      <footer *ngIf="result.total > 0">
+        <span>{{ result.total }} riferimenti · {{ result.page }} / {{ result.totalPages }}</span>
+        <button type="button" [disabled]="page <= 1" (click)="load(page - 1)">Precedenti</button>
+        <button type="button" [disabled]="page >= result.totalPages" (click)="load(page + 1)">Successivi</button>
+      </footer>
+    </ng-container>
+  </div>
+</section>

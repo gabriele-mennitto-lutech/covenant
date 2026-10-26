@@ -1,0 +1,3815 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >BackendService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/backend.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Componente/Servizio BackendService</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createCve" >createCve</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createHost" >createHost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createService" >createService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createSite" >createSite</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteCve" >deleteCve</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteHostsBulk" >deleteHostsBulk</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteSite" >deleteSite</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#downloadImportTemplate" >downloadImportTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#enrichCves" >enrichCves</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#ensureWriteAccess" >ensureWriteAccess</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#exportCvesCsv" >exportCvesCsv</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getActivityLogs" >getActivityLogs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getAllHostnames" >getAllHostnames</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCrossReferences" >getCrossReferences</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCve" >getCve</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCveHistory" >getCveHistory</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCves" >getCves</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCveStats" >getCveStats</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getDashboardStats" >getDashboardStats</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getHost" >getHost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getHosts" >getHosts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getService" >getService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getServices" >getServices</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getSettings" >getSettings</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getSites" >getSites</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#importCvesCsv" >importCvesCsv</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#importFile" >importFile</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#resolveHost" >resolveHost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#searchCveOnline" >searchCveOnline</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#setCveFlag" >setCveFlag</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateCve" >updateCve</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateCvesStatus" >updateCvesStatus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateHost" >updateHost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateHostsBulk" >updateHostsBulk</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateService" >updateService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateSettings" >updateSettings</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateSite" >updateSite</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(notif: <a href="../injectables/NotificationService.html" target="_self">NotificationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="347" class="link-to-prism">src/app/services/backend.service.ts:347</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Costruttore di BackendService</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>notif</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotificationService.html" target="_self" >NotificationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createCve"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createCve</b></span>
+                        <a href="#createCve"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createCve(cve: <a href="../interfaces/Cve.html" target="_self">Partial&lt;Cve&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="540"
+                                    class="link-to-prism">src/app/services/backend.service.ts:540</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo createCve</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cve</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Cve.html" target="_self" >Partial&lt;Cve&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Cve.html" target="_self" >Promise&lt;Cve&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createHost"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createHost</b></span>
+                        <a href="#createHost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createHost(host: <a href="../interfaces/Host.html" target="_self">Partial&lt;Host&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="498"
+                                    class="link-to-prism">src/app/services/backend.service.ts:498</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo createHost</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>host</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Host.html" target="_self" >Partial&lt;Host&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Host.html" target="_self" >Promise&lt;Host&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createService"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createService</b></span>
+                        <a href="#createService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createService(service: <a href="../interfaces/Service.html" target="_self">Partial&lt;Service&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="405"
+                                    class="link-to-prism">src/app/services/backend.service.ts:405</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo createService</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>service</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Service.html" target="_self" >Partial&lt;Service&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createSite"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createSite</b></span>
+                        <a href="#createSite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createSite(site: <a href="../interfaces/Site.html" target="_self">Partial&lt;Site&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="429"
+                                    class="link-to-prism">src/app/services/backend.service.ts:429</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo createSite</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>site</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Site.html" target="_self" >Partial&lt;Site&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Site.html" target="_self" >Promise&lt;Site&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteCve"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteCve</b></span>
+                        <a href="#deleteCve"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteCve(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="607"
+                                    class="link-to-prism">src/app/services/backend.service.ts:607</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo deleteCve</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteHostsBulk"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteHostsBulk</b></span>
+                        <a href="#deleteHostsBulk"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteHostsBulk(ids: number[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="514"
+                                    class="link-to-prism">src/app/services/backend.service.ts:514</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo deleteHostsBulk: eliminazione massiva per id</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ids</td>
+                                            <td>
+                                                        <code>number[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteSite"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteSite</b></span>
+                        <a href="#deleteSite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteSite(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="437"
+                                    class="link-to-prism">src/app/services/backend.service.ts:437</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo deleteSite</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="downloadImportTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>downloadImportTemplate</b></span>
+                        <a href="#downloadImportTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>downloadImportTemplate(entity: <a href="../undefineds/ImportEntity.html" target="_self">ImportEntity</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="615"
+                                    class="link-to-prism">src/app/services/backend.service.ts:615</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo downloadImportTemplate: scarica il template CSV di import per hosts/siti</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>entity</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#ImportEntity" target="_self" >ImportEntity</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;Blob&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="enrichCves"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>enrichCves</b></span>
+                        <a href="#enrichCves"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>enrichCves(ids: number[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="594"
+                                    class="link-to-prism">src/app/services/backend.service.ts:594</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Completa vendor/prodotto/score mancanti delle CVE indicate con i dati di cve-search</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ids</td>
+                                            <td>
+                                                        <code>number[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;CveEnrichResult&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ensureWriteAccess"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>ensureWriteAccess</b></span>
+                        <a href="#ensureWriteAccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ensureWriteAccess()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="352"
+                                    class="link-to-prism">src/app/services/backend.service.ts:352</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo ensureWriteAccess</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportCvesCsv"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>exportCvesCsv</b></span>
+                        <a href="#exportCvesCsv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportCvesCsv(params: <a href="../interfaces/CveListParams.html" target="_self">CveListParams</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="585"
+                                    class="link-to-prism">src/app/services/backend.service.ts:585</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Esporta in CSV le CVE che rispettano i filtri (paginazione esclusa) e restituisce file e nome suggerito</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>params</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CveListParams.html" target="_self" >CveListParams</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>{}</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getActivityLogs"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getActivityLogs</b></span>
+                        <a href="#getActivityLogs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getActivityLogs(page: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, pageSize: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="522"
+                                    class="link-to-prism">src/app/services/backend.service.ts:522</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getActivityLogs</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>page</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>1</code>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>pageSize</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>50</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllHostnames"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getAllHostnames</b></span>
+                        <a href="#getAllHostnames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAllHostnames(params: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="470"
+                                    class="link-to-prism">src/app/services/backend.service.ts:470</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getAllHostnames: riferimenti (id, hostname, ambiente) degli host che rispettano i filtri</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>params</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>{}</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;HostRef[]&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCrossReferences"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getCrossReferences</b></span>
+                        <a href="#getCrossReferences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCrossReferences(type: <a href="../undefineds/CrossSourceType.html" target="_self">CrossSourceType</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, params: literal type, signal?: AbortSignal)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="374"
+                                    class="link-to-prism">src/app/services/backend.service.ts:374</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Legge relazioni senza raccogliere nuovi dati o modificare il workflow CVE.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#CrossSourceType" target="_self" >CrossSourceType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>params</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>{}</code>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>signal</td>
+                                            <td>
+                                                        <code>AbortSignal</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/CrossSourceResult.html" target="_self" >Promise&lt;CrossSourceResult&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCve"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getCve</b></span>
+                        <a href="#getCve"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCve(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="388"
+                                    class="link-to-prism">src/app/services/backend.service.ts:388</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Recupera una CVE per aprire il popup da un riferimento cross source.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Cve.html" target="_self" >Promise&lt;Cve&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCveHistory"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getCveHistory</b></span>
+                        <a href="#getCveHistory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCveHistory(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="571"
+                                    class="link-to-prism">src/app/services/backend.service.ts:571</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Storico dei motivi di attesa di una CVE (dal più recente)</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;CveMotivoHistory[]&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCves"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getCves</b></span>
+                        <a href="#getCves"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCves(params: <a href="../interfaces/CveListParams.html" target="_self">CveListParams</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="528"
+                                    class="link-to-prism">src/app/services/backend.service.ts:528</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getCves</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>params</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CveListParams.html" target="_self" >CveListParams</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>{}</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;CveListResponse&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCveStats"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getCveStats</b></span>
+                        <a href="#getCveStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCveStats()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="534"
+                                    class="link-to-prism">src/app/services/backend.service.ts:534</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getCveStats</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDashboardStats"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getDashboardStats</b></span>
+                        <a href="#getDashboardStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getDashboardStats()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="464"
+                                    class="link-to-prism">src/app/services/backend.service.ts:464</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getDashboardStats</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHost"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getHost</b></span>
+                        <a href="#getHost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getHost(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="476"
+                                    class="link-to-prism">src/app/services/backend.service.ts:476</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getHost: recupera un host per id</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Host.html" target="_self" >Promise&lt;Host&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHosts"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getHosts</b></span>
+                        <a href="#getHosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getHosts(params: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="445"
+                                    class="link-to-prism">src/app/services/backend.service.ts:445</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getHosts</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>params</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>{}</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getService"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getService</b></span>
+                        <a href="#getService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getService(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="382"
+                                    class="link-to-prism">src/app/services/backend.service.ts:382</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Recupera un servizio anche se non incluso nella pagina corrente.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Service.html" target="_self" >Promise&lt;Service&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getServices"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getServices</b></span>
+                        <a href="#getServices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getServices(search?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, knowledge?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, page: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, pageSize: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="394"
+                                    class="link-to-prism">src/app/services/backend.service.ts:394</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getServices</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>search</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>knowledge</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>page</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>1</code>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>pageSize</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>50</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSettings"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getSettings</b></span>
+                        <a href="#getSettings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getSettings()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="451"
+                                    class="link-to-prism">src/app/services/backend.service.ts:451</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getSettings</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSites"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getSites</b></span>
+                        <a href="#getSites"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getSites()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="368"
+                                    class="link-to-prism">src/app/services/backend.service.ts:368</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getSites</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="importCvesCsv"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>importCvesCsv</b></span>
+                        <a href="#importCvesCsv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>importCvesCsv(content: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="577"
+                                    class="link-to-prism">src/app/services/backend.service.ts:577</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Importa i problem/CVE dal contenuto CSV esportato da ITSM</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>content</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;CveImportResult&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="importFile"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>importFile</b></span>
+                        <a href="#importFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>importFile(entity: <a href="../undefineds/ImportEntity.html" target="_self">ImportEntity</a>, content: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, format: "csv" | "json")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="621"
+                                    class="link-to-prism">src/app/services/backend.service.ts:621</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo importFile: invia al back-end il contenuto del file CSV/JSON da importare</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>entity</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#ImportEntity" target="_self" >ImportEntity</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>content</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>format</td>
+                                            <td>
+                                                        <code>&quot;csv&quot; | &quot;json&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/ImportResult.html" target="_self" >Promise&lt;ImportResult&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resolveHost"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>resolveHost</b></span>
+                        <a href="#resolveHost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resolveHost(hostname: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, ambiente?: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="482"
+                                    class="link-to-prism">src/app/services/backend.service.ts:482</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo resolveHost: converte hostname (+ ambiente opzionale) nell&#39;id dell&#39;host</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>hostname</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>ambiente</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;HostResolveResult&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchCveOnline"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>searchCveOnline</b></span>
+                        <a href="#searchCveOnline"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>searchCveOnline(cveId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="632"
+                                    class="link-to-prism">src/app/services/backend.service.ts:632</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo searchCveOnline (dettagli da cve-search via back-end)</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cveId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;CveDetails&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setCveFlag"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>setCveFlag</b></span>
+                        <a href="#setCveFlag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setCveFlag(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, flagged: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="564"
+                                    class="link-to-prism">src/app/services/backend.service.ts:564</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Imposta/rimuove il flag &quot;da girare post-riunione&quot; (senza toast, azione rapida)</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>flagged</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Cve.html" target="_self" >Promise&lt;Cve&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateCve"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateCve</b></span>
+                        <a href="#updateCve"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateCve(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, partialUpdate: <a href="../interfaces/Cve.html" target="_self">Partial&lt;Cve&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="548"
+                                    class="link-to-prism">src/app/services/backend.service.ts:548</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateCve</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>partialUpdate</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Cve.html" target="_self" >Partial&lt;Cve&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Cve.html" target="_self" >Promise&lt;Cve&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateCvesStatus"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateCvesStatus</b></span>
+                        <a href="#updateCvesStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateCvesStatus(ids: number[], update: <a href="../interfaces/Cve.html" target="_self">Partial&lt;Pick&lt;Cve, &quot;stato&quot; | &quot;esito&quot; | &quot;motivo_attesa&quot; | &quot;ultima_revisione&quot; | &quot;flagged&quot;&gt;&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="556"
+                                    class="link-to-prism">src/app/services/backend.service.ts:556</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateCvesStatus (archiviazione / revisione / motivo attesa / flag massivi)</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ids</td>
+                                            <td>
+                                                        <code>number[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>update</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Cve.html" target="_self" >Partial&lt;Pick&lt;Cve, &quot;stato&quot; | &quot;esito&quot; | &quot;motivo_attesa&quot; | &quot;ultima_revisione&quot; | &quot;flagged&quot;&gt;&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateHost"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateHost</b></span>
+                        <a href="#updateHost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateHost(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, partialUpdate: <a href="../interfaces/Host.html" target="_self">Partial&lt;Host&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="490"
+                                    class="link-to-prism">src/app/services/backend.service.ts:490</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateHost: aggiorna un host per id</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>partialUpdate</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Host.html" target="_self" >Partial&lt;Host&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Host.html" target="_self" >Promise&lt;Host&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateHostsBulk"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateHostsBulk</b></span>
+                        <a href="#updateHostsBulk"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateHostsBulk(ids: number[], partialUpdate: <a href="../interfaces/Host.html" target="_self">Partial&lt;Host&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="506"
+                                    class="link-to-prism">src/app/services/backend.service.ts:506</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateHostsBulk: aggiornamento massivo per id</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ids</td>
+                                            <td>
+                                                        <code>number[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>partialUpdate</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Host.html" target="_self" >Partial&lt;Host&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateService"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateService</b></span>
+                        <a href="#updateService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateService(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, service: <a href="../interfaces/Service.html" target="_self">Partial&lt;Service&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="413"
+                                    class="link-to-prism">src/app/services/backend.service.ts:413</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateService</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>service</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Service.html" target="_self" >Partial&lt;Service&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSettings"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateSettings</b></span>
+                        <a href="#updateSettings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateSettings(settings: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="457"
+                                    class="link-to-prism">src/app/services/backend.service.ts:457</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateSettings</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>settings</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSite"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateSite</b></span>
+                        <a href="#updateSite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateSite(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, partialUpdate: <a href="../interfaces/Site.html" target="_self">Partial&lt;Site&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="421"
+                                    class="link-to-prism">src/app/services/backend.service.ts:421</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateSite</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>partialUpdate</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Site.html" target="_self" >Partial&lt;Site&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Site.html" target="_self" >Promise&lt;Site&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import axios from &#x27;axios&#x27;;
+import { NotificationService } from &#x27;./notification.service&#x27;;
+
+/** Interfaccia Host */
+export interface Host {
+  /** Identificativo univoco dell&#x27;host (chiave primaria surrogata assegnata dal DB) */
+    id: number;
+  /** Proprietà hostname */
+    hostname: string;
+  /** Proprietà applicazione */
+    applicazione: string | null;
+  /** Proprietà riferimento */
+    riferimento: string | null;
+  /** Proprietà ambiente */
+    ambiente: string;
+  /** Proprietà company */
+    company: string;
+  /** Proprietà servizio */
+    servizio: string | null;
+  /** Proprietà appliance */
+    appliance: boolean;
+  /** Proprietà zona */
+    zona: string;
+  /** Proprietà riferimentoEs */
+    riferimentoEs: string | null;
+  /** Proprietà locazione */
+    locazione: string | null;
+  /** Proprietà os */
+    os: string;
+  /** Proprietà manutenzione */
+    manutenzione: string | null;
+  /** Proprietà status */
+    status: boolean;
+  /** Proprietà nodo */
+    nodo: number;
+  /** Proprietà note */
+    note: string | null;
+  /** Proprietà pianificazione */
+    pianificazione: string | null;
+  /** Proprietà rfc */
+    rfc?: string | null;
+  /** Proprietà fixed */
+    fixed: boolean;
+  /** Proprietà fixable */
+    fixable: boolean;
+  /** Proprietà divisione */
+    divisione?: string | null;
+  /** Proprietà ipfe */
+    ipfe?: string | null;
+  /** Proprietà ipmgt */
+    ipmgt?: string | null;
+  /** Proprietà ipfe2al */
+    ipfe2al?: string | null;
+  /** Proprietà vlfe */
+    vlfe?: string | null;
+  /** Proprietà vlmgt */
+    vlmgt?: string | null;
+  /** Proprietà vlfe2al */
+    vlfe2al?: string | null;
+}
+
+/** Riferimento minimo a un host: id univoco + dati descrittivi */
+export interface HostRef {
+  /** Identificativo univoco dell&#x27;host */
+    id: number;
+  /** Proprietà hostname */
+    hostname: string;
+  /** Proprietà ambiente */
+    ambiente: string;
+}
+
+/** Risultato della conversione hostname (+ ambiente) -&gt; id */
+export interface HostResolveResult {
+  /** Id dell&#x27;host selezionato (attivo se presente, altrimenti il più recente) */
+    id: number;
+  /** Host selezionato */
+    host: Host;
+  /** Tutti gli host che corrispondono alla ricerca */
+    matches: HostRef[];
+}
+
+/** Interfaccia Site */
+export interface Site {
+  /** Proprietà id */
+    id: number;
+  /** Proprietà urlAliases */
+    urlAliases: string;
+  /** Proprietà ipVip */
+    ipVip: string;
+  /** Proprietà nomeBilanciatore */
+    nomeBilanciatore: string;
+  /** Proprietà servizio */
+    servizio: string;
+  /** Proprietà tls */
+    tls: string;
+  /** Proprietà hostReali */
+    hostReali: string[];
+  /** Proprietà porta */
+    porta: number | null;
+  /** Proprietà note */
+    note: string;
+  /** Proprietà ambiente */
+    ambiente: string;
+}
+
+/** Entita&#x27; importabili tramite file CSV/JSON */
+export type ImportEntity &#x3D; &#x27;hosts&#x27; | &#x27;sites&#x27;;
+
+/** Esito di un import CSV/JSON (merge con priorità al DB) */
+export interface ImportResult {
+  /** Righe dati lette dal file */
+    total: number;
+  /** Nuovi record creati */
+    inserted: number;
+  /** Record esistenti completati con i soli campi mancanti */
+    merged: number;
+  /** Record esistenti senza campi da completare */
+    unchanged: number;
+  /** Righe scartate */
+    skipped: number;
+  /** Dettaglio righe scartate (numero di riga del file) */
+    errors: { row: number; error: string }[];
+  /** Colonne del file non riconosciute (ignorate) */
+    ignoredColumns: string[];
+}
+
+/** Interfaccia Service */
+export interface Service {
+  /** Proprietà id */
+    id: number;
+  /** Proprietà servizio */
+    servizio: string;
+  /** Proprietà knowledge */
+    knowledge: string;
+  /** Proprietà stato */
+    stato: string;
+  /** Proprietà hosts */
+    hosts: HostRef[];
+}
+
+/** Categoria di una sorgente persistita esplorabile dai dettagli esistenti. */
+export type CrossSourceType &#x3D; &#x27;hosts&#x27; | &#x27;services&#x27; | &#x27;sites&#x27; | &#x27;cves&#x27;;
+
+/** Riferimento motivato; potential non indica un impatto CVE confermato. */
+export interface CrossReference {
+  type: CrossSourceType;
+  id: number;
+  label: string;
+  context: string;
+  confidence: &#x27;direct&#x27; | &#x27;potential&#x27;;
+  reasons: string[];
+}
+
+/** Risultato paginato delle correlazioni calcolate dal gateway. */
+export interface CrossSourceResult {
+  source: CrossReference;
+  items: CrossReference[];
+  counts: Record&lt;CrossSourceType, number&gt;;
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+/** Stato di una CVE tracciata */
+export type CveStato &#x3D; &#x27;IN_ANALISI&#x27; | &#x27;ARCHIVIATA&#x27;;
+
+/** Interfaccia Cve (CVE tracciata dal reparto SOC, campi allineati al file Excel) */
+export interface Cve {
+  /** Proprietà id */
+    id: number;
+  /** Proprietà problem_id (Excel: ID problem) */
+    problem_id: string | null;
+  /** Proprietà cve_id (Excel: Riepilogo) */
+    cve_id: string;
+  /** Proprietà data_inoltro (Excel: Data inoltro) */
+    data_inoltro: string | null;
+  /** Proprietà data_ultima_modifica (Excel: Data ultima modifica) */
+    data_ultima_modifica: string | null;
+  /** Proprietà stato_ticket (Excel: Stato, stato del problem sul sito) */
+    stato_ticket: string | null;
+  /** Proprietà note (Excel: Note) */
+    note: string | null;
+  /** Proprietà riferimenti (Excel: Riferimenti) */
+    riferimenti: string | null;
+  /** Proprietà errata (Excel: Errata) */
+    errata: string | null;
+  /** Proprietà score (Excel: BASE SCORE / CVSS SCORE) */
+    score: number | null;
+  /** Proprietà cve_origin (Riepilogo originale ITSM, ridondante: non mostrato in UI) */
+    cve_origin: string | null;
+  /** Proprietà prodotto (prodotto impattato, estratto dal Riepilogo) */
+    prodotto: string | null;
+  /** Proprietà vendor (vendor impattato, es. Oracle, Microsoft; recuperabile da cve-search) */
+    vendor?: string | null;
+  /** Proprietà stato (workflow interno) */
+    stato: CveStato;
+  /** Proprietà motivo_attesa (testo libero, storicizzato) */
+    motivo_attesa: string | null;
+  /** Proprietà esito (codice standard o motivazione custom &quot;Altro&quot;) */
+    esito: string | null;
+  /** Proprietà impattato */
+    impattato: string | null;
+  /** Proprietà asset_impattati */
+    asset_impattati: string | null;
+  /** Proprietà ultima_revisione */
+    ultima_revisione: string | null;
+  /** Proprietà data_archiviazione */
+    data_archiviazione: string | null;
+  /** Proprietà flagged (1 &#x3D; da girare post-riunione) */
+    flagged?: number | boolean;
+  /** Proprietà created_at */
+    created_at?: string;
+  /** Proprietà updated_at */
+    updated_at?: string;
+}
+
+/** Filtri per l&#x27;elenco CVE */
+export interface CveListParams {
+  /** Proprietà stato */
+    stato?: CveStato;
+  /** Proprietà search */
+    search?: string;
+  /** Proprietà severita (CSV, derivata dallo score) */
+    severita?: string;
+  /** Proprietà stato_ticket (CSV) */
+    stato_ticket?: string;
+  /** Proprietà impattato (CSV) */
+    impattato?: string;
+  /** Proprietà motivo_attesa (CSV) */
+    motivo_attesa?: string;
+  /** Proprietà esito (CSV, ALTRO &#x3D; motivazioni non standard) */
+    esito?: string;
+  /** Proprietà flagged (solo problem flaggati) */
+    flagged?: boolean;
+  /** Proprietà date_field (colonna data filtrata da from/to) */
+    date_field?: &#x27;data_inoltro&#x27; | &#x27;data_archiviazione&#x27; | &#x27;ultima_revisione&#x27;;
+  /** Proprietà from */
+    from?: string;
+  /** Proprietà to */
+    to?: string;
+  /** Proprietà sortBy */
+    sortBy?: string;
+  /** Proprietà sortOrder */
+    sortOrder?: &#x27;asc&#x27; | &#x27;desc&#x27;;
+  /** Proprietà page */
+    page?: number;
+  /** Proprietà pageSize */
+    pageSize?: number;
+}
+
+/** Risposta paginata elenco CVE */
+export interface CveListResponse {
+  /** Proprietà items */
+    items: Cve[];
+  /** Proprietà total */
+    total: number;
+  /** Proprietà page */
+    page: number;
+  /** Proprietà pageSize */
+    pageSize: number;
+  /** Proprietà totalPages */
+    totalPages: number;
+}
+
+/** Voce dello storico motivo attesa */
+export interface CveMotivoHistory {
+  /** Proprietà id */
+    id: number;
+  /** Proprietà motivo_attesa */
+    motivo_attesa: string;
+  /** Proprietà data_cambio */
+    data_cambio: string;
+  /** Proprietà utente */
+    utente: string | null;
+}
+
+/** Esito dell&#x27;import CSV dei problem ITSM */
+/** Esito del completamento dei campi mancanti tramite cve-search */
+export interface CveEnrichResult {
+  /** CVE con almeno un campo completato */
+    updated: number;
+  /** CVE gia complete o senza dati utili */
+    unchanged: number;
+  /** CVE non presenti su cve-search */
+    notFound: number;
+  /** Errori (CVE inesistente o servizio non raggiungibile) */
+    failed: number;
+  /** Dettaglio per CVE */
+    items: { id: number; cve_id: string | null; filled: string[]; error?: string }[];
+}
+
+export interface CveImportResult {
+  /** Nuovi problem inseriti */
+    created: number;
+  /** Problem aggiornati senza cambio di stato */
+    updated: number;
+  /** Problem archiviati tornati Pendenti */
+    reopened: number;
+  /** Problem attivi non più Pendenti, archiviati */
+    archived: number;
+  /** Righe importate */
+    imported: number;
+  /** Righe scartate */
+    skipped: number;
+  /** Errori per riga */
+    errors: { line: number | null, problem_id: string | null, error: string }[];
+}
+
+/** Dettagli CVE restituiti da cve-search (normalizzati dal back-end) */
+export interface CveDetails {
+  /** Proprietà id */
+    id: string;
+  /** Proprietà state */
+    state: string | null;
+  /** Proprietà title */
+    title: string | null;
+  /** Proprietà summary */
+    summary: string | null;
+  /** Proprietà published */
+    published: string | null;
+  /** Proprietà modified */
+    modified: string | null;
+  /** Proprietà assigner */
+    assigner: string | null;
+  /** Proprietà cvss */
+    cvss: { version: string | null; score: number | null; severity: string | null; vector: string | null }[];
+  /** Proprietà cwe */
+    cwe: string[];
+  /** Proprietà capec */
+    capec: { id: string; name: string }[];
+  /** Proprietà affected */
+    affected: { vendor: string; product: string; versions: string[] }[];
+  /** Proprietà references */
+    references: string[];
+  /** Proprietà source */
+    source: string;
+  /** Proprietà sourceUrl */
+    sourceUrl: string;
+}
+
+/** Componente/Servizio BackendService */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class BackendService {
+  /** Costruttore di BackendService */
+    constructor(private readonly notif: NotificationService) { }
+
+  /** Metodo ensureWriteAccess */
+    private ensureWriteAccess() {
+    try {
+      const raw &#x3D; localStorage.getItem(&#x27;covenant_auth_user&#x27;);
+      if (!raw) {
+        throw new Error(&#x27;Not authenticated&#x27;);
+      }
+      const user &#x3D; JSON.parse(raw);
+      if (!user?.canWrite) {
+        throw new Error(&#x27;Readonly user cannot perform this operation&#x27;);
+      }
+    } catch {
+      throw new Error(&#x27;Readonly user cannot perform this operation&#x27;);
+    }
+  }
+
+  /** Metodo getSites */
+    async getSites(): Promise&lt;{ items: Site[], totalCount: number }&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/sites&#x27;);
+    return res.data;
+  }
+
+  /** Legge relazioni senza raccogliere nuovi dati o modificare il workflow CVE. */
+  async getCrossReferences(type: CrossSourceType, id: number,
+    params: { target?: CrossSourceType; search?: string; page?: number } &#x3D; {},
+    signal?: AbortSignal): Promise&lt;CrossSourceResult&gt; {
+    const res &#x3D; await axios.get&lt;CrossSourceResult&gt;(&#x60;/api/cross-source/${type}/${id}&#x60;, { params, signal });
+    return res.data;
+  }
+
+  /** Recupera un servizio anche se non incluso nella pagina corrente. */
+  async getService(id: number): Promise&lt;Service&gt; {
+    const res &#x3D; await axios.get&lt;Service&gt;(&#x60;/api/services/${id}&#x60;);
+    return res.data;
+  }
+
+  /** Recupera una CVE per aprire il popup da un riferimento cross source. */
+  async getCve(id: number): Promise&lt;Cve&gt; {
+    const res &#x3D; await axios.get&lt;Cve&gt;(&#x60;/api/cves/${id}&#x60;);
+    return res.data;
+  }
+
+  /** Metodo getServices */
+    async getServices(search?: string, knowledge?: string, page: number &#x3D; 1, pageSize: number &#x3D; 50): Promise&lt;{ items: Service[], total: number, page: number, pageSize: number, totalPages: number }&gt; {
+    const params &#x3D; new URLSearchParams();
+    if (search) params.append(&#x27;search&#x27;, search);
+    if (knowledge) params.append(&#x27;knowledge&#x27;, knowledge);
+    params.append(&#x27;page&#x27;, page.toString());
+    params.append(&#x27;pageSize&#x27;, pageSize.toString());
+    const res &#x3D; await axios.get(&#x27;/api/services?&#x27; + params.toString());
+    return res.data;
+  }
+
+  /** Metodo createService */
+    async createService(service: Partial&lt;Service&gt;): Promise&lt;any&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.post(&#x27;/api/services&#x27;, service);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Servizio ${service.servizio || &#x27;&#x27;} creato&#x60; });
+    return res.data;
+  }
+
+  /** Metodo updateService */
+    async updateService(id: number, service: Partial&lt;Service&gt;): Promise&lt;any&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x60;/api/services/${id}&#x60;, service);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Servizio ${service.servizio || id} aggiornato&#x60; });
+    return res.data;
+  }
+
+  /** Metodo updateSite */
+    async updateSite(id: number, partialUpdate: Partial&lt;Site&gt;): Promise&lt;Site&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x60;/api/sites/${id}&#x60;, partialUpdate);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Sito ${partialUpdate.urlAliases || id} aggiornato&#x60; });
+    return res.data.site;
+  }
+
+  /** Metodo createSite */
+    async createSite(site: Partial&lt;Site&gt;): Promise&lt;Site&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.post(&#x27;/api/sites&#x27;, site);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Sito ${site.urlAliases || &#x27;&#x27;} creato&#x60; });
+    return res.data.site;
+  }
+
+  /** Metodo deleteSite */
+    async deleteSite(id: number): Promise&lt;any&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.delete(&#x60;/api/sites/${id}&#x60;);
+    this.notif.showToast({ type: &#x27;warning&#x27;, message: &#x60;Sito ${id} eliminato&#x60; });
+    return res.data;
+  }
+
+  /** Metodo getHosts */
+    async getHosts(params: any &#x3D; {}): Promise&lt;{ items: Host[], totalCount: number }&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/hosts&#x27;, { params });
+    return res.data;
+  }
+
+  /** Metodo getSettings */
+    async getSettings(): Promise&lt;any&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/settings&#x27;);
+    return res.data;
+  }
+
+  /** Metodo updateSettings */
+    async updateSettings(settings: any): Promise&lt;any&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x27;/api/settings&#x27;, settings);
+    return res.data;
+  }
+
+  /** Metodo getDashboardStats */
+    async getDashboardStats(): Promise&lt;any&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/hosts/stats&#x27;);
+    return res.data;
+  }
+
+  /** Metodo getAllHostnames: riferimenti (id, hostname, ambiente) degli host che rispettano i filtri */
+    async getAllHostnames(params: any &#x3D; {}): Promise&lt;HostRef[]&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/hosts/all-hostnames&#x27;, { params });
+    return res.data;
+  }
+
+  /** Metodo getHost: recupera un host per id */
+    async getHost(id: number): Promise&lt;Host&gt; {
+    const res &#x3D; await axios.get(&#x60;/api/hosts/${encodeURIComponent(id)}&#x60;);
+    return res.data;
+  }
+
+  /** Metodo resolveHost: converte hostname (+ ambiente opzionale) nell&#x27;id dell&#x27;host */
+    async resolveHost(hostname: string, ambiente?: string | null): Promise&lt;HostResolveResult&gt; {
+    const params: Record&lt;string, string&gt; &#x3D; { hostname };
+    if (ambiente) params[&#x27;ambiente&#x27;] &#x3D; ambiente;
+    const res &#x3D; await axios.get(&#x27;/api/hosts/resolve&#x27;, { params });
+    return res.data;
+  }
+
+  /** Metodo updateHost: aggiorna un host per id */
+    async updateHost(id: number, partialUpdate: Partial&lt;Host&gt;): Promise&lt;Host&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x60;/api/hosts/${encodeURIComponent(id)}&#x60;, partialUpdate);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Host ${res.data.host?.hostname || id} aggiornato&#x60; });
+    return res.data.host;
+  }
+
+  /** Metodo createHost */
+    async createHost(host: Partial&lt;Host&gt;): Promise&lt;Host&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.post(&#x27;/api/hosts&#x27;, host);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Host ${host.hostname} creato&#x60; });
+    return res.data.host;
+  }
+
+  /** Metodo updateHostsBulk: aggiornamento massivo per id */
+    async updateHostsBulk(ids: number[], partialUpdate: Partial&lt;Host&gt;): Promise&lt;any&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x27;/api/hosts/bulk&#x27;, { ids, partialUpdate });
+    this.notif.showToast({ type: &#x27;info&#x27;, message: &#x60;${res.data?.updatedCount ?? ids.length} host aggiornati&#x60; });
+    return res.data;
+  }
+
+  /** Metodo deleteHostsBulk: eliminazione massiva per id */
+    async deleteHostsBulk(ids: number[]): Promise&lt;any&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.delete(&#x27;/api/hosts/bulk&#x27;, { data: { ids } });
+    this.notif.showToast({ type: &#x27;warning&#x27;, message: &#x60;${res.data?.deletedCount ?? ids.length} host eliminati&#x60; });
+    return res.data;
+  }
+
+  /** Metodo getActivityLogs */
+    async getActivityLogs(page: number &#x3D; 1, pageSize: number &#x3D; 50): Promise&lt;{ items: any[], total: number }&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/logs&#x27;, { params: { page, pageSize } });
+    return res.data;
+  }
+
+  /** Metodo getCves */
+    async getCves(params: CveListParams &#x3D; {}): Promise&lt;CveListResponse&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/cves&#x27;, { params });
+    return res.data;
+  }
+
+  /** Metodo getCveStats */
+    async getCveStats(): Promise&lt;{ inAnalisi: number, archiviate: number, total: number }&gt; {
+    const res &#x3D; await axios.get(&#x27;/api/cves/stats&#x27;);
+    return res.data;
+  }
+
+  /** Metodo createCve */
+    async createCve(cve: Partial&lt;Cve&gt;): Promise&lt;Cve&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.post(&#x27;/api/cves&#x27;, cve);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;CVE ${res.data.cve?.problem_id || res.data.cve?.cve_id || cve.cve_id} aggiunta&#x60; });
+    return res.data.cve;
+  }
+
+  /** Metodo updateCve */
+    async updateCve(id: number, partialUpdate: Partial&lt;Cve&gt;): Promise&lt;Cve&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x60;/api/cves/${id}&#x60;, partialUpdate);
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;CVE ${res.data.cve?.problem_id || res.data.cve?.cve_id || id} aggiornata&#x60; });
+    return res.data.cve;
+  }
+
+  /** Metodo updateCvesStatus (archiviazione / revisione / motivo attesa / flag massivi) */
+    async updateCvesStatus(ids: number[], update: Partial&lt;Pick&lt;Cve, &#x27;stato&#x27; | &#x27;esito&#x27; | &#x27;motivo_attesa&#x27; | &#x27;ultima_revisione&#x27; | &#x27;flagged&#x27;&gt;&gt;): Promise&lt;{ success: boolean, updated: number }&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x27;/api/cves/bulk/status&#x27;, { ids, ...update });
+    this.notif.showToast({ type: &#x27;info&#x27;, message: &#x60;${res.data.updated} CVE aggiornate&#x60; });
+    return res.data;
+  }
+
+  /** Imposta/rimuove il flag &quot;da girare post-riunione&quot; (senza toast, azione rapida) */
+    async setCveFlag(id: number, flagged: boolean): Promise&lt;Cve&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.put(&#x60;/api/cves/${id}&#x60;, { flagged });
+    return res.data.cve;
+  }
+
+  /** Storico dei motivi di attesa di una CVE (dal più recente) */
+    async getCveHistory(id: number): Promise&lt;CveMotivoHistory[]&gt; {
+    const res &#x3D; await axios.get(&#x60;/api/cves/${id}/history&#x60;);
+    return res.data;
+  }
+
+  /** Importa i problem/CVE dal contenuto CSV esportato da ITSM */
+    async importCvesCsv(content: string): Promise&lt;CveImportResult&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.post(&#x27;/api/cves/import&#x27;, content, { headers: { &#x27;Content-Type&#x27;: &#x27;text/csv&#x27; } });
+    this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Import completato: ${res.data.created} nuove, ${res.data.updated + res.data.reopened + res.data.archived} aggiornate&#x60; });
+    return res.data;
+  }
+
+  /** Esporta in CSV le CVE che rispettano i filtri (paginazione esclusa) e restituisce file e nome suggerito */
+    async exportCvesCsv(params: CveListParams &#x3D; {}): Promise&lt;{ blob: Blob, filename: string }&gt; {
+    const { page, pageSize, ...filters } &#x3D; params;
+    const res &#x3D; await axios.get(&#x27;/api/cves/export&#x27;, { params: filters, responseType: &#x27;blob&#x27; });
+    const disposition: string &#x3D; res.headers[&#x27;content-disposition&#x27;] || &#x27;&#x27;;
+    const match &#x3D; /filename&#x3D;&quot;?([^&quot;;]+)&quot;?/i.exec(disposition);
+    return { blob: res.data, filename: match?.[1] || &#x27;cve-export.csv&#x27; };
+  }
+
+  /** Completa vendor/prodotto/score mancanti delle CVE indicate con i dati di cve-search */
+    async enrichCves(ids: number[]): Promise&lt;CveEnrichResult&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.post(&#x27;/api/cves/enrich&#x27;, { ids });
+    const r: CveEnrichResult &#x3D; res.data;
+    const missing &#x3D; r.notFound + r.failed;
+    this.notif.showToast({
+      type: r.updated &gt; 0 ? &#x27;success&#x27; : &#x27;info&#x27;,
+      message: &#x60;cve-search: ${r.updated} CVE completate${r.unchanged ? &#x60;, ${r.unchanged} invariate&#x60; : &#x27;&#x27;}${missing ? &#x60;, ${missing} non recuperate&#x60; : &#x27;&#x27;}&#x60;
+    });
+    return r;
+  }
+
+  /** Metodo deleteCve */
+    async deleteCve(id: number): Promise&lt;any&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.delete(&#x60;/api/cves/${id}&#x60;);
+    this.notif.showToast({ type: &#x27;warning&#x27;, message: &#x60;CVE eliminata&#x60; });
+    return res.data;
+  }
+
+  /** Metodo downloadImportTemplate: scarica il template CSV di import per hosts/siti */
+    async downloadImportTemplate(entity: ImportEntity): Promise&lt;Blob&gt; {
+    const res &#x3D; await axios.get(&#x60;/api/${entity}/import/template&#x60;, { responseType: &#x27;blob&#x27; });
+    return res.data;
+  }
+
+  /** Metodo importFile: invia al back-end il contenuto del file CSV/JSON da importare */
+    async importFile(entity: ImportEntity, content: string, format: &#x27;csv&#x27; | &#x27;json&#x27;): Promise&lt;ImportResult&gt; {
+    this.ensureWriteAccess();
+    const res &#x3D; await axios.post(&#x60;/api/${entity}/import&#x60;, content, {
+      params: { format },
+      headers: { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; },
+      transformRequest: [(data: string) &#x3D;&gt; data]
+    });
+    return res.data;
+  }
+
+  /** Metodo searchCveOnline (dettagli da cve-search via back-end) */
+    async searchCveOnline(cveId: string): Promise&lt;CveDetails&gt; {
+    const res &#x3D; await axios.get(&#x60;/api/external/cve-search/${encodeURIComponent(cveId.trim().toUpperCase())}&#x60;);
+    return res.data;
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'BackendService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

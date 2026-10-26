@@ -1,0 +1,97 @@
+<div class="dashboard-container active-view">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h1 class="page-title" style="margin-bottom: 0;">Fixes Tracker</h1>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <i class="fa-solid fa-circle-question" style="font-size: 1.5rem; color: var(--text-muted); cursor: help;" title="Shortcut di Selezione:&#10;- Click normale: seleziona/deseleziona la riga&#10;- Shift+Click: seleziona un gruppo di righe o tutte le righe filtrabili (se clicchi 'Seleziona Tutti')&#10;- Shift+Click su una riga già selezionata: annulla tutta la selezione&#10;&#10;Filtri Globali:&#10;- Usa i filtri globali per ridurre la lista in tutte le tabelle simultaneamente."></i>
+            <button class="preset-btn" (click)="toggleFilters()"
+                style="padding: 8px 16px; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-filter"></i> <span>{{ filtersCollapsed ? 'Mostra Filtri Globali' : 'Nascondi Filtri Globali' }}</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Warning Banner -->
+    <div class="fixes-warning-banner">
+        <div class="fixes-warning-rule"></div>
+        <div class="fixes-warning-body">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+                <strong>Attenzione</strong>
+                <span>Verifica la pianificazione con il Security Fix originale e con i dati Windows registrati in inventario. Le divisioni e lo stato dei fix sono gestiti manualmente.</span>
+            </div>
+        </div>
+        <div class="fixes-warning-rule"></div>
+    </div>
+
+    <!-- Filtri Condivisi (stesso componente di hosts, ma con modalità fixes e colori rossi) -->
+    <div class="table-controls-wrapper fixes-theme" style="margin-bottom: 20px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); display: flex; flex-direction: column;">
+        <div class="global-filters-container" [class.collapsed]="filtersCollapsed" [class.animate-transition]="animateFilters">
+            <app-global-filters
+                [mode]="'fixes'"
+                [filterAmbiente]="filterAmbiente"
+                [filterLocazione]="filterLocazione"
+                [filterNodo]="filterNodo"
+                [filterStatus]="filterStatus"
+                [filterZona]="filterZona"
+                [filterOSFamily]="filterOSFamily"
+                [filterOS]="filterOS"
+                [availableOSVersions]="currentAvailableOSVersions"
+                (presetClick)="setPreset($event.col, $event.val)"
+                (clearAll)="clearFilters()">
+            </app-global-filters>
+        </div>
+        <!-- Bulk Actions under Environment per Fixes -->
+        <div class="bulk-actions"
+            style="padding: 10px 20px; background: var(--bg-canvas); border-top: 1px solid var(--border-color); display: flex; gap: 10px; align-items: center;">
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Azioni Rapide ({{ selectedHosts.length }}
+                selezionati):</span>
+            <button class="preset-btn" style="color: white; background-color: var(--status-ok); border-color: var(--status-ok);"
+                [disabled]="!canWrite || selectedHosts.length === 0" (click)="fixSelected()">
+                <i class="fa-solid fa-wrench"></i> Fix
+            </button>
+            <button class="preset-btn" style="color: var(--text-main); background-color: #ffc107; border-color: #ffc107;"
+                [disabled]="!canWrite || selectedHosts.length === 0" (click)="resetSelected()">
+                <i class="fa-solid fa-rotate-left"></i> Reset
+            </button>
+            <button class="preset-btn filter-btn-fixes" style="margin-left: auto;"
+                [disabled]="!canWrite || selectedHosts.length === 0" (click)="openExportModal()">
+                <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
+        </div>
+    </div>
+
+    <!-- FIXES TABLES -->
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+        <app-shared-table *ngFor="let div of activeDivisions"
+            [baseFilters]="div.combinedFilter" 
+            [title]="div.name" 
+            [iconClass]="'fa-solid fa-layer-group'" 
+            [mode]="'fixes'"
+            [filtersCollapsed]="filtersCollapsed"
+            (envClick)="setExclusiveEnv($event)"
+            (selectionChange)="onSelectionChange(div.name, $event)">
+        </app-shared-table>
+    </div>
+
+</div>
+
+<!-- Modal Esportazione CSV -->
+<div class="modal-overlay" *ngIf="showExportModal" (click)="closeExportModal()" (keydown.escape)="closeExportModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">
+        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Seleziona Colonne da Esportare</h2>
+        
+        <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;">
+            <div *ngFor="let col of exportColumns" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;">
+                <span style="font-weight: 500;">{{ col.label }}</span>
+                <p-inputSwitch [(ngModel)]="col.selected"></p-inputSwitch>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeExportModal()">Annulla</button>
+            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="exportSelected()">
+                <i class="fa-solid fa-download"></i> Esporta
+            </button>
+        </div>
+    </div>
+</div>

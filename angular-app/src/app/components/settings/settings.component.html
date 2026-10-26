@@ -1,0 +1,156 @@
+<div class="dashboard-container active-view">
+    <h1 class="page-title">Settings</h1>
+    
+    <!-- Activity Feed (Horizontal Card at Top) -->
+    <div class="card" style="margin-bottom: 20px;">
+        <h3 style="margin-bottom: 15px; color: var(--text-main); font-family: 'Segoe UI', sans-serif;">
+            <i class="fas fa-history" style="margin-right: 8px; color: var(--accent-primary);"></i>
+            System Activity Feed
+        </h3>
+        <p style="color: var(--text-muted); margin-bottom: 15px; line-height: 1.6;">
+            Log delle azioni effettuate dagli utenti sul sistema.
+        </p>
+        
+        <div class="activity-feed-container">
+            <div *ngIf="activityLogs.length === 0" style="padding: 20px; text-align: center; color: var(--text-muted);">
+                Nessuna attività recente registrata.
+            </div>
+            <div class="activity-list" *ngIf="activityLogs.length > 0">
+                <div class="activity-item" *ngFor="let log of activityLogs">
+                    <div class="activity-icon">
+                        <i [class]="getActionIcon(log.action)"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <span class="activity-user">{{ log.username }}</span>
+                            <span class="activity-time">{{ formatDate(log.timestamp) }}</span>
+                        </div>
+                        <div class="activity-body">
+                            <span class="activity-action">{{ log.action }}</span> su 
+                            <span class="activity-target">{{ log.target_type }}</span> 
+                            <b>{{ log.target_id }}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+        <!-- Left Column -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Global Preferences -->
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: var(--text-main); font-family: 'Segoe UI', sans-serif;">Global Preferences</h3>
+                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                    Configura le preferenze generali dell'applicazione.
+                </p>
+                <div style="margin-bottom: 20px;">
+                    <label for="settings-items-per-page" style="display: block; margin-bottom: 8px; color: var(--text-main); font-size: 0.9rem;">Elementi per Pagina (Default)</label>
+                    <input id="settings-items-per-page" type="number" class="search-bar" [(ngModel)]="globalSettings.items_per_page" [disabled]="!canWrite" style="width: 100%;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label for="settings-theme" style="display: block; margin-bottom: 8px; color: var(--text-main); font-size: 0.9rem;">Tema</label>
+                    <select id="settings-theme" class="search-bar" [(ngModel)]="globalSettings.theme" [disabled]="!canWrite" style="width: 100%; background: var(--bg-canvas); color: var(--text-main); border: 1px solid var(--border-color);">
+                        <option value="light">Light Theme (Microsoft Azure)</option>
+                    </select>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button (click)="saveGlobalSettings()" [disabled]="!canWrite || isSavingGlobal" style="background: var(--accent-primary); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 500;">
+                        {{ isSavingGlobal ? 'Salvataggio...' : 'Save Configuration' }}
+                    </button>
+                    <p *ngIf="globalSaveMessage" style="color: var(--status-ok); margin: 0; font-size: 0.9rem;">{{ globalSaveMessage }}</p>
+                </div>
+            </div>
+
+            <!-- Hosts Columns Settings -->
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: var(--text-main); font-family: 'Segoe UI', sans-serif;">Colonne Tabella Hosts</h3>
+                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                    Seleziona quali colonne visualizzare di default nella pagina <b>Hosts</b>.
+                </p>
+                
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                    <div *ngFor="let col of hostsCols" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;">
+                        <span style="font-weight: 500;">{{ col.label }}</span>
+                        <p-inputSwitch [(ngModel)]="col.selected" [disabled]="!canWrite"></p-inputSwitch>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button (click)="saveHostsConfig()" [disabled]="!canWrite" style="background: var(--accent-primary); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 500;">Salva Colonne Hosts</button>
+                </div>
+            </div>
+
+            <!-- Backend API Documentation -->
+            <div class="card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                    <i class="fa-solid fa-book-open" style="color: var(--accent-primary); font-size: 1.4rem;"></i>
+                    <h3 style="margin: 0; color: var(--text-main); font-family: 'Segoe UI', sans-serif;">Backend API Swagger</h3>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                    Esplora e testa in modo interattivo le specifiche OpenAPI e gli endpoint esposti dal servizio di Back-end principale.
+                </p>
+                <div style="display: flex; gap: 10px; margin-top: auto;">
+                    <button (click)="openBackendDocs()" class="doc-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apri Documentazione Backend
+                    </button>
+                </div>
+            </div>
+
+            <!-- Frontend Documentation (Compodoc) -->
+            <div class="card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                    <i class="fa-brands fa-angular" style="color: var(--accent-primary); font-size: 1.4rem;"></i>
+                    <h3 style="margin: 0; color: var(--text-main); font-family: 'Segoe UI', sans-serif;">Frontend Documentation</h3>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                    Consulta la documentazione generata da Compodoc riguardante l'architettura dei componenti, moduli e servizi Angular dell'applicazione.
+                </p>
+                <div style="display: flex; gap: 10px; margin-top: auto;">
+                    <button (click)="openFrontendDocs()" class="doc-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apri Documentazione Frontend
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Fixes Columns Settings -->
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: var(--text-main); font-family: 'Segoe UI', sans-serif;">Colonne Tabella Fixes</h3>
+                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                    Seleziona quali colonne visualizzare di default nella pagina <b>Fixes</b>.
+                </p>
+                
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                    <div *ngFor="let col of fixesCols" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;">
+                        <span style="font-weight: 500;">{{ col.label }}</span>
+                        <p-inputSwitch [(ngModel)]="col.selected" [disabled]="!canWrite"></p-inputSwitch>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button (click)="saveFixesConfig()" [disabled]="!canWrite" style="background: var(--accent-primary); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 500;">Salva Colonne Fixes</button>
+                </div>
+            </div>
+
+            <!-- Dataservice API Documentation -->
+            <div class="card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                    <i class="fa-solid fa-database" style="color: var(--accent-primary); font-size: 1.4rem;"></i>
+                    <h3 style="margin: 0; color: var(--text-main); font-family: 'Segoe UI', sans-serif;">Dataservice API Swagger</h3>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                    Consulta le specifiche OpenAPI e testa direttamente gli endpoint CRUD operanti sul database SQLite (Dataservice).
+                </p>
+                <div style="display: flex; gap: 10px; margin-top: auto;">
+                    <button (click)="openDataserviceDocs()" class="doc-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apri Documentazione Dataservice
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

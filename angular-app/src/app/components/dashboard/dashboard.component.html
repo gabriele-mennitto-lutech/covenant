@@ -1,0 +1,90 @@
+<div class="dashboard-container active-view">
+    <h1 class="page-title">Infrastructure Overview</h1>
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+        <app-smartcard 
+            [title]="'Total Managed Hosts'" 
+            [value]="totalHosts || '-'" 
+            [routerLinkTarget]="['/hosts']"
+            [hasHoverAnimation]="true"
+            [hoverText]="'- ' + dismesseHosts + ' dismesse/spente = ' + (totalHosts - dismesseHosts) + ' macchine in funzione'">
+        </app-smartcard>
+
+        <app-smartcard 
+            [title]="'Produzione'" 
+            [value]="prodHosts || '-'" 
+            [color]="'var(--env-produzione-color)'"
+            [routerLinkTarget]="['/hosts']" 
+            [queryParamsTarget]="{ambiente: 'produzione'}"
+            [hasHoverAnimation]="true"
+            [zoneDetails]="prodZones">
+        </app-smartcard>
+
+        <app-smartcard 
+            [title]="'Collaudo'" 
+            [value]="collHosts || '-'" 
+            [color]="'var(--env-collaudo-color)'"
+            [routerLinkTarget]="['/hosts']" 
+            [queryParamsTarget]="{ambiente: 'collaudo'}">
+        </app-smartcard>
+
+        <app-smartcard 
+            [title]="'Sviluppo'" 
+            [value]="devHosts || '-'" 
+            [color]="'var(--env-sviluppo-color)'"
+            [routerLinkTarget]="['/hosts']" 
+            [queryParamsTarget]="{ambiente: 'sviluppo'}">
+        </app-smartcard>
+    </div>
+
+    <!-- Charts -->
+    <div class="dashboard-charts">
+        <app-bigcard [title]="'Distribuzione Ambienti'">
+            <div style="position: relative; height: 100%; width: 100%;">
+                <canvas #envChart id="envChart"></canvas>
+            </div>
+        </app-bigcard>
+
+        <app-bigcard 
+            [title]="'Progresso Fix (Status OK)'" 
+            [isInteractive]="true" 
+            [routerLinkTarget]="['/fixes']">
+            
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%;">
+                <div class="fix-hover-wrapper">
+                    <div class="fix-value hover-slide-up" style="font-size: 4rem; font-weight: bold; color: var(--status-ok);" id="dash-fix-percent">{{ fixPercent !== null && fixPercent !== undefined ? fixPercent : '-' }}%</div>
+                    <div class="hover-details" style="text-align: center; font-size: 1.1rem;">
+                        <span style="color: var(--status-ok); font-weight: bold;">{{ fixesDone }}</span> fixate su <span style="color: var(--text-main); font-weight: bold;">{{ fixesTotal }}</span>
+                    </div>
+                </div>
+
+                <div style="color: var(--text-muted); margin-top: 10px;">Macchine "OK" sul totale dei sistemi da aggiornare</div>
+                <div style="width: 80%; height: 20px; background: var(--bg-surface-hover); border-radius: 10px; margin-top: 20px; overflow: hidden;">
+                    <div id="dash-fix-bar" [style.width.%]="fixPercent" style="height: 100%; background: var(--status-ok); transition: width 1s ease-in-out;"></div>
+                </div>
+            </div>
+        </app-bigcard>
+    </div>
+
+    <!-- Secondary Charts (Medium) -->
+    <div class="dashboard-charts dashboard-charts-bottom" style="margin-top: 2rem;">
+        <app-bigcard 
+            [title]="'Servizi in Carico'" 
+            [isInteractive]="true" 
+            [routerLinkTarget]="['/services']">
+            <div style="position: relative; height: 100%; width: 100%;">
+                <canvas #servicesChart id="servicesChart"></canvas>
+            </div>
+        </app-bigcard>
+
+        <app-bigcard 
+            [title]="'Siti in Carico'" 
+            [isInteractive]="true" 
+            [routerLinkTarget]="['/sites']">
+            <div style="position: relative; height: 100%; width: 100%;">
+                <canvas #sitesChart id="sitesChart"></canvas>
+            </div>
+        </app-bigcard>
+    </div>
+</div>

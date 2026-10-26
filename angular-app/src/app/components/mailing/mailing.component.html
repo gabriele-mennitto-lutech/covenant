@@ -1,0 +1,120 @@
+<div class="mailing-container active-view">
+    <div style="margin-bottom: 24px;">
+        <h1 class="page-title" style="margin-bottom: 20px;">Mailing Templates</h1>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="search-container" style="flex: 1;">
+                <app-search-field inputId="mailing-search-input" label="Cerca template"
+                    placeholder="Cerca template..." [(value)]="searchQuery" />
+            </div>
+            <i class="fa-solid fa-circle-question" style="font-size: 1.5rem; color: var(--text-muted); cursor: help; flex-shrink: 0;" title="I template supportano Markdown.&#10;Usa la sintassi {{ '$' }}{{ '{' }}NOMEVAR{{ '}' }} per inserire variabili dinamiche.&#10;Esempio: Gentile {{ '$' }}{{ '{' }}NOME{{ '}' }}, il server {{ '$' }}{{ '{' }}SERVER{{ '}' }} è giù."></i>
+            <button class="preset-btn preset-btn-danger rounded-btn" style="flex-shrink: 0; white-space: nowrap;" (click)="openCreateModal()">
+                <i class="fa-solid fa-plus"></i> Nuovo Template
+            </button>
+        </div>
+    </div>
+
+    <div class="template-grid">
+        <button type="button" class="template-card" *ngFor="let template of filteredTemplates()" (click)="openUseModal(template)" [attr.aria-label]="'Apri template ' + template.title">
+            <div class="card-content" style="padding: 20px;">
+                <h3>{{ template.title }}</h3>
+                <p>{{ template.description }}</p>
+                <div style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">
+                    <strong>Oggetto:</strong> {{ template.subject }}
+                </div>
+            </div>
+        </button>
+    </div>
+</div>
+
+<!-- Create/Edit Modal -->
+<div class="modal-overlay" *ngIf="showCreateModal">
+    <div class="modal-content custom-modal" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+        <h2 class="modal-title">{{ newTemplate.id ? 'Modifica Template' : 'Crea Nuovo Template' }}</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+            <div class="var-input">
+                <label for="new-template-title">Titolo</label>
+                <input id="new-template-title" type="text" [(ngModel)]="newTemplate.title" placeholder="Es. Comunicazione di Manutenzione" />
+            </div>
+            <div class="var-input">
+                <label for="new-template-description">Descrizione</label>
+                <input id="new-template-description" type="text" [(ngModel)]="newTemplate.description" placeholder="Breve descrizione del template" />
+            </div>
+            <div class="var-input">
+                <label for="new-template-subject">Oggetto Mail</label>
+                <input id="new-template-subject" type="text" [(ngModel)]="newTemplate.subject" placeholder="Oggetto della mail (supporta variabili)" />
+            </div>
+            <div class="var-input">
+                <label for="new-template-recipients">Destinatari</label>
+                <input id="new-template-recipients" type="text" [(ngModel)]="newTemplate.recipients" placeholder="Indirizzi email separati da virgola" />
+            </div>
+            <div class="var-input">
+                <label for="new-template-content">Contenuto (Markdown supportato, usa {{ '$' }}{{ '{' }}VAR{{ '}' }} per le variabili)</label>
+                <textarea id="new-template-content" [(ngModel)]="newTemplate.content" rows="10" style="font-family: monospace; resize: vertical;"></textarea>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+            <button class="preset-btn preset-btn-outline rounded-btn" (click)="closeCreateModal()">Annulla</button>
+            <button class="preset-btn preset-btn-danger rounded-btn" (click)="saveTemplate()">Salva</button>
+        </div>
+    </div>
+</div>
+
+<!-- Use Template Modal -->
+<div class="modal-overlay" *ngIf="showUseModal && selectedTemplate">
+    <div class="modal-content custom-modal" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+        <h2 class="modal-title">{{ selectedTemplate.title }}</h2>
+        <p class="modal-subtitle">{{ selectedTemplate.description }}</p>
+
+        <!-- Variabili e altri campi -->
+        <div class="variables-section">
+            <h3 style="color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-size: 1.1rem;">Dettagli Mail</h3>
+            <div class="var-input">
+                <label for="use-template-recipients">Destinatari (A)</label>
+                <input id="use-template-recipients" type="text" [(ngModel)]="useData.recipients" />
+            </div>
+            <div class="var-input">
+                <label for="use-template-subject">Oggetto</label>
+                <input id="use-template-subject" type="text" [(ngModel)]="useData.subject" />
+            </div>
+            
+            <ng-container *ngIf="templateVariables.length > 0">
+                <hr style="border-color: var(--border-color); margin: 15px 0;">
+                <h3 style="color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-size: 1.1rem;">Variabili Contenuto</h3>
+                <div class="var-input" *ngFor="let v of templateVariables">
+                    <label [attr.for]="'template-var-' + v">{{ v }}</label>
+                    <input [id]="'template-var-' + v" type="text" [(ngModel)]="useData.variables[v]" (keyup)="renderPreview()" />
+                </div>
+            </ng-container>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; gap: 15px;">
+                <button class="preset-btn preset-btn-danger rounded-btn" (click)="deleteTemplate(selectedTemplate.id)">
+                    <i class="fa-solid fa-trash"></i> Elimina
+                </button>
+                <button class="preset-btn preset-btn-outline rounded-btn" (click)="openEditModal()">
+                    <i class="fa-solid fa-pen"></i> Modifica
+                </button>
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <button class="preset-btn preset-btn-outline rounded-btn" (click)="closeUseModal()">Chiudi</button>
+                <button class="preset-btn preset-btn-danger rounded-btn" (click)="generateMail()">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Crea Mail
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="showRendered" style="margin-top: 25px; animation: fadeIn 0.3s ease-in-out;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="color: var(--text-main); margin: 0; font-size: 1.1rem;">Anteprima Mail (Copiabile)</h3>
+                <button class="preset-btn preset-btn-outline rounded-btn" style="padding: 6px 12px; font-size: 0.9rem;" (click)="copyToClipboard()">
+                    <i class="fa-solid fa-copy"></i> Copia negli appunti
+                </button>
+            </div>
+            <!-- Div renderizzato per la copia rich text -->
+            <div class="rendered-html" [innerHTML]="renderedHtml" #htmlContainer></div>
+        </div>
+    </div>
+</div>

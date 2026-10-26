@@ -1,0 +1,76 @@
+[
+  {
+    "hostname": "WIN-CLIENT-10",
+    "ambiente": "Collaudo",
+    "os": "Windows 10",
+    "applicazione": "Postazione di collaudo",
+    "servizio": "Workplace",
+    "company": "RAI",
+    "appliance": false,
+    "status": true,
+    "manutenzione": "Concordare",
+    "divisione": "Manuale"
+  },
+  {
+    "hostname": "WIN-CLIENT-11",
+    "ambiente": "Sviluppo",
+    "os": "Windows 11",
+    "applicazione": "Postazione sviluppo",
+    "servizio": "Workplace",
+    "company": "RAI",
+    "appliance": false,
+    "status": true,
+    "manutenzione": "Venerdì 19:00",
+    "divisione": "Scheduled-Pari"
+  },
+  {
+    "hostname": "WIN-SRV-2016",
+    "ambiente": "Collaudo",
+    "os": "Windows Server 2016",
+    "applicazione": "Servizio applicativo",
+    "servizio": "Applicazioni",
+    "company": "RAI",
+    "appliance": false,
+    "status": true,
+    "manutenzione": "Concordare",
+    "divisione": "Manuale"
+  },
+  {
+    "hostname": "WIN-SRV-2019",
+    "ambiente": "Produzione",
+    "os": "Windows Server 2019",
+    "applicazione": "File server",
+    "servizio": "File Services",
+    "company": "RAI",
+    "appliance": false,
+    "status": true,
+    "manutenzione": "Domenica 01:00",
+    "divisione": "Scheduled-Dispari"
+  },
+  {
+    "hostname": "WIN-SRV-2022",
+    "ambiente": "Produzione",
+    "os": "Windows Server 2022",
+    "applicazione": "Portale IIS",
+    "servizio": "Web",
+    "company": "RAI",
+    "appliance": false,
+    "status": true,
+    "manutenzione": "Domenica 02:00",
+    "divisione": "Scheduled-Pari",
+    "ipfe": "192.0.2.22",
+    "vlfe": "100"
+  },
+  {
+    "hostname": "WIN-SRV-2025",
+    "ambiente": "Sviluppo",
+    "os": "Windows Server 2025",
+    "applicazione": "Servizio infrastrutturale",
+    "servizio": "Infrastruttura",
+    "company": "RAI",
+    "appliance": false,
+    "status": true,
+    "manutenzione": "Concordare",
+    "divisione": "Manuale"
+  }
+]

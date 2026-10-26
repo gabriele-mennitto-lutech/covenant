@@ -1,0 +1,1801 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DashboardComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/dashboard/dashboard.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente/Servizio DashboardComponent</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>AfterViewInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dashboard</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                                <code><a href="../components/SmartcardComponent.html" target="_self" >SmartcardComponent</a></code>
+                                <code><a href="../components/BigcardComponent.html" target="_self" >BigcardComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dashboard.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#chartInstance" >chartInstance</a>
+                            </li>
+                            <li>
+                                <a href="#collHosts" >collHosts</a>
+                            </li>
+                            <li>
+                                <a href="#collZones" >collZones</a>
+                            </li>
+                            <li>
+                                <a href="#devHosts" >devHosts</a>
+                            </li>
+                            <li>
+                                <a href="#devZones" >devZones</a>
+                            </li>
+                            <li>
+                                <a href="#dismesseHosts" >dismesseHosts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#envChartRef" >envChartRef</a>
+                            </li>
+                            <li>
+                                <a href="#fixesDone" >fixesDone</a>
+                            </li>
+                            <li>
+                                <a href="#fixesTotal" >fixesTotal</a>
+                            </li>
+                            <li>
+                                <a href="#fixPercent" >fixPercent</a>
+                            </li>
+                            <li>
+                                <a href="#prodHosts" >prodHosts</a>
+                            </li>
+                            <li>
+                                <a href="#prodZones" >prodZones</a>
+                            </li>
+                            <li>
+                                <a href="#servicesChartInstance" >servicesChartInstance</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#servicesChartRef" >servicesChartRef</a>
+                            </li>
+                            <li>
+                                <a href="#servicesStats" >servicesStats</a>
+                            </li>
+                            <li>
+                                <a href="#sitesChartInstance" >sitesChartInstance</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#sitesChartRef" >sitesChartRef</a>
+                            </li>
+                            <li>
+                                <a href="#sitesStats" >sitesStats</a>
+                            </li>
+                            <li>
+                                <a href="#totalHosts" >totalHosts</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createStripedPattern" >createStripedPattern</a>
+                            </li>
+                            <li>
+                                <a href="#initChart" >initChart</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(backend: <a href="../injectables/BackendService.html" target="_self">BackendService</a>, platformId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:58</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Costruttore di DashboardComponent</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>backend</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BackendService.html" target="_self" >BackendService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platformId</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createStripedPattern"></a>
+                    <span class="name">
+                        <span ><b>createStripedPattern</b></span>
+                        <a href="#createStripedPattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createStripedPattern(ctx: CanvasRenderingContext2D)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo createStripedPattern</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ctx</td>
+                                            <td>
+                                                        <code>CanvasRenderingContext2D</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initChart"></a>
+                    <span class="name">
+                        <span ><b>initChart</b></span>
+                        <a href="#initChart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initChart()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:132</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo initChart</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook ngAfterViewInit</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook ngOnInit</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartInstance"></a>
+                    <span class="name">
+                        <span ><b>chartInstance</b></span>
+                        <a href="#chartInstance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà chartInstance</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="collHosts"></a>
+                    <span class="name">
+                        <span ><b>collHosts</b></span>
+                        <a href="#collHosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà collHosts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="collZones"></a>
+                    <span class="name">
+                        <span ><b>collZones</b></span>
+                        <a href="#collZones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ torino: 0, teulada: 0, saxa: 0 }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà collZones</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="devHosts"></a>
+                    <span class="name">
+                        <span ><b>devHosts</b></span>
+                        <a href="#devHosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà devHosts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="devZones"></a>
+                    <span class="name">
+                        <span ><b>devZones</b></span>
+                        <a href="#devZones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ torino: 0, teulada: 0, saxa: 0 }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà devZones</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dismesseHosts"></a>
+                    <span class="name">
+                        <span ><b>dismesseHosts</b></span>
+                        <a href="#dismesseHosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà dismesseHosts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="envChartRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>envChartRef</b></span>
+                        <a href="#envChartRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;envChart&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà envChartRef</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fixesDone"></a>
+                    <span class="name">
+                        <span ><b>fixesDone</b></span>
+                        <a href="#fixesDone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà fixesDone</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fixesTotal"></a>
+                    <span class="name">
+                        <span ><b>fixesTotal</b></span>
+                        <a href="#fixesTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà fixesTotal</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fixPercent"></a>
+                    <span class="name">
+                        <span ><b>fixPercent</b></span>
+                        <a href="#fixPercent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà fixPercent</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prodHosts"></a>
+                    <span class="name">
+                        <span ><b>prodHosts</b></span>
+                        <a href="#prodHosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà prodHosts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prodZones"></a>
+                    <span class="name">
+                        <span ><b>prodZones</b></span>
+                        <a href="#prodZones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ torino: 0, teulada: 0, saxa: 0 }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà prodZones</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="servicesChartInstance"></a>
+                    <span class="name">
+                        <span ><b>servicesChartInstance</b></span>
+                        <a href="#servicesChartInstance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà servicesChartInstance</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="servicesChartRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>servicesChartRef</b></span>
+                        <a href="#servicesChartRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;servicesChart&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà servicesChartRef</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="servicesStats"></a>
+                    <span class="name">
+                        <span ><b>servicesStats</b></span>
+                        <a href="#servicesStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ total: 0, full: 0, limited: 0, absent: 0 }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà servicesStats</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sitesChartInstance"></a>
+                    <span class="name">
+                        <span ><b>sitesChartInstance</b></span>
+                        <a href="#sitesChartInstance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà sitesChartInstance</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sitesChartRef"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>sitesChartRef</b></span>
+                        <a href="#sitesChartRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;sitesChart&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà sitesChartRef</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sitesStats"></a>
+                    <span class="name">
+                        <span ><b>sitesStats</b></span>
+                        <a href="#sitesStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ total: 0, prod: 0, coll: 0, dev: 0 }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà sitesStats</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalHosts"></a>
+                    <span class="name">
+                        <span ><b>totalHosts</b></span>
+                        <a href="#totalHosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà totalHosts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Inject, PLATFORM_ID } from &#x27;@angular/core&#x27;;
+import { CommonModule, isPlatformBrowser } from &#x27;@angular/common&#x27;;
+import { BackendService } from &#x27;../../services/backend.service&#x27;;
+import { SmartcardComponent } from &#x27;../smartcard/smartcard.component&#x27;;
+import { BigcardComponent } from &#x27;../bigcard/bigcard.component&#x27;;
+
+declare var Chart: any;
+
+/** Componente/Servizio DashboardComponent */
+@Component({
+  selector: &#x27;app-dashboard&#x27;,
+  standalone: true,
+  imports: [CommonModule, SmartcardComponent, BigcardComponent],
+  templateUrl: &#x27;./dashboard.component.html&#x27;,
+})
+export class DashboardComponent implements OnInit, AfterViewInit {
+  /** Proprietà totalHosts */
+    totalHosts &#x3D; 0;
+  /** Proprietà prodHosts */
+    prodHosts &#x3D; 0;
+  /** Proprietà collHosts */
+    collHosts &#x3D; 0;
+  /** Proprietà devHosts */
+    devHosts &#x3D; 0;
+  /** Proprietà fixPercent */
+    fixPercent &#x3D; 0;
+  /** Proprietà fixesTotal */
+    fixesTotal &#x3D; 0;
+  /** Proprietà fixesDone */
+    fixesDone &#x3D; 0;
+  /** Proprietà dismesseHosts */
+    dismesseHosts &#x3D; 0;
+  /** Proprietà servicesStats */
+    servicesStats &#x3D; { total: 0, full: 0, limited: 0, absent: 0 };
+  /** Proprietà sitesStats */
+    sitesStats &#x3D; { total: 0, prod: 0, coll: 0, dev: 0 };
+
+  /** Proprietà prodZones */
+    prodZones &#x3D; { torino: 0, teulada: 0, saxa: 0 };
+  /** Proprietà collZones */
+    collZones &#x3D; { torino: 0, teulada: 0, saxa: 0 };
+  /** Proprietà devZones */
+    devZones &#x3D; { torino: 0, teulada: 0, saxa: 0 };
+  
+  // hosts array removed since we use getDashboardStats
+  /** Proprietà chartInstance */
+    chartInstance: any &#x3D; null;
+  /** Proprietà servicesChartInstance */
+    servicesChartInstance: any &#x3D; null;
+  /** Proprietà sitesChartInstance */
+    sitesChartInstance: any &#x3D; null;
+
+  /** Proprietà envChartRef */
+    @ViewChild(&#x27;envChart&#x27;) envChartRef!: ElementRef;
+  /** Proprietà servicesChartRef */
+    @ViewChild(&#x27;servicesChart&#x27;) servicesChartRef!: ElementRef;
+  /** Proprietà sitesChartRef */
+    @ViewChild(&#x27;sitesChart&#x27;) sitesChartRef!: ElementRef;
+
+  /** Costruttore di DashboardComponent */
+    constructor(private readonly backend: BackendService, @Inject(PLATFORM_ID) private readonly platformId: Object) {}
+
+  /** Lifecycle hook ngOnInit */
+    ngOnInit() {
+    this.backend.getDashboardStats().then(res &#x3D;&gt; {
+      this.totalHosts &#x3D; res.totalHosts;
+      this.dismesseHosts &#x3D; res.dismesseHosts;
+      this.prodHosts &#x3D; res.prodHosts;
+      this.collHosts &#x3D; res.collHosts;
+      this.devHosts &#x3D; res.devHosts;
+      this.prodZones &#x3D; res.prodZones;
+      this.collZones &#x3D; res.collZones;
+      this.devZones &#x3D; res.devZones;
+      this.fixesTotal &#x3D; res.fixesTotal;
+      this.fixesDone &#x3D; res.fixesDone;
+      this.fixPercent &#x3D; res.fixPercent;
+      if (res.servicesStats) {
+        this.servicesStats &#x3D; res.servicesStats;
+      }
+      if (res.sitesStats) {
+        this.sitesStats &#x3D; res.sitesStats;
+      }
+      
+      if (isPlatformBrowser(this.platformId) &amp;&amp; this.envChartRef) {
+          this.initChart();
+      }
+    });
+  }
+
+  /** Lifecycle hook ngAfterViewInit */
+    ngAfterViewInit() {
+      if (this.totalHosts &gt; 0 &amp;&amp; isPlatformBrowser(this.platformId)) {
+          this.initChart();
+      }
+  }
+
+  /** Metodo createStripedPattern */
+    createStripedPattern(ctx: CanvasRenderingContext2D) {
+    const patternCanvas &#x3D; document.createElement(&#x27;canvas&#x27;);
+    const patternContext &#x3D; patternCanvas.getContext(&#x27;2d&#x27;);
+    patternCanvas.width &#x3D; 16;
+    patternCanvas.height &#x3D; 16;
+
+    if (patternContext) {
+        // Base gray
+        patternContext.fillStyle &#x3D; &#x27;#F5F7FA&#x27;;
+        patternContext.fillRect(0, 0, 16, 16);
+        
+        // Stripe line
+        patternContext.strokeStyle &#x3D; &#x27;#D1D5DB&#x27;;
+        patternContext.lineWidth &#x3D; 4;
+        patternContext.beginPath();
+        patternContext.moveTo(0, 16);
+        patternContext.lineTo(16, 0);
+        patternContext.stroke();
+        
+        patternContext.beginPath();
+        patternContext.moveTo(-4, 4);
+        patternContext.lineTo(4, -4);
+        patternContext.stroke();
+        
+        patternContext.beginPath();
+        patternContext.moveTo(12, 20);
+        patternContext.lineTo(20, 12);
+        patternContext.stroke();
+    }
+    
+    return ctx.createPattern(patternCanvas, &#x27;repeat&#x27;);
+  }
+
+  /** Metodo initChart */
+    initChart() {
+    if (!this.envChartRef) return;
+    const ctx &#x3D; this.envChartRef.nativeElement.getContext(&#x27;2d&#x27;);
+    if (this.chartInstance) this.chartInstance.destroy();
+
+    this.chartInstance &#x3D; new Chart(ctx, {
+        type: &#x27;doughnut&#x27;,
+        data: {
+            labels: [&#x27;Produzione&#x27;, &#x27;Collaudo&#x27;, &#x27;Sviluppo&#x27;, &#x27;Altro&#x27;, &#x27;Dismessa&#x27;],
+            datasets: [{
+                data: [
+                    this.prodHosts, 
+                    this.collHosts, 
+                    this.devHosts, 
+                    this.totalHosts - this.prodHosts - this.collHosts - this.devHosts - this.dismesseHosts,
+                    this.dismesseHosts
+                ],
+                backgroundColor: [&#x27;#0078D4&#x27;, &#x27;#8764B8&#x27;, &#x27;#00B7C3&#x27;, this.createStripedPattern(ctx), &#x27;#8A8886&#x27;],
+                borderWidth: 0,
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: &#x27;right&#x27;,
+                    labels: { color: &#x27;#242424&#x27;, font: { family: &quot;&#x27;Segoe UI&#x27;, sans-serif&quot; } }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context: any) {
+                            let label &#x3D; context.label || &#x27;&#x27;;
+                            if (label) {
+                                label +&#x3D; &#x27;: &#x27;;
+                            }
+                            if (context.parsed !&#x3D;&#x3D; null) {
+                                let total &#x3D; context.chart._metasets[context.datasetIndex].total;
+                                let percent &#x3D; Math.round((context.parsed / total) * 100);
+                                label +&#x3D; percent + &#x27;% (&#x27; + context.parsed + &#x27;)&#x27;;
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Services Chart
+    if (this.servicesChartRef) {
+        const sCtx &#x3D; this.servicesChartRef.nativeElement.getContext(&#x27;2d&#x27;);
+        if (this.servicesChartInstance) this.servicesChartInstance.destroy();
+        this.servicesChartInstance &#x3D; new Chart(sCtx, {
+            type: &#x27;bar&#x27;,
+            data: {
+                labels: [&#x27;Full&#x27;, &#x27;Limited&#x27;, &#x27;Absent&#x27;],
+                datasets: [{
+                    label: &#x27;Knowledge Servizi&#x27;,
+                    data: [this.servicesStats.full, this.servicesStats.limited, this.servicesStats.absent],
+                    backgroundColor: [&#x27;#107C10&#x27;, &#x27;#986F0B&#x27;, &#x27;#A4262C&#x27;],
+                    borderRadius: 20,
+                    barThickness: 12,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                indexAxis: &#x27;y&#x27;,
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: { right: 40 } // space for the label
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context: any) {
+                                return context.parsed.x + &#x27; Servizi&#x27;;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { display: false, beginAtZero: true },
+                    y: { ticks: { color: &#x27;#242424&#x27;, font: { family: &quot;&#x27;Segoe UI&#x27;, sans-serif&quot;, size: 14, weight: &#x27;bold&#x27; } }, grid: { display: false } }
+                }
+            },
+            plugins: [{
+                id: &#x27;customDatalabels&#x27;,
+                afterDatasetsDraw: function(chart: any) {
+                    const ctx &#x3D; chart.ctx;
+                    chart.data.datasets.forEach(function(dataset: any, i: number) {
+                        const meta &#x3D; chart.getDatasetMeta(i);
+                        if (!meta.hidden) {
+                            meta.data.forEach(function(element: any, index: number) {
+                                ctx.fillStyle &#x3D; &#x27;#242424&#x27;;
+                                const fontSize &#x3D; 14;
+                                const fontStyle &#x3D; &#x27;bold&#x27;;
+                                const fontFamily &#x3D; &quot;&#x27;Segoe UI&#x27;, sans-serif&quot;;
+                                ctx.font &#x3D; Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+                                const dataString &#x3D; dataset.data[index].toString();
+                                ctx.textAlign &#x3D; &#x27;left&#x27;;
+                                ctx.textBaseline &#x3D; &#x27;middle&#x27;;
+                                const position &#x3D; element.tooltipPosition();
+                                ctx.fillText(dataString, position.x + 10, position.y);
+                            });
+                        }
+                    });
+                }
+            }]
+        });
+    }
+
+    // Sites Chart
+    if (this.sitesChartRef) {
+        const stCtx &#x3D; this.sitesChartRef.nativeElement.getContext(&#x27;2d&#x27;);
+        if (this.sitesChartInstance) this.sitesChartInstance.destroy();
+        this.sitesChartInstance &#x3D; new Chart(stCtx, {
+            type: &#x27;polarArea&#x27;,
+            data: {
+                labels: [&#x27;Produzione&#x27;, &#x27;Collaudo&#x27;, &#x27;Sviluppo&#x27;],
+                datasets: [{
+                    label: &#x27;Siti in Carico&#x27;,
+                    data: [this.sitesStats.prod, this.sitesStats.coll, this.sitesStats.dev],
+                    backgroundColor: [
+                        &#x27;rgba(0, 120, 212, 0.7)&#x27;,
+                        &#x27;rgba(135, 100, 184, 0.7)&#x27;,
+                        &#x27;rgba(0, 183, 195, 0.7)&#x27;
+                    ],
+                    borderColor: [&#x27;#0078D4&#x27;, &#x27;#8764B8&#x27;, &#x27;#00B7C3&#x27;],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: &#x27;right&#x27;,
+                        labels: { color: &#x27;#242424&#x27;, font: { family: &quot;&#x27;Segoe UI&#x27;, sans-serif&quot; } }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context: any) {
+                                return context.parsed.r + &#x27; Siti&#x27;;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        ticks: { display: false }, // hide internal numbers
+                        grid: { color: &#x27;rgba(36, 36, 36, 0.12)&#x27; },
+                        angleLines: { color: &#x27;rgba(36, 36, 36, 0.12)&#x27; }
+                    }
+                }
+            }
+        });
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;dashboard-container active-view&quot;&gt;
+    &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Infrastructure Overview&lt;/h1&gt;
+
+    &lt;!-- Summary Cards --&gt;
+    &lt;div class&#x3D;&quot;summary-cards&quot;&gt;
+        &lt;app-smartcard 
+            [title]&#x3D;&quot;&#x27;Total Managed Hosts&#x27;&quot; 
+            [value]&#x3D;&quot;totalHosts || &#x27;-&#x27;&quot; 
+            [routerLinkTarget]&#x3D;&quot;[&#x27;/hosts&#x27;]&quot;
+            [hasHoverAnimation]&#x3D;&quot;true&quot;
+            [hoverText]&#x3D;&quot;&#x27;- &#x27; + dismesseHosts + &#x27; dismesse/spente &#x3D; &#x27; + (totalHosts - dismesseHosts) + &#x27; macchine in funzione&#x27;&quot;&gt;
+        &lt;/app-smartcard&gt;
+
+        &lt;app-smartcard 
+            [title]&#x3D;&quot;&#x27;Produzione&#x27;&quot; 
+            [value]&#x3D;&quot;prodHosts || &#x27;-&#x27;&quot; 
+            [color]&#x3D;&quot;&#x27;var(--env-produzione-color)&#x27;&quot;
+            [routerLinkTarget]&#x3D;&quot;[&#x27;/hosts&#x27;]&quot; 
+            [queryParamsTarget]&#x3D;&quot;{ambiente: &#x27;produzione&#x27;}&quot;
+            [hasHoverAnimation]&#x3D;&quot;true&quot;
+            [zoneDetails]&#x3D;&quot;prodZones&quot;&gt;
+        &lt;/app-smartcard&gt;
+
+        &lt;app-smartcard 
+            [title]&#x3D;&quot;&#x27;Collaudo&#x27;&quot; 
+            [value]&#x3D;&quot;collHosts || &#x27;-&#x27;&quot; 
+            [color]&#x3D;&quot;&#x27;var(--env-collaudo-color)&#x27;&quot;
+            [routerLinkTarget]&#x3D;&quot;[&#x27;/hosts&#x27;]&quot; 
+            [queryParamsTarget]&#x3D;&quot;{ambiente: &#x27;collaudo&#x27;}&quot;&gt;
+        &lt;/app-smartcard&gt;
+
+        &lt;app-smartcard 
+            [title]&#x3D;&quot;&#x27;Sviluppo&#x27;&quot; 
+            [value]&#x3D;&quot;devHosts || &#x27;-&#x27;&quot; 
+            [color]&#x3D;&quot;&#x27;var(--env-sviluppo-color)&#x27;&quot;
+            [routerLinkTarget]&#x3D;&quot;[&#x27;/hosts&#x27;]&quot; 
+            [queryParamsTarget]&#x3D;&quot;{ambiente: &#x27;sviluppo&#x27;}&quot;&gt;
+        &lt;/app-smartcard&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Charts --&gt;
+    &lt;div class&#x3D;&quot;dashboard-charts&quot;&gt;
+        &lt;app-bigcard [title]&#x3D;&quot;&#x27;Distribuzione Ambienti&#x27;&quot;&gt;
+            &lt;div style&#x3D;&quot;position: relative; height: 100%; width: 100%;&quot;&gt;
+                &lt;canvas #envChart id&#x3D;&quot;envChart&quot;&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+        &lt;/app-bigcard&gt;
+
+        &lt;app-bigcard 
+            [title]&#x3D;&quot;&#x27;Progresso Fix (Status OK)&#x27;&quot; 
+            [isInteractive]&#x3D;&quot;true&quot; 
+            [routerLinkTarget]&#x3D;&quot;[&#x27;/fixes&#x27;]&quot;&gt;
+            
+            &lt;div style&#x3D;&quot;display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%;&quot;&gt;
+                &lt;div class&#x3D;&quot;fix-hover-wrapper&quot;&gt;
+                    &lt;div class&#x3D;&quot;fix-value hover-slide-up&quot; style&#x3D;&quot;font-size: 4rem; font-weight: bold; color: var(--status-ok);&quot; id&#x3D;&quot;dash-fix-percent&quot;&gt;{{ fixPercent !&#x3D;&#x3D; null &amp;&amp; fixPercent !&#x3D;&#x3D; undefined ? fixPercent : &#x27;-&#x27; }}%&lt;/div&gt;
+                    &lt;div class&#x3D;&quot;hover-details&quot; style&#x3D;&quot;text-align: center; font-size: 1.1rem;&quot;&gt;
+                        &lt;span style&#x3D;&quot;color: var(--status-ok); font-weight: bold;&quot;&gt;{{ fixesDone }}&lt;/span&gt; fixate su &lt;span style&#x3D;&quot;color: var(--text-main); font-weight: bold;&quot;&gt;{{ fixesTotal }}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div style&#x3D;&quot;color: var(--text-muted); margin-top: 10px;&quot;&gt;Macchine &quot;OK&quot; sul totale dei sistemi da aggiornare&lt;/div&gt;
+                &lt;div style&#x3D;&quot;width: 80%; height: 20px; background: var(--bg-surface-hover); border-radius: 10px; margin-top: 20px; overflow: hidden;&quot;&gt;
+                    &lt;div id&#x3D;&quot;dash-fix-bar&quot; [style.width.%]&#x3D;&quot;fixPercent&quot; style&#x3D;&quot;height: 100%; background: var(--status-ok); transition: width 1s ease-in-out;&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/app-bigcard&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Secondary Charts (Medium) --&gt;
+    &lt;div class&#x3D;&quot;dashboard-charts dashboard-charts-bottom&quot; style&#x3D;&quot;margin-top: 2rem;&quot;&gt;
+        &lt;app-bigcard 
+            [title]&#x3D;&quot;&#x27;Servizi in Carico&#x27;&quot; 
+            [isInteractive]&#x3D;&quot;true&quot; 
+            [routerLinkTarget]&#x3D;&quot;[&#x27;/services&#x27;]&quot;&gt;
+            &lt;div style&#x3D;&quot;position: relative; height: 100%; width: 100%;&quot;&gt;
+                &lt;canvas #servicesChart id&#x3D;&quot;servicesChart&quot;&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+        &lt;/app-bigcard&gt;
+
+        &lt;app-bigcard 
+            [title]&#x3D;&quot;&#x27;Siti in Carico&#x27;&quot; 
+            [isInteractive]&#x3D;&quot;true&quot; 
+            [routerLinkTarget]&#x3D;&quot;[&#x27;/sites&#x27;]&quot;&gt;
+            &lt;div style&#x3D;&quot;position: relative; height: 100%; width: 100%;&quot;&gt;
+                &lt;canvas #sitesChart id&#x3D;&quot;sitesChart&quot;&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+        &lt;/app-bigcard&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="dashboard-container active-view">    <h1 class="page-title">Infrastructure Overview</h1>    <!-- Summary Cards -->    <div class="summary-cards">        <app-smartcard             [title]="\'Total Managed Hosts\'"             [value]="totalHosts || \'-\'"             [routerLinkTarget]="[\'/hosts\']"            [hasHoverAnimation]="true"            [hoverText]="\'- \' + dismesseHosts + \' dismesse/spente = \' + (totalHosts - dismesseHosts) + \' macchine in funzione\'">        </app-smartcard>        <app-smartcard             [title]="\'Produzione\'"             [value]="prodHosts || \'-\'"             [color]="\'var(--env-produzione-color)\'"            [routerLinkTarget]="[\'/hosts\']"             [queryParamsTarget]="{ambiente: \'produzione\'}"            [hasHoverAnimation]="true"            [zoneDetails]="prodZones">        </app-smartcard>        <app-smartcard             [title]="\'Collaudo\'"             [value]="collHosts || \'-\'"             [color]="\'var(--env-collaudo-color)\'"            [routerLinkTarget]="[\'/hosts\']"             [queryParamsTarget]="{ambiente: \'collaudo\'}">        </app-smartcard>        <app-smartcard             [title]="\'Sviluppo\'"             [value]="devHosts || \'-\'"             [color]="\'var(--env-sviluppo-color)\'"            [routerLinkTarget]="[\'/hosts\']"             [queryParamsTarget]="{ambiente: \'sviluppo\'}">        </app-smartcard>    </div>    <!-- Charts -->    <div class="dashboard-charts">        <app-bigcard [title]="\'Distribuzione Ambienti\'">            <div style="position: relative; height: 100%; width: 100%;">                <canvas #envChart id="envChart"></canvas>            </div>        </app-bigcard>        <app-bigcard             [title]="\'Progresso Fix (Status OK)\'"             [isInteractive]="true"             [routerLinkTarget]="[\'/fixes\']">                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%;">                <div class="fix-hover-wrapper">                    <div class="fix-value hover-slide-up" style="font-size: 4rem; font-weight: bold; color: var(--status-ok);" id="dash-fix-percent">{{ fixPercent !== null && fixPercent !== undefined ? fixPercent : \'-\' }}%</div>                    <div class="hover-details" style="text-align: center; font-size: 1.1rem;">                        <span style="color: var(--status-ok); font-weight: bold;">{{ fixesDone }}</span> fixate su <span style="color: var(--text-main); font-weight: bold;">{{ fixesTotal }}</span>                    </div>                </div>                <div style="color: var(--text-muted); margin-top: 10px;">Macchine "OK" sul totale dei sistemi da aggiornare</div>                <div style="width: 80%; height: 20px; background: var(--bg-surface-hover); border-radius: 10px; margin-top: 20px; overflow: hidden;">                    <div id="dash-fix-bar" [style.width.%]="fixPercent" style="height: 100%; background: var(--status-ok); transition: width 1s ease-in-out;"></div>                </div>            </div>        </app-bigcard>    </div>    <!-- Secondary Charts (Medium) -->    <div class="dashboard-charts dashboard-charts-bottom" style="margin-top: 2rem;">        <app-bigcard             [title]="\'Servizi in Carico\'"             [isInteractive]="true"             [routerLinkTarget]="[\'/services\']">            <div style="position: relative; height: 100%; width: 100%;">                <canvas #servicesChart id="servicesChart"></canvas>            </div>        </app-bigcard>        <app-bigcard             [title]="\'Siti in Carico\'"             [isInteractive]="true"             [routerLinkTarget]="[\'/sites\']">            <div style="position: relative; height: 100%; width: 100%;">                <canvas #sitesChart id="sitesChart"></canvas>            </div>        </app-bigcard>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BigcardComponent', 'selector': 'app-bigcard'},{'name': 'CrossSourceComponent', 'selector': 'app-cross-source'},{'name': 'CveAnalysisComponent', 'selector': 'app-cve-analysis'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FilterItemComponent', 'selector': 'app-filter-item'},{'name': 'FixesComponent', 'selector': 'app-fixes'},{'name': 'GlobalFiltersComponent', 'selector': 'app-global-filters'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HostsComponent', 'selector': 'app-hosts'},{'name': 'ImportDialogComponent', 'selector': 'app-import-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineComponent', 'selector': 'app-machine'},{'name': 'MailingComponent', 'selector': 'app-mailing'},{'name': 'MainpageComponent', 'selector': 'app-mainpage'},{'name': 'MonitoringComponent', 'selector': 'app-monitoring'},{'name': 'SearchFieldComponent', 'selector': 'app-search-field'},{'name': 'ServicesComponent', 'selector': 'app-services'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedTableComponent', 'selector': 'app-shared-table'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SiteCardComponent', 'selector': 'app-site-card'},{'name': 'SitesComponent', 'selector': 'app-sites'},{'name': 'SmartcardComponent', 'selector': 'app-smartcard'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'WipComponent', 'selector': 'app-wip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

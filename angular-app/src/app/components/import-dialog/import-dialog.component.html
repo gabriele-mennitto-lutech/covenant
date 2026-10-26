@@ -1,0 +1,77 @@
+<p-dialog
+  [visible]="visible"
+  (visibleChange)="!$event && close()"
+  [modal]="true"
+  [style]="{ width: '40rem', maxWidth: '95vw', borderRadius: '16px' }"
+  [draggable]="false"
+  [resizable]="false"
+  [showHeader]="false"
+  [closeOnEscape]="!isUploading"
+  [dismissableMask]="!isUploading"
+  appendTo="body"
+  styleClass="modern-dialog">
+  <div class="import-dialog">
+    <button class="import-close" (click)="close()" [disabled]="isUploading" aria-label="Chiudi"><i class="pi pi-times"></i></button>
+    <h2 class="import-title"><i class="fa-solid fa-file-import"></i> Importa {{ entityLabel }} da CSV/JSON</h2>
+
+    <div class="import-step">
+      <span class="step-badge">1</span>
+      <div class="step-body">
+        <p>Scarica il template CSV (separatore <code>;</code>) e compilalo mantenendo le intestazioni.</p>
+        <button class="import-btn secondary" (click)="downloadTemplate()" [disabled]="isDownloading">
+          <i class="fa-solid" [ngClass]="isDownloading ? 'fa-spinner fa-spin' : 'fa-download'"></i> Scarica template
+        </button>
+      </div>
+    </div>
+
+    <div class="import-step">
+      <span class="step-badge">2</span>
+      <div class="step-body">
+        <p>Carica il template compilato (<code>.csv</code>) oppure un file <code>.json</code> con le stesse chiavi.</p>
+        <div class="file-row">
+          <label class="import-btn secondary" for="import-file-{{ entity }}">
+            <i class="fa-solid fa-folder-open"></i> Seleziona file
+          </label>
+          <input id="import-file-{{ entity }}" type="file" accept=".csv,.json,text/csv,application/json" (change)="onFileSelected($event)" hidden />
+          <span class="file-name" [class.muted]="!selectedFile">{{ selectedFile?.name || 'Nessun file selezionato' }}</span>
+        </div>
+        <button class="import-btn primary" (click)="upload()" [disabled]="!selectedFile || isUploading">
+          <i class="fa-solid" [ngClass]="isUploading ? 'fa-spinner fa-spin' : 'fa-upload'"></i> {{ isUploading ? 'Importazione in corso...' : 'Carica e importa' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="import-info">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>
+        I dati presenti sul DB hanno la priorità: se esiste già un record con stesso {{ mergeKeyDescription }},
+        vengono compilati solo i campi vuoti sul DB senza modificare quelli già valorizzati. Gli altri record vengono creati.
+      </span>
+    </div>
+
+    <div class="import-error" *ngIf="errorMessage">
+      <i class="fa-solid fa-triangle-exclamation"></i> {{ errorMessage }}
+    </div>
+
+    <div class="import-result" *ngIf="result">
+      <div class="result-grid">
+        <div class="result-item"><span class="value">{{ result.total }}</span><span class="label">Righe lette</span></div>
+        <div class="result-item ok"><span class="value">{{ result.inserted }}</span><span class="label">Creati</span></div>
+        <div class="result-item info"><span class="value">{{ result.merged }}</span><span class="label">Completati</span></div>
+        <div class="result-item"><span class="value">{{ result.unchanged }}</span><span class="label">Invariati</span></div>
+        <div class="result-item warn"><span class="value">{{ result.skipped }}</span><span class="label">Scartati</span></div>
+      </div>
+      <p class="ignored" *ngIf="result.ignoredColumns.length > 0">
+        Colonne ignorate: <strong>{{ result.ignoredColumns.join(', ') }}</strong>
+      </p>
+      <ul class="error-list" *ngIf="result.errors.length > 0">
+        <li *ngFor="let e of visibleErrors"><span class="row">Riga {{ e.row }}</span> {{ e.error }}</li>
+        <li *ngIf="hiddenErrorsCount > 0" class="muted">... e altri {{ hiddenErrorsCount }} errori</li>
+      </ul>
+    </div>
+
+    <div class="import-actions">
+      <button class="import-btn secondary" (click)="close()" [disabled]="isUploading">Chiudi</button>
+    </div>
+  </div>
+</p-dialog>

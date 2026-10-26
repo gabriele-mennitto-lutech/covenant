@@ -1,0 +1,82 @@
+<div class="filters-presets" style="padding: 15px 20px; background: var(--bg-surface); display: flex; flex-wrap: nowrap; align-items: stretch; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column; gap: 15px; flex-grow: 1; min-width: 0;">
+        <!-- RIGA 1: Ambiente, Zona, Nodo -->
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <app-filter-item 
+                [label]="'Ambiente:'" 
+                [options]="ambienteOptions" 
+                [activeValues]="filterAmbiente" 
+                (presetClick)="setPreset('ambiente', $event)">
+            </app-filter-item>
+
+            <app-filter-item 
+                [label]="'Location:'" 
+                [options]="locazioneOptions" 
+                [activeValues]="filterLocazione" 
+                [labelMarginLeft]="'20px'"
+                [labelWidth]="'60px'"
+                (presetClick)="setPreset('locazione', $event)">
+            </app-filter-item>
+
+            <app-filter-item 
+                *ngIf="mode === 'hosts'"
+                [label]="'Zona:'" 
+                [options]="zonaOptions" 
+                [activeValues]="filterZona" 
+                [labelMarginLeft]="'20px'"
+                [labelWidth]="'50px'"
+                (presetClick)="setPreset('zona', $event)">
+            </app-filter-item>
+
+        </div>
+
+        <!-- RIGA 1.5: Nodo -->
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <app-filter-item 
+                [label]="'Nodo:'" 
+                [options]="nodoOptions" 
+                [activeValues]="filterNodo" 
+                (presetClick)="setPreset('nodo', $event)">
+            </app-filter-item>
+        </div>
+        
+        <!-- RIGA 2: Status (solo in fixes) -->
+        <div *ngIf="mode === 'fixes'" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <app-filter-item 
+                [label]="'Status:'" 
+                [options]="statusOptions" 
+                [activeValues]="filterStatus" 
+                (presetClick)="setPreset('status', $event)">
+            </app-filter-item>
+        </div>
+
+        <!-- RIGA 3.5: OS Family -->
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <app-filter-item 
+                [label]="'OS Family:'" 
+                [options]="osFamilyOptions" 
+                [activeValues]="filterOSFamily" 
+                (presetClick)="setPreset('osFamily', $event)">
+            </app-filter-item>
+        </div>
+
+        <!-- RIGA 4: Versioni -->
+        <div *ngIf="filterOSFamily.length > 0 && availableOSVersions.length > 0" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <app-filter-item 
+                [label]="'Versioni:'" 
+                [options]="osVersionsOptions" 
+                [activeValues]="filterOS" 
+                [labelColor]="'var(--text-muted)'"
+                (presetClick)="setPreset('os', $event)">
+            </app-filter-item>
+        </div>
+    </div>
+    
+    <!-- Clear Button -->
+    <div style="margin-left: 20px; display: flex; align-items: stretch;">
+        <button class="preset-btn clear-btn" style="color: var(--accent-primary); border: 1px solid var(--accent-primary); background: var(--bg-canvas); padding: 0 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; min-height: 100%; border-radius: 6px; transition: all 0.2s;" (click)="clearFilters()">
+            <i class="fa-solid fa-filter-circle-xmark" style="font-size: 1.2rem;"></i>
+            <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Clear All</span>
+        </button>
+    </div>
+</div>

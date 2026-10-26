@@ -1,0 +1,6 @@
+<label class="search-label" [for]="inputId">{{ label }}</label>
+<div class="search-control">
+  <i class="pi pi-search" aria-hidden="true"></i>
+  <input pInputText type="search" [id]="inputId" [placeholder]="placeholder"
+         [ngModel]="value" (ngModelChange)="valueChange.emit($event)" />
+</div>

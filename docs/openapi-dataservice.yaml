@@ -1,0 +1,1741 @@
+openapi: 3.0.0
+info:
+  title: Covenant Dataservice API
+  version: 1.0.0
+  description: |-
+    Servizio dati SQLite Covenant per SOC INFRA, inventario Windows 10/11 e Windows Server 2016/2019/2022/2025.
+    Database e backup dedicati, non condivisi con il progetto originale. Nessuna conversione automatica degli OS.
+    IP e VLAN sono solo inventariati, senza recuperi remoti.
+
+    Le API sono protette da CORS e Rate Limiting (max 2000 richieste/15min) per garantire sicurezza in produzione.
+servers:
+- url: http://localhost:9992
+  description: Dataservice locale
+components:
+  schemas:
+    HostRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          example: 42
+          description: Chiave primaria surrogata generata dal DB
+        hostname:
+          type: string
+          example: srv-app-001
+        applicazione:
+          type: string
+          nullable: true
+          example: SAP
+        riferimento:
+          type: string
+          nullable: true
+          example: RFC-2026-001
+        ambiente:
+          type: string
+          example: PRODUZIONE
+        company:
+          type: string
+          example: RAI
+        servizio:
+          type: string
+          nullable: true
+          example: BILLING
+        appliance:
+          type: boolean
+          example: false
+        zona:
+          type: string
+          example: DMZ
+        riferimentoEs:
+          type: string
+          nullable: true
+          example: ES-12345
+        locazione:
+          type: string
+          nullable: true
+          example: Torino
+        os:
+          type: string
+          description: Nome OS completo restituito dalle API, senza suffisso .0; la famiglia separata dalla versione è solo una rappresentazione interna SQLite.
+          example: Windows Server 2022
+        os_major:
+          type: integer
+          example: 2022
+        os_minor:
+          type: string
+          example: '0'
+        manutenzione:
+          type: string
+          nullable: true
+          example: Patch trimestrale
+        status:
+          type: boolean
+          example: true
+        nodo:
+          type: integer
+          example: 1
+        note:
+          type: string
+          nullable: true
+          example: Host critico
+        pianificazione:
+          type: string
+          nullable: true
+          example: '2026-08-01'
+        rfc:
+          type: string
+          nullable: true
+          example: RFC123456
+        fixed:
+          type: boolean
+          example: false
+        fixable:
+          type: boolean
+          example: true
+        divisione:
+          type: string
+          nullable: true
+          example: News
+        ipfe:
+          type: string
+          nullable: true
+          example: 203.0.113.10
+        ipmgt:
+          type: string
+          nullable: true
+          example: 203.0.113.20
+        ipfe2al:
+          type: string
+          nullable: true
+          example: 203.0.113.30
+        vlfe:
+          type: string
+          nullable: true
+          example: '120'
+        vlmgt:
+          type: string
+          nullable: true
+          example: '220'
+        vlfe2al:
+          type: string
+          nullable: true
+          example: '320'
+        manual_overrides:
+          type: string
+          nullable: true
+          example: '["ambiente","note"]'
+    HostResolveResult:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 42
+          description: Id dell'host selezionato (attivo se presente, altrimenti il piu' recente)
+        host:
+          $ref: '#/components/schemas/HostRecord'
+        matches:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 42
+              hostname:
+                type: string
+                example: srv-app-001
+              ambiente:
+                type: string
+                example: Dismessa
+    SiteRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 10
+        url_aliases:
+          type: string
+          example: app.example.it,www.app.example.it
+        ip_reali:
+          type: string
+          example: 203.0.113.15
+        nome_vip:
+          type: string
+          example: vip-app-prd-01
+        servizio:
+          type: string
+          example: PORTALE
+        tls_config:
+          type: string
+          example: EDGE
+        host_reali:
+          type: string
+          example: srv-app-001,srv-app-002
+        porta:
+          type: integer
+          nullable: true
+          example: 443
+        note:
+          type: string
+          example: Bilanciato F5
+        ambiente:
+          type: string
+          example: PRODUZIONE
+    Counters:
+      type: object
+      additionalProperties:
+        oneOf:
+        - type: integer
+        - type: string
+        - type: number
+      example:
+        id: 1
+        total_hosts: 1300
+        last_sync: '2026-07-27 04:00:00'
+    Settings:
+      type: object
+      description: Impostazioni supportate dalle API, limitate alle chiavi items_per_page e theme.
+      additionalProperties:
+        type: string
+      example:
+        items_per_page: '50'
+        theme: light
+    Error:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: string
+          example: Failed to fetch hosts
+    ServiceRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        servizio:
+          type: string
+          example: WEB SERVER
+        knowledge:
+          type: string
+          example: https://wiki.example.com/web
+        stato:
+          type: string
+          example: ATTIVO
+        hosts:
+          type: array
+          readOnly: true
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 42
+              hostname:
+                type: string
+                example: srv-web-01
+              ambiente:
+                type: string
+                example: PRODUZIONE
+    LogRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: elut235
+        action:
+          type: string
+          example: CREATE
+        target_type:
+          type: string
+          example: HOST
+        target_id:
+          type: string
+          example: srv-web-01
+        details:
+          type: string
+          nullable: true
+          example: '{"os": "Windows 11"}'
+        timestamp:
+          type: string
+          example: '2026-08-12T10:00:00Z'
+    MailTemplate:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Mail di Benvenuto
+        description:
+          type: string
+          nullable: true
+          example: Template usato per dare il benvenuto
+        subject:
+          type: string
+          nullable: true
+          example: Benvenuto in Covenant
+        recipients:
+          type: string
+          nullable: true
+          example: user@example.com
+        content:
+          type: string
+          example: Ciao ${NOME}!
+    CveRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        problem_id:
+          type: string
+          nullable: true
+          example: PBI000000027474
+          description: 'ID problem (Excel: "ID problem")'
+        cve_id:
+          type: string
+          example: CVE-2026-83154
+          description: 'Excel: "Riepilogo"'
+        data_inoltro:
+          type: string
+          nullable: true
+          example: '2026-10-21T14:58:14'
+        data_ultima_modifica:
+          type: string
+          nullable: true
+          example: '2026-10-21T14:58:19'
+        stato_ticket:
+          type: string
+          nullable: true
+          example: Pendente
+          description: 'Stato del problem sul sito (Excel: "Stato")'
+        note:
+          type: string
+          nullable: true
+          example: Buonasera, a seguito di una segnalazione arrivata da parte del Garr...
+        riferimenti:
+          type: string
+          nullable: true
+          example: In analisi
+        errata:
+          type: string
+          nullable: true
+          example: Bassa
+        score:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 10
+          example: 9.1
+          description: 'Base score CVSS (unifica BASE SCORE / CVSS SCORE). Accetta anche "Base Score: 9.1"'
+        cve_origin:
+          type: string
+          nullable: true
+          example: Vulnerabilità - CVE-2026-83154 - Oracle Siebel CRM End User
+          description: Riepilogo originale ITSM (ridondante, non mostrato in UI)
+        prodotto:
+          type: string
+          nullable: true
+          example: Oracle Siebel CRM End User
+          description: Prodotto impattato estratto dal Riepilogo
+        vendor:
+          type: string
+          nullable: true
+          example: Oracle
+          description: Vendor impattato (recuperato da cve-search)
+        stato:
+          type: string
+          enum:
+          - IN_ANALISI
+          - ARCHIVIATA
+          example: IN_ANALISI
+        motivo_attesa:
+          type: string
+          nullable: true
+          example: In analisi
+          description: Testo libero; ogni cambio e registrato in cve_motivo_history
+        esito:
+          type: string
+          nullable: true
+          example: NON_IMPATTANTE
+          description: VULN_CLIENT, APP_NON_PRESENTE, PROSSIMO_PATCHING, NON_IMPATTANTE, NON_IN_CARICO_SOC oppure testo custom ("Altro")
+        flagged:
+          type: integer
+          enum:
+          - 0
+          - 1
+          example: 0
+          description: Problem flaggato da girare post-riunione
+        impattato:
+          type: string
+          nullable: true
+          example: DA_VERIFICARE
+        asset_impattati:
+          type: string
+          nullable: true
+          example: srv-app-001, srv-app-002
+        ultima_revisione:
+          type: string
+          nullable: true
+          example: '2026-10-22'
+        data_archiviazione:
+          type: string
+          nullable: true
+          example: null
+        created_at:
+          type: string
+          example: '2026-10-21 09:00:00'
+        updated_at:
+          type: string
+          example: '2026-10-22 11:00:00'
+    CveMotivoHistory:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        cve_ref:
+          type: integer
+          example: 1
+        motivo_attesa:
+          type: string
+          example: In analisi
+        data_cambio:
+          type: string
+          example: '2026-10-22T13:43:04'
+        utente:
+          type: string
+          nullable: true
+          example: admin
+    CveImportRow:
+      type: object
+      properties:
+        line:
+          type: integer
+          example: 2
+          description: Riga del file sorgente (per gli errori)
+        problem_id:
+          type: string
+          example: PBI00000002751
+        riepilogo:
+          type: string
+          example: Vulnerabilità - CVE-2026-69397 - Microsoft OpenSSH per Windows
+        data_inoltro:
+          type: string
+          nullable: true
+          example: '2026-10-22T13:25:05'
+        data_ultima_modifica:
+          type: string
+          nullable: true
+          example: '2026-10-22T13:43:04'
+        stato_ticket:
+          type: string
+          example: Pendente
+        note:
+          type: string
+          nullable: true
+    CveImportResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        created:
+          type: integer
+          example: 3
+        updated:
+          type: integer
+          example: 10
+        reopened:
+          type: integer
+          example: 1
+        archived:
+          type: integer
+          example: 2
+        imported:
+          type: integer
+          example: 16
+        skipped:
+          type: integer
+          example: 1
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              line:
+                type: integer
+                nullable: true
+              problem_id:
+                type: string
+                nullable: true
+              error:
+                type: string
+paths:
+  /data/cross-source:
+    get:
+      tags: [Cross source]
+      summary: Proiezioni dei dati persistiti per le correlazioni del gateway
+      description: Solo lettura; esclude settings, credenziali e stati operativi. Non effettua chiamate esterne.
+      responses:
+        '200':
+          description: Oggetto con array hosts, services, sites e cves
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [hosts, services, sites, cves]
+                properties:
+                  hosts: { type: array, items: { type: object }, description: 'id, hostname, ambiente, servizio, applicazione, note, os, os_major, os_minor, ipfe, ipmgt, ipfe2al' }
+                  services: { type: array, items: { type: object }, description: 'id, servizio' }
+                  sites: { type: array, items: { type: object }, description: 'id, url_aliases, host_reali, ip_reali, servizio, ambiente' }
+                  cves: { type: array, items: { type: object }, description: 'id, cve_id, problem_id, prodotto, cve_origin, note, asset_impattati, stato' }
+        '500': { description: Lettura delle sorgenti non riuscita }
+  /data/logs:
+    get:
+      tags:
+      - Logs
+      summary: Recupera activity logs
+      responses:
+        '200':
+          description: Lista logs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogRecord'
+                  total:
+                    type: integer
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Logs
+      summary: Inserisce activity log
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogRecord'
+      responses:
+        '200':
+          description: Log inserito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/hosts:
+    get:
+      tags:
+      - Hosts
+      summary: Restituisce tutti gli host dal DB
+      description: Ogni host e' identificato dal campo numerico `id` (chiave primaria surrogata).
+      responses:
+        '200':
+          description: Lista host
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HostRecord'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Hosts
+      summary: Crea un nuovo host in DB
+      description: |-
+        L'id viene generato dal DB (eventuale `id` nel body viene ignorato).
+        Possono coesistere piu' host con lo stesso hostname e ambiente solo se dismessi/spenti;
+        per gli host attivi la coppia (hostname, ambiente) deve essere univoca.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HostRecord'
+            example:
+              hostname: srv-new-001
+              ambiente: PRODUZIONE
+              company: RAI
+              appliance: false
+              zona: DMZ
+              os: Windows 11
+              status: true
+              nodo: 1
+              fixed: false
+              fixable: true
+      responses:
+        '201':
+          description: Host creato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  host:
+                    $ref: '#/components/schemas/HostRecord'
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: Hostname is required
+        '409':
+          description: Esiste gia' un host attivo con lo stesso hostname e ambiente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/hosts/resolve:
+    get:
+      tags:
+      - Hosts
+      summary: Converte hostname (+ ambiente) nell'id numerico dell'host
+      description: |-
+        Il confronto e' case-insensitive. Se piu' host corrispondono (ad es. piu' macchine dismesse
+        con lo stesso hostname) viene restituito come `id` quello attivo, altrimenti il piu' recente;
+        l'elenco completo dei candidati e' in `matches`.
+      parameters:
+      - in: query
+        name: hostname
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ambiente
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Host risolto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostResolveResult'
+        '400':
+          description: Hostname mancante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Nessun host trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/hosts/{id}:
+    get:
+      tags:
+      - Hosts
+      summary: Restituisce un host per id
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+      responses:
+        '200':
+          description: Host trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostRecord'
+        '404':
+          description: Host non trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+      - Hosts
+      summary: Aggiorna host esistente per id
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Host aggiornato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  host:
+                    $ref: '#/components/schemas/HostRecord'
+        '404':
+          description: Host non trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: Host not found
+        '409':
+          description: L'aggiornamento creerebbe un host attivo duplicato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Hosts
+      summary: Elimina host esistente per id
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+      responses:
+        '200':
+          description: Host eliminato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '404':
+          description: Host non trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/hosts/bulk/update:
+    put:
+      tags:
+      - Hosts
+      summary: Aggiornamento massivo host (per id)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ids
+              - partialUpdate
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: integer
+                    minimum: 1
+                partialUpdate:
+                  type: object
+                  additionalProperties: true
+            example:
+              ids:
+              - 12
+              - 57
+              partialUpdate:
+                ambiente: Dismessa
+      responses:
+        '200':
+          description: Bulk update completato (transazione unica)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  updatedCount:
+                    type: integer
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: Invalid payload
+        '409':
+          description: L'aggiornamento creerebbe host attivi duplicati (rollback completo)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore transazione
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/hosts/bulk/delete:
+    delete:
+      tags:
+      - Hosts
+      summary: Eliminazione massiva host (per id)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ids
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: integer
+                    minimum: 1
+            example:
+              ids:
+              - 12
+              - 57
+      responses:
+        '200':
+          description: Bulk delete completato (transazione unica)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  deletedCount:
+                    type: integer
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore transazione
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/sites:
+    get:
+      tags:
+      - Sites
+      summary: Restituisce i siti dal DB
+      responses:
+        '200':
+          description: Lista siti
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SiteRecord'
+        '400':
+          description: Richiesta non valida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Nessun sito trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Sites
+      summary: Crea un sito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteRecord'
+      responses:
+        '200':
+          description: Sito creato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  site:
+                    $ref: '#/components/schemas/SiteRecord'
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Risorsa non trovata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/sites/{id}:
+    put:
+      tags:
+      - Sites
+      summary: Aggiorna un sito
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Sito aggiornato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  site:
+                    $ref: '#/components/schemas/SiteRecord'
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Sito non trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Sites
+      summary: Elimina un sito
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sito eliminato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+              example:
+                success: true
+        '400':
+          description: Richiesta non valida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Sito non trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/hosts/count/appliance0:
+    get:
+      tags:
+      - Hosts
+      summary: Conta host con appliance=0
+      responses:
+        '200':
+          description: Numero host appliance0
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+              example:
+                count: 35
+        '400':
+          description: Richiesta non valida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Nessun dato trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/settings:
+    get:
+      tags:
+      - Settings
+      summary: Restituisce settings dal DB
+      responses:
+        '200':
+          description: Mappa key/value settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+        '400':
+          description: Richiesta non valida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Settings non trovati
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+      - Settings
+      summary: Aggiorna settings nel DB
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settings'
+            example:
+              items_per_page: '50'
+              theme: light
+      responses:
+        '200':
+          description: Settings aggiornati
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  settings:
+                    $ref: '#/components/schemas/Settings'
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Risorsa non trovata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore transazione
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/services:
+    get:
+      tags:
+      - Services
+      summary: Restituisce tutti i servizi con i relativi hosts
+      responses:
+        '200':
+          description: Lista dei servizi
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceRecord'
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Services
+      summary: Crea un nuovo servizio
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRecord'
+      responses:
+        '201':
+          description: Servizio creato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/services/{id}:
+    put:
+      tags:
+      - Services
+      summary: Aggiorna un servizio esistente
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRecord'
+      responses:
+        '200':
+          description: Servizio aggiornato con successo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/mail_templates:
+    get:
+      tags:
+      - MailTemplates
+      summary: Restituisce tutti i template mail
+      responses:
+        '200':
+          description: Lista dei template
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MailTemplate'
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - MailTemplates
+      summary: Crea un nuovo template mail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MailTemplate'
+      responses:
+        '201':
+          description: Template creato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/mail_templates/{id}:
+    put:
+      tags:
+      - MailTemplates
+      summary: Aggiorna un template mail
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MailTemplate'
+      responses:
+        '200':
+          description: Template aggiornato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - MailTemplates
+      summary: Elimina un template mail
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Template eliminato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '500':
+          description: Errore del server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/cves:
+    get:
+      tags:
+      - CVE
+      summary: Elenco CVE tracciate (filtrato e paginato)
+      parameters:
+      - in: query
+        name: stato
+        schema:
+          type: string
+          enum:
+          - IN_ANALISI
+          - ARCHIVIATA
+      - in: query
+        name: search
+        schema:
+          type: string
+      - in: query
+        name: severita
+        schema:
+          type: string
+        description: CRITICAL,HIGH,MEDIUM,LOW,NONE derivate dallo score (separati da virgola)
+      - in: query
+        name: stato_ticket
+        schema:
+          type: string
+        description: Stato sul sito (es. Pendente, In analisi), separati da virgola
+      - in: query
+        name: impattato
+        schema:
+          type: string
+        description: Valori separati da virgola
+      - in: query
+        name: motivo_attesa
+        schema:
+          type: string
+        description: Valori separati da virgola
+      - in: query
+        name: esito
+        schema:
+          type: string
+        description: Valori separati da virgola. ALTRO = tutte le motivazioni non standard
+      - in: query
+        name: flagged
+        schema:
+          type: boolean
+        description: true = solo problem flaggati, false = solo non flaggati
+      - in: query
+        name: date_field
+        schema:
+          type: string
+          enum:
+          - data_inoltro
+          - data_archiviazione
+          - ultima_revisione
+        description: Colonna data usata da from/to (default data_inoltro)
+      - in: query
+        name: from
+        schema:
+          type: string
+          format: date
+        description: date_field >= from
+      - in: query
+        name: to
+        schema:
+          type: string
+          format: date
+        description: date_field <= to
+      - in: query
+        name: sortBy
+        schema:
+          type: string
+      - in: query
+        name: sortOrder
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - in: query
+        name: page
+        schema:
+          type: integer
+      - in: query
+        name: pageSize
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Pagina di CVE
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CveRecord'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+        '500':
+          description: Errore DB
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - CVE
+      summary: Inserisce una CVE da tracciare
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CveRecord'
+      responses:
+        '201':
+          description: CVE creata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  cve:
+                    $ref: '#/components/schemas/CveRecord'
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Problem ID gia presente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/cves/stats:
+    get:
+      tags:
+      - CVE
+      summary: Conteggi CVE per stato
+      responses:
+        '200':
+          description: Conteggi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inAnalisi:
+                    type: integer
+                  archiviate:
+                    type: integer
+                  total:
+                    type: integer
+  /data/cves/bulk/status:
+    put:
+      tags:
+      - CVE
+      summary: Aggiorna stato / esito / motivo attesa / flag di piu CVE in un'unica transazione
+      description: Ogni cambio di motivo attesa viene registrato nello storico. L'archiviazione rimuove il flag.
+      parameters:
+      - in: header
+        name: X-Actor
+        schema:
+          type: string
+        description: Utente che effettua la modifica (per lo storico)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ids
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: integer
+                stato:
+                  type: string
+                  enum:
+                  - IN_ANALISI
+                  - ARCHIVIATA
+                esito:
+                  type: string
+                  nullable: true
+                motivo_attesa:
+                  type: string
+                  nullable: true
+                ultima_revisione:
+                  type: string
+                  nullable: true
+                flagged:
+                  type: boolean
+      responses:
+        '200':
+          description: CVE aggiornate
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  updated:
+                    type: integer
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/cves/import:
+    post:
+      tags:
+      - CVE
+      summary: Importa (upsert per problem ID) i problem esportati da ITSM
+      description: |
+        Ogni riga viene inserita o aggiornata in base al `problem_id`.
+        Stato "Pendente" -> problem attivo (IN_ANALISI, eventualmente de-archiviato);
+        qualsiasi altro stato -> problem archiviato. L'intero import avviene in un'unica transazione.
+      parameters:
+      - in: header
+        name: X-Actor
+        schema:
+          type: string
+        description: Utente che effettua l'import (per lo storico)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - rows
+              properties:
+                rows:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CveImportRow'
+      responses:
+        '200':
+          description: Esito import
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CveImportResult'
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/cves/{id}/history:
+    get:
+      tags:
+      - CVE
+      summary: Storico dei motivi di attesa di una CVE (dal piu recente)
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Storico
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CveMotivoHistory'
+        '404':
+          description: CVE non trovata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /data/cves/{id}:
+    get:
+      tags:
+      - CVE
+      summary: Dettaglio CVE tracciata
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: CVE
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CveRecord'
+        '404':
+          description: CVE non trovata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+      - CVE
+      summary: Aggiorna una CVE tracciata (aggiornamento parziale)
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CveRecord'
+      responses:
+        '200':
+          description: CVE aggiornata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  cve:
+                    $ref: '#/components/schemas/CveRecord'
+        '400':
+          description: Payload non valido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: CVE non trovata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - CVE
+      summary: Elimina una CVE tracciata
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: CVE eliminata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '404':
+          description: CVE non trovata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+tags: []

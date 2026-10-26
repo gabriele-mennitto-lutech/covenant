@@ -1,0 +1,7 @@
+hostname,ambiente,os,applicazione,servizio,company,appliance,status,manutenzione,divisione,ipfe,vlfe
+WIN-CLIENT-10,Collaudo,Windows 10,Postazione di collaudo,Workplace,RAI,false,true,Concordare,Manuale,,
+WIN-CLIENT-11,Sviluppo,Windows 11,Postazione sviluppo,Workplace,RAI,false,true,Venerdì 19:00,Scheduled-Pari,,
+WIN-SRV-2016,Collaudo,Windows Server 2016,Servizio applicativo,Applicazioni,RAI,false,true,Concordare,Manuale,,
+WIN-SRV-2019,Produzione,Windows Server 2019,File server,File Services,RAI,false,true,Domenica 01:00,Scheduled-Dispari,,
+WIN-SRV-2022,Produzione,Windows Server 2022,Portale IIS,Web,RAI,false,true,Domenica 02:00,Scheduled-Pari,192.0.2.22,100
+WIN-SRV-2025,Sviluppo,Windows Server 2025,Servizio infrastrutturale,Infrastruttura,RAI,false,true,Concordare,Manuale,,

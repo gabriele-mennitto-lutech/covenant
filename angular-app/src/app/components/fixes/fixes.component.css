@@ -1,0 +1,41 @@
+.fixes-warning-banner {
+    margin-bottom: 20px;
+    background: #fff8e6;
+    border-radius: 4px;
+}
+
+.fixes-warning-rule {
+    height: 1px;
+    background: linear-gradient(to right, #dfc47a, var(--status-warn), #dfc47a);
+}
+
+.fixes-warning-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--status-warn);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.fixes-warning-body i {
+    font-size: 1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.fixes-warning-body div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fixes-warning-body strong {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+}
+
+.fixes-warning-body span {
+    color: var(--text-muted);
+}

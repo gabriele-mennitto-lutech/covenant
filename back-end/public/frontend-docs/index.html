@@ -1,0 +1,279 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>Angular App (Front-end)</h1>
+<p>Questo modulo è il frontend <strong>Angular</strong> di Covenant per il team SOC INFRA,
+dedicato all&#39;inventario Windows e alla correlazione CVE. Usa un tema chiaro
+Microsoft/Azure con componenti PrimeNG: schede bianche <code>#ffffff</code>, sfondo
+<code>#f5f7fb</code>, azioni blu Azure <code>#0078d4</code> e accenti viola <code>#744da9</code>.</p>
+<h2>Architettura e Scelte Implementative</h2>
+<p>L&#39;architettura del frontend è focalizzata sull&#39;usabilità, sull&#39;aspetto visivo e sull&#39;asincronicità delle chiamate verso le API sottostanti, delegando qualsiasi computazione pesante o complessa al <code>back-end</code>.</p>
+<h3>1. Design System &amp; UI/UX</h3>
+<ul>
+<li><strong>Niente CSS Frameworks pesanti</strong>: Le scelte stilistiche (palette colori, bordi arrotondati, bottoni sleek) sono implementate prevalentemente con puro Vanilla CSS / CSS Modules. Questo assicura totale controllo sul design, un&#39;interfaccia molto reattiva (micro-animazioni su hover) e zero &quot;bloatware&quot;.</li>
+<li><strong>PrimeNG</strong>: Laddove vi sono concetti complessi di visualizzazione dati (es. DataTables con paginazione nativa e filtri), è stata scelta la libreria <em>PrimeNG</em> che fornisce componenti enterprise out-of-the-box e garantisce coerenza stilistica e stabilità su grosse moli di dati.</li>
+<li><strong>Accessibilità del tema</strong>: focus da tastiera visibile, supporto a
+<code>prefers-reduced-motion</code> e colori forzati; font Segoe UI/system-ui locali.</li>
+</ul>
+<h4>Ricerca e filtri</h4>
+<ul>
+<li><strong>Ricerca condivisa</strong>: Mailing Templates, Sites Inventory e Services utilizzano <code>SearchFieldComponent</code>, con lo stesso stile arrotondato, etichetta accessibile e spazio fisso per la lente anche su schermi stretti. Il componente espone <code>inputId</code>, <code>label</code>, <code>placeholder</code> e il binding bidirezionale <code>value</code>; le pagine mantengono la propria logica di ricerca.</li>
+<li><strong>Filtri delle colonne (Hosts e Fixes)</strong>: Shift+click sull&#39;intestazione mostra o nasconde solo il campo testuale della colonna, senza cambiare l&#39;ordinamento o cancellare il testo inserito. Funziona sia con i filtri globali aperti sia chiusi; il click normale continua a ordinare. Il pulsante dei filtri globali ripristina la visibilità comune dei campi.</li>
+</ul>
+<h4>Dettaglio host</h4>
+<p>La pagina <code>/machine/:id</code> usa una scheda tecnica unica:
+sistema, collocazione e manutenzione sono affiancati, seguiti da
+rete, opzioni avanzate e note, senza tab o sezioni da aprire. Su schermi stretti
+le sezioni si dispongono in verticale. La pagina Hosts non cambia.
+Le matite mantengono la modifica rapida (salvataggio con Invio o uscita dal campo;
+le note si salvano all&#39;uscita). Restano i preset per ambiente, nodo, locazione,
+zona e divisione, gli interruttori booleani e il selettore OS con preset
+Windows 10/11 e Windows Server 2016/2019/2022/2025.
+La rete mostra IP e VLAN affiancati per interfaccia, esclusivamente da dati
+inseriti o importati nell&#39;inventario: non esegue recuperi remoti.
+Gli utenti readonly non possono modificare.</p>
+<h3>2. Gestione Asincrona e Chiamate REST</h3>
+<p>Tutte le interazioni HTTP tra il Frontend ed il Backend avvengono tramite chiamate REST.</p>
+<ul>
+<li>Viene utilizzato il framework per richieste asincrone integrato di Angular o <code>Axios</code>, a seconda dei moduli.</li>
+<li>Tutte le chiamate gestiscono intrinsecamente le Promise. Non ci sono polling bloccanti: l&#39;UI rimane sempre responsiva durante il caricamento grazie agli spinner e all&#39;architettura asincrona.</li>
+<li>Le chiamate sono dirette all&#39;<code>API Gateway</code> (il modulo back-end), tipicamente sulla rotta <code>/api/*</code>. Il frontend non conosce, né può contattare direttamente il database.</li>
+</ul>
+<h3>3. Proxy di Sviluppo</h3>
+<p>Durante lo sviluppo, <code>proxy.conf.json</code> inoltra le chiamate <code>/api</code> al backend
+sulla porta <code>9991</code>; il server Angular usa la porta <code>4200</code>.</p>
+<h2>Pubblicazione Windows</h2>
+<p>Compilare con <code>npm run build</code> e pubblicare i file statici di
+<code>dist/angular-app/browser</code>, ad esempio con IIS. Configurare fallback SPA a
+<code>index.html</code> per route come <code>/hosts</code> e proxy <code>/api</code> verso il backend,
+preservando path, autenticazione e upload da 10 MB. Per SSE verificare timeout,
+riconnessioni e assenza di buffering/compressione che ritardano gli eventi.
+Non registrare token SSE nelle query dei log. IIS è un&#39;opzione di deployment,
+non una nuova integrazione applicativa; il progetto non ne installa i moduli.
+Nessuna credenziale del backend deve essere incorporata nei bundle.</p>
+<h2>Pagine e permessi</h2>
+<p>Le route protette sono <code>dashboard</code>, <code>services</code>, <code>sites</code>, <code>hosts</code>, <code>fixes</code>,
+<code>mailing</code>, <code>settings</code>, <code>cve-analysis</code> e <code>machine/:id</code>; <code>/login</code> è
+pubblica. Il guard di autenticazione reindirizza al login quando la sessione
+non è valida. Le pagine di inventario e CVE mostrano le azioni di modifica
+solo agli utenti <code>admin</code>; gli utenti <code>readonly</code> possono consultare e filtrare.</p>
+<p><code>BackendService</code> concentra le chiamate all&#39;API Gateway <code>/api</code>; il proxy di
+sviluppo è configurato in <code>proxy.conf.json</code> e non viene usato dopo la build.
+L&#39;ottimizzazione production mantiene la minificazione di script e stili.
+Il tema usa font di sistema locali, con Segoe UI e fallback CSS, senza
+download di font remoti durante la build o dal browser.</p>
+<h2>Comandi Utili</h2>
+<p>Da PowerShell nella directory <code>angular-app</code>:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-powershell">npm ci
+npm run start</code></pre></div><p><code>npm run start</code> avvia Angular su <code>http://localhost:4200</code> con proxy verso il
+backend. Per la produzione usare <code>npm run build</code>, non il dev server.</p>
+<h2>Aggiornamenti Recenti</h2>
+<ul>
+<li><p><strong>Cross source</strong>: <code>CrossSourceComponent</code> e&#39; integrato nella scheda macchina
+e nei popup di Servizi, Sites e CVE tracciate; non aggiunge route principali.
+Gli input <code>sourceType</code>, <code>sourceId</code>, <code>revision</code> identificano la sorgente e
+consentono di aggiornare i riferimenti dopo una modifica. Mostra categoria,
+contatori, ambiente/OS Windows già salvati e motivo del collegamento,
+distinguendo riferimenti diretti da potenziali. <strong>Esplora collegamenti</strong>
+cambia sorgente nel pannello; <strong>Torna alla sorgente</strong> ripristina quella
+iniziale; <strong>Apri scheda</strong> apre la pagina/popup esistente. Sono supportati
+<code>/services?serviceId=42</code>, <code>/sites?siteId=42</code>, <code>/cve-analysis?cveId=42</code>.
+Ricerca (debounce 300 ms), filtri e paging sono delegati al gateway tramite
+Axios; le richieste superate vengono annullate. <strong>Aggiorna</strong> rilegge i dati;
+errori e risultati vuoti sono espliciti. Disponibile anche agli utenti readonly.
+Il pannello è minimizzabile cliccando sul titolo &quot;Riferimenti cross source&quot;.
+Le CVE potenziali non sono una prova di vulnerabilita&#39; e non modificano il
+workflow; nessun recupero remoto o DNS viene avviato dal pannello.</p>
+</li>
+<li><p>Nuovo componente riutilizzabile <strong><code>ImportDialogComponent</code></strong> (<code>components/import-dialog</code>): popup PrimeNG con download del template CSV, upload del file compilato (<code>.csv</code> o <code>.json</code>, max 10MB) e riepilogo dell&#39;esito (creati, completati, invariati, scartati con numero di riga). Usato dal pulsante <strong>Importa CSV</strong> nelle pagine Hosts e Sites (solo utenti con permessi di scrittura); al termine le tabelle/card vengono ricaricate. Nuovi metodi <code>BackendService.downloadImportTemplate()</code> e <code>BackendService.importFile()</code>.</p>
+</li>
+<li><p>Nuova pagina <strong>CVE Analysis</strong> (<code>/cve-analysis</code>): tab &quot;In analisi&quot; e &quot;Archiviate&quot; con filtri (ricerca, severita da score, motivo attesa/esito, impatto, intervallo date di inoltro), azioni massive per la riunione settimanale (segna riviste, archivia, riporta in analisi), dialog di dettaglio/modifica e tab &quot;Ricerca CVE&quot; con dettagli da cve-search e aggiunta rapida al tracciamento.</p>
+</li>
+<li><p>CVE Analysis: pulsante <strong>Importa CSV</strong> (popup che scarica il template e consente l&#39;upload del CSV esportato da ITSM, con riepilogo creati/aggiornati/riaperti/archiviati ed errori), motivo attesa a testo libero con storico visibile nel dettaglio, flag con bandierina rossa (Shift+click sulla riga o colonna dedicata, filtro &quot;Solo flaggate&quot;), nuovi esiti di archiviazione con &quot;Altro&quot; personalizzabile, filtro data &quot;Archiviate&quot; nella tab archiviate, pulsante <strong>Esporta CSV</strong> (vista e filtri correnti), campo Vendor e recupero dei dati mancanti da cve-search (pulsante nel dialog e azione massiva &quot;Completa da cve-search&quot;) e rimozione dei campi ridondanti (Riferimenti, CVE origin, Stato sito, host impattati). La data di archiviazione viene registrata e mostrata con precisione al minuto.</p>
+</li>
+<li><p>Miglioramenti accessibilita su componenti principali (associazione <code>label</code>/<code>id</code>, uso <code>aria-label</code>, supporto tastiera Enter/Space su controlli interattivi).</p>
+</li>
+<li><p>Riduzione complessita in componenti ad alto carico (fixes, hosts, machine, shared-table) con estrazione helper e logica piu lineare.</p>
+</li>
+<li><p>Aggiornamenti di qualita TypeScript (readonly su dipendenze, optional chaining, parsing numerico esplicito) e correzioni regex.</p>
+</li>
+<li><p>Dettaglio macchina indirizzato per <code>id</code> (<code>/machine/:id</code>); i link che conoscono solo il nome (es. host reali dei siti) usano <code>/machine/by-name?hostname=...&amp;ambiente=...</code>, che risolve l&#39;<code>id</code> tramite il back-end e reindirizza. Selezioni e operazioni massive della tabella host usano gli <code>id</code>, cosi&#39; macchine omonime (es. piu&#39; dismesse con lo stesso hostname) restano distinte.</p>
+</li>
+</ul>
+<h2>Documentazione componenti</h2>
+<p>Generare Compodoc dal root del frontend con <code>npm run docs:build</code>; l&#39;output è
+pubblicato in <code>back-end/public/frontend-docs</code> e servito dal backend su
+<code>http://localhost:9991/fe-docs/</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

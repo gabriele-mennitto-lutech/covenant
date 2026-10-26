@@ -1,0 +1,209 @@
+<div class="table-container" style="margin-bottom: 30px; overflow-x: auto; max-width: 100%;">
+    <button type="button" class="table-header" (click)="toggleCollapse()" aria-label="Espandi o comprimi tabella">
+        <span style="display: flex; align-items: center; gap: 8px;"><i [class]="iconClass" style="font-size: 1.2rem;"></i> {{ title }} ({{ totalCount }})</span>
+        <i class="fa-solid" [ngClass]="isCollapsed ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+    </button>
+    
+    <div class="table-body-wrapper" [class.collapsed]="isCollapsed">
+        <div>
+            <table (mousedown)="onTableMouseDown($event)"
+                   [ngStyle]="{
+                       'table-layout': visibleColumns.size > 8 ? 'auto' : 'fixed',
+                       'width': visibleColumns.size > 8 ? 'max-content' : '100%',
+                       'min-width': '100%'
+                   }">
+                <thead>
+                    <tr>
+                        <th style="min-width: 110px; width: 110px; text-align: center; vertical-align: top;">
+                            <div class="th-content">
+                                <div class="th-label" style="justify-content: center; cursor: default;">
+                                    <span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Seleziona tutto</span>
+                                </div>
+                                <button type="button" style="display: flex; justify-content: center; align-items: center; height: 100%; padding-bottom: 5px; width: 100%; border: none; background: transparent;" (click)="onSelectAllClick($event)" aria-label="Seleziona tutte le righe">
+                                    <p-checkbox [binary]="true" [ngModel]="isAllSelected()" [style]="{'pointer-events': 'none'}"></p-checkbox>
+                                </button>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('hostname')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'hostname')">Hostname <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'hostname', 'fa-sort-up': sortCol === 'hostname' && sortDir === 1, 'fa-sort-down': sortCol === 'hostname' && sortDir === -1}" [style.color]="sortCol === 'hostname' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'hostname' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('hostname')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterHostname" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('applicazione')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'applicazione')">Applicazione <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'applicazione', 'fa-sort-up': sortCol === 'applicazione' && sortDir === 1, 'fa-sort-down': sortCol === 'applicazione' && sortDir === -1}" [style.color]="sortCol === 'applicazione' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'applicazione' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('applicazione')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterApp" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('os')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'os')">Operating System <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'os', 'fa-sort-up': sortCol === 'os' && sortDir === 1, 'fa-sort-down': sortCol === 'os' && sortDir === -1}" [style.color]="sortCol === 'os' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'os' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('os')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterOs" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('ambiente')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'ambiente')">Ambiente <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'ambiente', 'fa-sort-up': sortCol === 'ambiente' && sortDir === 1, 'fa-sort-down': sortCol === 'ambiente' && sortDir === -1}" [style.color]="sortCol === 'ambiente' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'ambiente' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('ambiente')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="searchAmbiente" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+        
+                        <th *ngIf="isColumnVisible('servizio')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'servizio')">Servizio <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'servizio', 'fa-sort-up': sortCol === 'servizio' && sortDir === 1, 'fa-sort-down': sortCol === 'servizio' && sortDir === -1}" [style.color]="sortCol === 'servizio' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'servizio' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('servizio')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterServizio" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('nodo')" style="text-align: center;">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'nodo')" style="justify-content: center; gap: 5px;">Nodo <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'nodo', 'fa-sort-up': sortCol === 'nodo' && sortDir === 1, 'fa-sort-down': sortCol === 'nodo' && sortDir === -1}" [style.color]="sortCol === 'nodo' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'nodo' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('nodo')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="searchNodo" (ngModelChange)="loadData()" placeholder="..." style="text-align: center;"></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('fixed')" style="text-align:center;">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'fixed')" style="justify-content: center; gap: 5px;">Status FIX <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'fixed', 'fa-sort-up': sortCol === 'fixed' && sortDir === 1, 'fa-sort-down': sortCol === 'fixed' && sortDir === -1}" [style.color]="sortCol === 'fixed' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'fixed' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('fixed')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="searchFixed" (ngModelChange)="loadData()" placeholder="Cerca..." style="text-align: center;"></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('manutenzione')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'manutenzione')">Manutenzione <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'manutenzione', 'fa-sort-up': sortCol === 'manutenzione' && sortDir === 1, 'fa-sort-down': sortCol === 'manutenzione' && sortDir === -1}" [style.color]="sortCol === 'manutenzione' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'manutenzione' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('manutenzione')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterManutenzione" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('locazione')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'locazione')">Locazione <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'locazione', 'fa-sort-up': sortCol === 'locazione' && sortDir === 1, 'fa-sort-down': sortCol === 'locazione' && sortDir === -1}" [style.color]="sortCol === 'locazione' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'locazione' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('locazione')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterLocazione" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('zona')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'zona')">Location <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'zona', 'fa-sort-up': sortCol === 'zona' && sortDir === 1, 'fa-sort-down': sortCol === 'zona' && sortDir === -1}" [style.color]="sortCol === 'zona' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'zona' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('zona')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterZona" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('compagnia')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'compagnia')">Compagnia <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'compagnia', 'fa-sort-up': sortCol === 'compagnia' && sortDir === 1, 'fa-sort-down': sortCol === 'compagnia' && sortDir === -1}" [style.color]="sortCol === 'compagnia' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'compagnia' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('compagnia')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterCompagnia" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+        
+                        <th *ngIf="isColumnVisible('rfc')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'rfc')">RFC <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'rfc', 'fa-sort-up': sortCol === 'rfc' && sortDir === 1, 'fa-sort-down': sortCol === 'rfc' && sortDir === -1}" [style.color]="sortCol === 'rfc' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'rfc' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('rfc')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterRfc" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('riferimento')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'riferimento')">Riferimento <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'riferimento', 'fa-sort-up': sortCol === 'riferimento' && sortDir === 1, 'fa-sort-down': sortCol === 'riferimento' && sortDir === -1}" [style.color]="sortCol === 'riferimento' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'riferimento' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('riferimento')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterRiferimento" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('appliance')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'appliance')">Appliance <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'appliance', 'fa-sort-up': sortCol === 'appliance' && sortDir === 1, 'fa-sort-down': sortCol === 'appliance' && sortDir === -1}" [style.color]="sortCol === 'appliance' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'appliance' ? '1' : '0.5'"></i></button>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('fixable')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'fixable')">Fixable <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'fixable', 'fa-sort-up': sortCol === 'fixable' && sortDir === 1, 'fa-sort-down': sortCol === 'fixable' && sortDir === -1}" [style.color]="sortCol === 'fixable' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'fixable' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('fixable')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterFixable" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('divisione')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'divisione')">Divisione <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'divisione', 'fa-sort-up': sortCol === 'divisione' && sortDir === 1, 'fa-sort-down': sortCol === 'divisione' && sortDir === -1}" [style.color]="sortCol === 'divisione' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'divisione' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('divisione')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterDivisione" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('status')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'status')">Status <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'status', 'fa-sort-up': sortCol === 'status' && sortDir === 1, 'fa-sort-down': sortCol === 'status' && sortDir === -1}" [style.color]="sortCol === 'status' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'status' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('status')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterStatus" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('riferimentoEs')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'riferimentoEs')">Rif. ES <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'riferimentoEs', 'fa-sort-up': sortCol === 'riferimentoEs' && sortDir === 1, 'fa-sort-down': sortCol === 'riferimentoEs' && sortDir === -1}" [style.color]="sortCol === 'riferimentoEs' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'riferimentoEs' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('riferimentoEs')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterRiferimentoEs" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+        
+                        <th *ngIf="isColumnVisible('note')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'note')">Note <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'note', 'fa-sort-up': sortCol === 'note' && sortDir === 1, 'fa-sort-down': sortCol === 'note' && sortDir === -1}" [style.color]="sortCol === 'note' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'note' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('note')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterNote" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+                        <th *ngIf="isColumnVisible('pianificazione')">
+                            <div class="th-content">
+                                <button type="button" class="th-label" (click)="onHeaderClick($event, 'pianificazione')">Pianificazione <i class="fa-solid sort-icon" [ngClass]="{'fa-sort': sortCol !== 'pianificazione', 'fa-sort-up': sortCol === 'pianificazione' && sortDir === 1, 'fa-sort-down': sortCol === 'pianificazione' && sortDir === -1}" [style.color]="sortCol === 'pianificazione' ? 'var(--accent-primary)' : 'inherit'" [style.opacity]="sortCol === 'pianificazione' ? '1' : '0.5'"></i></button>
+                                <div class="table-filter-container" [class.collapsed]="!isFilterVisible('pianificazione')"><input pInputText type="text" class="table-filter" aria-label="Filtro colonna" [(ngModel)]="filterPianificazione" (ngModelChange)="loadData()" placeholder="Cerca..."></div>
+                            </div>
+                        </th>
+        
+        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let h of displayedHosts; let i = index" [class.selected]="selectedHosts.has(getRowId(h))">
+                        <td style="text-align: center;">
+                            <button type="button" style="border: none; background: transparent; width: 100%;" (click)="onRowCheckboxClick($event, i, h)" aria-label="Seleziona riga host">
+                                <p-checkbox [binary]="true" [ngModel]="selectedHosts.has(getRowId(h))" [style]="{'pointer-events': 'none'}"></p-checkbox>
+                            </button>
+                        </td>
+                        <td *ngIf="isColumnVisible('hostname')" [routerLink]="['/machine', h.id]" style="cursor: pointer; font-weight: bold; white-space: nowrap;">{{ h.hostname }}</td>
+                        <td *ngIf="isColumnVisible('applicazione')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.applicazione }}</td>
+                        <td *ngIf="isColumnVisible('os')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.os }}</td>
+                        <td *ngIf="isColumnVisible('ambiente')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">
+                            <button type="button" class="env-bubble env-{{ h.ambiente | lowercase }}" (click)="onEnvClick(h.ambiente, $event)" [attr.aria-label]="'Filtra per ambiente ' + h.ambiente">{{ h.ambiente }}</button>
+                        </td>
+                        
+                        <td *ngIf="isColumnVisible('servizio')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.servizio }}</td>
+                        <td *ngIf="isColumnVisible('nodo')" [routerLink]="['/machine', h.id]" style="cursor: pointer; text-align:center;">{{ h.nodo || '-' }}</td>
+                        
+                        <td *ngIf="isColumnVisible('fixed')" style="text-align:center; user-select: none; padding: 0;">
+                            <button type="button" [style.cursor]="canWrite ? 'pointer' : 'not-allowed'" style="border: none; background: transparent; width: 100%; height: 100%; padding: 15px;" (click)="toggleFixedFast(h, $event)" aria-label="Cambia stato fix host">
+                                <span *ngIf="h.fixed === true" style="color: var(--status-ok); font-weight: bold; font-size: 1.2rem;"><i class="fa-solid fa-check"></i></span>
+                                <span *ngIf="h.fixed !== true" style="color: var(--status-error); font-weight: bold; font-size: 1.2rem;"><i class="fa-solid fa-xmark"></i></span>
+                            </button>
+                        </td>
+                        
+                        <td *ngIf="isColumnVisible('manutenzione')" [routerLink]="['/machine', h.id]" style="cursor: pointer;" [ngStyle]="{'font-style': h.manutenzione === 'Concordare' ? 'italic' : 'normal'}">{{ h.manutenzione || 'N/A' }}</td>
+                        
+                        <td *ngIf="isColumnVisible('locazione')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.locazione || '-' }}</td>
+                        <td *ngIf="isColumnVisible('zona')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.zona || '-' }}</td>
+                        <td *ngIf="isColumnVisible('compagnia')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.company || '-' }}</td>
+        
+                        <td *ngIf="isColumnVisible('rfc')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.rfc || '-' }}</td>
+                        <td *ngIf="isColumnVisible('riferimento')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.riferimento || '-' }}</td>
+                        <td *ngIf="isColumnVisible('appliance')" [routerLink]="['/machine', h.id]" style="cursor: pointer; text-align: center;">
+                            <span *ngIf="h.appliance" style="color: var(--status-ok); font-weight: bold;"><i class="fa-solid fa-check"></i></span>
+                            <span *ngIf="!h.appliance">-</span>
+                        </td>
+                        <td *ngIf="isColumnVisible('fixable')" [routerLink]="['/machine', h.id]" style="cursor: pointer; text-align: center;">
+                            <span *ngIf="h.fixable" style="color: var(--status-ok); font-weight: bold;"><i class="fa-solid fa-check"></i></span>
+                            <span *ngIf="!h.fixable">-</span>
+                        </td>
+                        <td *ngIf="isColumnVisible('divisione')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.divisione || '-' }}</td>
+                        <td *ngIf="isColumnVisible('status')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.status || '-' }}</td>
+                        <td *ngIf="isColumnVisible('riferimentoEs')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.riferimentoEs || '-' }}</td>
+        
+                        <td *ngIf="isColumnVisible('note')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.note || '-' }}</td>
+                        <td *ngIf="isColumnVisible('pianificazione')" [routerLink]="['/machine', h.id]" style="cursor: pointer;">{{ h.pianificazione || '-' }}</td>
+        
+        
+                    </tr>
+                    <tr *ngIf="displayedHosts.length === 0">
+                        <td [attr.colspan]="visibleColumns.size + 1" style="text-align:center; padding: 20px;">Nessun host trovato in questa tabella.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p-paginator dropdownAppendTo="body" [first]="first" [rows]="rows" [totalRecords]="totalCount" [rowsPerPageOptions]="[50, 100, 200, 500, 1000]" (onPageChange)="onPageChange($event)"></p-paginator>
+        </div>
+    </div>

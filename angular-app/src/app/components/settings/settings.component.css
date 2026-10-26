@@ -1,0 +1,97 @@
+.doc-btn {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 45, 90, 0.1);
+}
+
+.doc-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
+}
+
+.doc-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 45, 90, 0.1);
+}
+
+.activity-feed-container {
+    background: var(--bg-canvas);
+    border-radius: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 15px;
+    transition: background-color 0.2s;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item:hover {
+    background-color: var(--bg-surface-hover);
+}
+
+.activity-icon {
+    font-size: 1.2rem;
+    margin-top: 3px;
+    width: 24px;
+    text-align: center;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.activity-user {
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.activity-time {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.activity-body {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.activity-action {
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+.activity-target {
+    color: var(--text-main);
+    font-weight: 500;
+}

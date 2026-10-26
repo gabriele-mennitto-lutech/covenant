@@ -1,0 +1,183 @@
+<app-mainpage [title]="'Sites Inventory'">
+  <div class="sites-container p-4">
+    <div class="search-container flex justify-center items-center w-full gap-4 mt-4 mb-4" style="max-width: 85rem; margin-left: auto; margin-right: auto;">
+      <app-search-field style="flex: 1;" inputId="sites-search" label="Search sites"
+        placeholder="Search by URL, Real Host, IP..." [(value)]="searchQuery" />
+      <button *ngIf="canWrite" class="btn-primary shadow-lg flex items-center justify-center" style="flex: 1 0 auto; white-space: nowrap; border-radius: 9999px;" (click)="openEditDialog()">
+        <i class="pi pi-plus add-icon"></i> Add Site
+      </button>
+      <button *ngIf="canWrite" class="btn-secondary shadow-lg flex items-center justify-center" style="flex: 0 0 auto; white-space: nowrap; border-radius: 9999px; gap: 0.5rem;" (click)="openImportDialog()">
+        <i class="fa-solid fa-file-import"></i> Importa CSV
+      </button>
+    </div>
+
+    <!-- Ambiente Filters -->
+    <div class="filters-container">
+      <button class="btn-filter" [class.active]="ambienteFilter === 'Sviluppo'" (click)="setAmbienteFilter('Sviluppo')">Sviluppo</button>
+      <button class="btn-filter" [class.active]="ambienteFilter === 'Collaudo'" (click)="setAmbienteFilter('Collaudo')">Collaudo</button>
+      <button class="btn-filter" [class.active]="ambienteFilter === 'Produzione'" (click)="setAmbienteFilter('Produzione')">Produzione</button>
+    </div>
+
+    <div *ngIf="isLoading" class="flex justify-center items-center h-64">
+      <div class="loader"></div>
+    </div>
+
+    <div *ngIf="!isLoading" class="sites-grid">
+      <app-site-card 
+        *ngFor="let site of filteredSites" 
+        [site]="site" 
+        (openDialog)="openDialog($event)">
+      </app-site-card>
+    </div>
+
+    <p-dialog 
+      [(visible)]="displayDialog" 
+      [modal]="true" 
+      [style]="{width: '28rem', maxWidth: '95vw', borderRadius: '16px'}"
+      [draggable]="false" 
+      [resizable]="false"
+      [showHeader]="false"
+      appendTo="body"
+      styleClass="modern-dialog"
+      [dismissableMask]="true"
+      (onHide)="closeDialog()">
+      
+      <div *ngIf="selectedSite" class="modern-dialog-content">
+        <!-- Title -->
+        <h2 class="dialog-title">{{ selectedSite.urlAliases || selectedSite.nomeBilanciatore || 'Unnamed Site' }}</h2>
+
+        <!-- Alert Banner (TLS) -->
+        <div class="dialog-alert" [ngClass]="{'alert-success': selectedSite.tls === 'PASSTHROUGH', 'alert-warning': selectedSite.tls === 'EDGE', 'alert-reencrypt': selectedSite.tls === 'RE-ENCRYPT'}">
+          <span>TLS Configuration: <strong>{{ selectedSite.tls }}</strong></span>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="dialog-grid">
+          <div class="dialog-grid-item">
+            <span class="grid-label">IP VIP</span>
+            <span class="grid-value font-mono" [ngClass]="{'text-gray-500 italic': !selectedSite.ipVip}">{{ selectedSite.ipVip || 'N/A' }}</span>
+          </div>
+          <div class="dialog-grid-item">
+            <span class="grid-label">Port</span>
+            <span class="grid-value" [ngClass]="{'text-gray-500 italic': !selectedSite.porta}">{{ selectedSite.porta || 'N/A' }}</span>
+          </div>
+          <div class="dialog-grid-item">
+            <span class="grid-label">Protocol</span>
+            <span class="grid-value" [ngClass]="{'text-gray-500 italic': !selectedSite.servizio}">{{ selectedSite.servizio || 'N/A' }}</span>
+          </div>
+          <div class="dialog-grid-item">
+            <span class="grid-label">Balancer</span>
+            <span class="grid-value break-words" [ngClass]="{'text-gray-500 italic': !selectedSite.nomeBilanciatore}">{{ selectedSite.nomeBilanciatore || 'N/A' }}</span>
+          </div>
+          <div class="dialog-grid-item">
+            <span class="grid-label">Ambiente</span>
+            <span class="grid-value" [ngClass]="{'text-gray-500 italic': !selectedSite.ambiente}">{{ selectedSite.ambiente || 'N/A' }}</span>
+          </div>
+          <div class="dialog-grid-item col-span-2" *ngIf="selectedSite.note">
+            <span class="grid-label">Notes</span>
+            <span class="grid-value text-sm">{{ selectedSite.note }}</span>
+          </div>
+        </div>
+
+        <!-- Real Hosts List -->
+        <div class="dialog-hosts-section">
+          <span class="grid-label mb-2 block">Real Hosts</span>
+          <div class="hosts-vertical-list">
+            <a *ngFor="let host of selectedSite.hostReali" 
+               [routerLink]="['/machine/by-name']" [queryParams]="{ hostname: host, ambiente: selectedSite.ambiente || null }" 
+               class="host-list-item">
+              <span class="host-name">{{ host }}</span>
+            </a>
+            <div *ngIf="!selectedSite.hostReali || selectedSite.hostReali.length === 0" class="text-gray-500 text-sm italic py-2">
+              No real hosts available.
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <app-cross-source *ngIf="displayDialog" sourceType="sites" [sourceId]="selectedSite.id" />
+        <div class="dialog-actions">
+          <button *ngIf="canWrite" class="btn-danger" (click)="confirmDeleteSite($event)" style="padding: 0.85rem; border-radius: 8px; flex: 0 0 auto; background: #c9190b; color: white; border: none; cursor: pointer; transition: background 0.2s;"><i class="pi pi-trash"></i></button>
+          <button *ngIf="canWrite" class="btn-secondary" (click)="openEditDialog(selectedSite)" style="text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem;"><i class="pi pi-pencil"></i> Edit</button>
+          <a href="https://certmanager.ict.corp.rai.it" target="_blank" class="btn-secondary" style="text-align: center; text-decoration: none; flex: 0 0 auto; padding: 0.85rem 1rem;">Cert Manager</a>
+          <button class="btn-primary" (click)="copyToClipboard(selectedSite.urlAliases || selectedSite.nomeBilanciatore || '', $event)">Copy URL</button>
+        </div>
+      </div>
+    </p-dialog>
+
+    <p-confirmDialog [style]="{width: '35rem', maxWidth: '95vw'}" appendTo="body" styleClass="modern-confirm-dialog"></p-confirmDialog>
+
+    <p-dialog 
+      [(visible)]="displayAddDialog" 
+      [modal]="true" 
+      [style]="{width: '45rem', maxWidth: '95vw', borderRadius: '16px'}"
+      [draggable]="false" 
+      [resizable]="false"
+      [showHeader]="false"
+      appendTo="body"
+      styleClass="modern-dialog"
+      [dismissableMask]="true">
+      <div class="modern-dialog-content" *ngIf="editingSite" style="position: relative;">
+        <button class="close-btn" (click)="closeAddDialog()" style="z-index: 10;"><i class="pi pi-times"></i></button>
+        <h2 class="dialog-title mb-2">{{ isEditMode ? 'Edit Site' : 'Add New Site' }}</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="site-url-aliases">URL Aliases</label>
+            <input id="site-url-aliases" pInputText type="text" [(ngModel)]="editingSite.urlAliases" placeholder="e.g. portal.ict.corp.rai.it" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="site-ambiente">Ambiente</label>
+            <p-dropdown inputId="site-ambiente" [options]="ambienteOptions" [(ngModel)]="editingSite.ambiente" appendTo="body" class="form-dropdown" styleClass="form-dropdown"></p-dropdown>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="site-ipvip">IP VIP</label>
+            <input id="site-ipvip" pInputText type="text" [(ngModel)]="editingSite.ipVip" placeholder="e.g. 10.10.10.10" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="site-porta">Port</label>
+            <input id="site-porta" pInputText type="number" [(ngModel)]="editingSite.porta" placeholder="e.g. 80" class="form-input" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="site-balancer">Balancer Name</label>
+            <input id="site-balancer" pInputText type="text" [(ngModel)]="editingSite.nomeBilanciatore" placeholder="e.g. F5-LB-01" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="site-servizio">Protocol</label>
+            <input id="site-servizio" pInputText type="text" [(ngModel)]="editingSite.servizio" placeholder="e.g. HTTP" class="form-input" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label" style="display: block;" for="site-tls">TLS Configuration</label>
+            <p-dropdown inputId="site-tls" [options]="tlsOptions" [(ngModel)]="editingSite.tls" appendTo="body" class="form-dropdown" styleClass="form-dropdown"></p-dropdown>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" style="display: block;" for="site-hostreali">Real Hosts</label>
+          <p-chips inputId="site-hostreali" [(ngModel)]="editingSite.hostReali" class="form-chips" styleClass="form-chips" separator="," placeholder="Type host and press Enter"></p-chips>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="site-note">Notes</label>
+          <input id="site-note" pInputText type="text" [(ngModel)]="editingSite.note" placeholder="Notes..." class="form-input" />
+        </div>
+        
+        <div class="form-actions">
+          <button class="btn-secondary" (click)="closeAddDialog()">Cancel</button>
+          <button class="btn-primary" [disabled]="!canWrite" (click)="saveSite()">{{ isEditMode ? 'Save Changes' : 'Save Site' }}</button>
+        </div>
+      </div>
+    </p-dialog>
+    <app-import-dialog
+      [entity]="'sites'"
+      [entityLabel]="'siti'"
+      [mergeKeyDescription]="'URL aliases + ambiente + servizio (protocol)'"
+      [(visible)]="displayImportDialog"
+      (imported)="onSitesImported()">
+    </app-import-dialog>
+  </div>
+</app-mainpage>

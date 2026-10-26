@@ -1,0 +1,1734 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CrossSourceComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/cross-source/cross-source.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Pannello integrabile in schede e popup, con drill-down e paginazione lato server.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnChanges</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-cross-source</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./cross-source.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./cross-source.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#categories" >categories</a>
+                            </li>
+                            <li>
+                                <a href="#collapsed" >collapsed</a>
+                            </li>
+                            <li>
+                                <a href="#currentId" >currentId</a>
+                            </li>
+                            <li>
+                                <a href="#currentType" >currentType</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#page" >page</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#request" >request</a>
+                            </li>
+                            <li>
+                                <a href="#result" >result</a>
+                            </li>
+                            <li>
+                                <a href="#search" >search</a>
+                            </li>
+                            <li>
+                                <a href="#target" >target</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#timer" >timer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#explore" >explore</a>
+                            </li>
+                            <li>
+                                <a href="#filter" >filter</a>
+                            </li>
+                            <li>
+                                <a href="#label" >label</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#load" >load</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#query" >query</a>
+                            </li>
+                            <li>
+                                <a href="#reset" >reset</a>
+                            </li>
+                            <li>
+                                <a href="#route" >route</a>
+                            </li>
+                            <li>
+                                <a href="#searchChanged" >searchChanged</a>
+                            </li>
+                            <li>
+                                <a href="#toggleCollapsed" >toggleCollapsed</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#revision" >revision</a>
+                            </li>
+                            <li>
+                                <a href="#sourceId" >sourceId</a>
+                            </li>
+                            <li>
+                                <a href="#sourceType" >sourceType</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(backend: <a href="../injectables/BackendService.html" target="_self">BackendService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>backend</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BackendService.html" target="_self" >BackendService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="revision"></a>
+                        <b>revision</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:18</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sourceId"></a>
+                        <b>sourceId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:17</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sourceType"></a>
+                        <b>sourceType</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#CrossSourceType" target="_self" >CrossSourceType</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:16</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="explore"></a>
+                    <span class="name">
+                        <span ><b>explore</b></span>
+                        <a href="#explore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>explore(reference: <a href="../interfaces/CrossReference.html" target="_self">Pick&lt;CrossReference | &quot;type&quot; | &quot;id&quot;&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reference</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CrossReference.html" target="_self" >Pick&lt;CrossReference | &quot;type&quot; | &quot;id&quot;&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filter"></a>
+                    <span class="name">
+                        <span ><b>filter</b></span>
+                        <a href="#filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filter(target: <a href="../undefineds/CrossSourceType.html" target="_self">CrossSourceType | string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>target</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#CrossSourceType" target="_self" >CrossSourceType | string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>this.target</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="label"></a>
+                    <span class="name">
+                        <span ><b>label</b></span>
+                        <a href="#label"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>label(type: <a href="../undefineds/CrossSourceType.html" target="_self">CrossSourceType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#CrossSourceType" target="_self" >CrossSourceType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="load"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>load</b></span>
+                        <a href="#load"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>load(page)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>page</td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>this.page</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="query"></a>
+                    <span class="name">
+                        <span ><b>query</b></span>
+                        <a href="#query"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>query(reference: <a href="../interfaces/CrossReference.html" target="_self">CrossReference</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reference</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CrossReference.html" target="_self" >CrossReference</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Record&lt;string, number&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reset"></a>
+                    <span class="name">
+                        <span ><b>reset</b></span>
+                        <a href="#reset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reset()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="route"></a>
+                    <span class="name">
+                        <span ><b>route</b></span>
+                        <a href="#route"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>route(reference: <a href="../interfaces/CrossReference.html" target="_self">CrossReference</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reference</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CrossReference.html" target="_self" >CrossReference</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>[]</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchChanged"></a>
+                    <span class="name">
+                        <span ><b>searchChanged</b></span>
+                        <a href="#searchChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchChanged()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleCollapsed"></a>
+                    <span class="name">
+                        <span ><b>toggleCollapsed</b></span>
+                        <a href="#toggleCollapsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleCollapsed()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categories"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>categories</b></span>
+                        <a href="#categories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { type: &#x27;hosts&#x27;, label: &#x27;Host&#x27; }, { type: &#x27;services&#x27;, label: &#x27;Servizi&#x27; },
+    { type: &#x27;sites&#x27;, label: &#x27;Sites&#x27; }, { type: &#x27;cves&#x27;, label: &#x27;CVE&#x27; }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="collapsed"></a>
+                    <span class="name">
+                        <span ><b>collapsed</b></span>
+                        <a href="#collapsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentId"></a>
+                    <span class="name">
+                        <span ><b>currentId</b></span>
+                        <a href="#currentId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentType"></a>
+                    <span class="name">
+                        <span ><b>currentType</b></span>
+                        <a href="#currentType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#CrossSourceType" target="_self" >CrossSourceType</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="page"></a>
+                    <span class="name">
+                        <span ><b>page</b></span>
+                        <a href="#page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="request"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>request</b></span>
+                        <a href="#request"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>AbortController</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="result"></a>
+                    <span class="name">
+                        <span ><b>result</b></span>
+                        <a href="#result"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CrossSourceResult.html" target="_self" >CrossSourceResult | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="search"></a>
+                    <span class="name">
+                        <span ><b>search</b></span>
+                        <a href="#search"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="target"></a>
+                    <span class="name">
+                        <span ><b>target</b></span>
+                        <a href="#target"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#CrossSourceType" target="_self" >CrossSourceType | string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>timer</b></span>
+                        <a href="#timer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ReturnType&lt;&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/cross-source/cross-source.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnChanges, OnDestroy } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { BackendService, CrossReference, CrossSourceResult, CrossSourceType } from &#x27;../../services/backend.service&#x27;;
+
+/** Pannello integrabile in schede e popup, con drill-down e paginazione lato server. */
+@Component({
+  selector: &#x27;app-cross-source&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
+  templateUrl: &#x27;./cross-source.component.html&#x27;,
+  styleUrls: [&#x27;./cross-source.component.css&#x27;]
+})
+export class CrossSourceComponent implements OnChanges, OnDestroy {
+  @Input({ required: true }) sourceType!: CrossSourceType;
+  @Input({ required: true }) sourceId!: number;
+  @Input() revision: unknown;
+
+  readonly categories: { type: CrossSourceType; label: string }[] &#x3D; [
+    { type: &#x27;hosts&#x27;, label: &#x27;Host&#x27; }, { type: &#x27;services&#x27;, label: &#x27;Servizi&#x27; },
+    { type: &#x27;sites&#x27;, label: &#x27;Sites&#x27; }, { type: &#x27;cves&#x27;, label: &#x27;CVE&#x27; }
+  ];
+  result: CrossSourceResult | null &#x3D; null;
+  target: CrossSourceType | &#x27;&#x27; &#x3D; &#x27;&#x27;;
+  search &#x3D; &#x27;&#x27;;
+  page &#x3D; 1;
+  loading &#x3D; false;
+  error: string | null &#x3D; null;
+  collapsed &#x3D; false;
+  currentType!: CrossSourceType;
+  currentId!: number;
+  private request?: AbortController;
+  private timer?: ReturnType&lt;typeof setTimeout&gt;;
+
+  constructor(private readonly backend: BackendService) {}
+
+  ngOnChanges(): void {
+    this.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.request?.abort();
+    clearTimeout(this.timer);
+  }
+
+  reset(): void {
+    this.explore({ type: this.sourceType, id: this.sourceId });
+  }
+
+  toggleCollapsed(): void {
+    this.collapsed &#x3D; !this.collapsed;
+  }
+
+  explore(reference: Pick&lt;CrossReference, &#x27;type&#x27; | &#x27;id&#x27;&gt;): void {
+    clearTimeout(this.timer);
+    this.currentType &#x3D; reference.type;
+    this.currentId &#x3D; reference.id;
+    this.target &#x3D; &#x27;&#x27;;
+    this.search &#x3D; &#x27;&#x27;;
+    this.page &#x3D; 1;
+    this.result &#x3D; null;
+    this.load();
+  }
+
+  filter(target: CrossSourceType | &#x27;&#x27; &#x3D; this.target): void {
+    clearTimeout(this.timer);
+    this.target &#x3D; target;
+    this.page &#x3D; 1;
+    this.load();
+  }
+
+  searchChanged(): void {
+    clearTimeout(this.timer);
+    this.timer &#x3D; setTimeout(() &#x3D;&gt; this.filter(), 300);
+  }
+
+  async load(page &#x3D; this.page): Promise&lt;void&gt; {
+    this.request?.abort();
+    const request &#x3D; new AbortController();
+    this.request &#x3D; request;
+    this.loading &#x3D; true;
+    this.error &#x3D; null;
+    this.page &#x3D; page;
+    try {
+      const result &#x3D; await this.backend.getCrossReferences(this.currentType, this.currentId,
+        { target: this.target || undefined, search: this.search || undefined, page }, request.signal);
+      if (!request.signal.aborted) this.result &#x3D; result;
+    } catch (error) {
+      if (!request.signal.aborted) {
+        console.error(&#x27;Failed to load cross-source references&#x27;, error);
+        this.error &#x3D; &#x27;Impossibile caricare i riferimenti. Riprova.&#x27;;
+        this.result &#x3D; null;
+      }
+    } finally {
+      if (!request.signal.aborted) this.loading &#x3D; false;
+    }
+  }
+
+  label(type: CrossSourceType): string {
+    return this.categories.find(category &#x3D;&gt; category.type &#x3D;&#x3D;&#x3D; type)!.label;
+  }
+
+  route(reference: CrossReference): (string | number)[] {
+    return reference.type &#x3D;&#x3D;&#x3D; &#x27;hosts&#x27; ? [&#x27;/machine&#x27;, reference.id]
+      : [reference.type &#x3D;&#x3D;&#x3D; &#x27;cves&#x27; ? &#x27;/cve-analysis&#x27; : &#x60;/${reference.type}&#x60;];
+  }
+
+  query(reference: CrossReference): Record&lt;string, number&gt; {
+    if (reference.type &#x3D;&#x3D;&#x3D; &#x27;hosts&#x27;) return {};
+    const key &#x3D; reference.type &#x3D;&#x3D;&#x3D; &#x27;sites&#x27; ? &#x27;siteId&#x27; : reference.type &#x3D;&#x3D;&#x3D; &#x27;services&#x27; ? &#x27;serviceId&#x27; : &#x27;cveId&#x27;;
+    return { [key]: reference.id };
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;cross-source&quot; aria-label&#x3D;&quot;Riferimenti cross source&quot;&gt;
+  &lt;header&gt;
+    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;title-toggle&quot; (click)&#x3D;&quot;toggleCollapsed()&quot;
+      [attr.aria-expanded]&#x3D;&quot;!collapsed&quot; aria-controls&#x3D;&quot;cross-source-content&quot;&gt;
+      &lt;h3&gt;Riferimenti cross source&lt;/h3&gt;
+      &lt;span class&#x3D;&quot;chevron&quot; [class.collapsed]&#x3D;&quot;collapsed&quot; aria-hidden&#x3D;&quot;true&quot;&gt;⌄&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;load()&quot; [disabled]&#x3D;&quot;loading&quot;&gt;Aggiorna&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;div *ngIf&#x3D;&quot;!collapsed&quot; id&#x3D;&quot;cross-source-content&quot;&gt;
+    &lt;p class&#x3D;&quot;hint&quot;&gt;Solo dati salvati. Le corrispondenze potenziali, incluse le CVE, richiedono verifica:
+      non dimostrano vulnerabilità né presenza di una versione software. Sono utilizzati solo dati persistiti.&lt;/p&gt;
+    &lt;div *ngIf&#x3D;&quot;currentType !&#x3D;&#x3D; sourceType || currentId !&#x3D;&#x3D; sourceId&quot; class&#x3D;&quot;exploring&quot;&gt;
+      &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;reset()&quot;&gt;Torna alla sorgente&lt;/button&gt;
+      &lt;span *ngIf&#x3D;&quot;result&quot;&gt;{{ label(currentType) }}: {{ result.source.label }}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;filters&quot;&gt;
+      &lt;button type&#x3D;&quot;button&quot; [class.active]&#x3D;&quot;!target&quot; (click)&#x3D;&quot;filter(&#x27;&#x27;)&quot; [disabled]&#x3D;&quot;loading&quot;&gt;Tutti&lt;/button&gt;
+      &lt;button *ngFor&#x3D;&quot;let category of categories&quot; type&#x3D;&quot;button&quot; [class.active]&#x3D;&quot;target &#x3D;&#x3D;&#x3D; category.type&quot;
+        (click)&#x3D;&quot;filter(category.type)&quot; [disabled]&#x3D;&quot;loading&quot;&gt;
+        {{ category.label }} &lt;span *ngIf&#x3D;&quot;result&quot;&gt;({{ result.counts[category.type] }})&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;input type&#x3D;&quot;search&quot; aria-label&#x3D;&quot;Cerca nei riferimenti&quot; placeholder&#x3D;&quot;Cerca nei riferimenti...&quot;
+        maxlength&#x3D;&quot;200&quot; [(ngModel)]&#x3D;&quot;search&quot; (ngModelChange)&#x3D;&quot;searchChanged()&quot; /&gt;
+    &lt;/div&gt;
+    &lt;p *ngIf&#x3D;&quot;loading&quot; role&#x3D;&quot;status&quot;&gt;Caricamento riferimenti...&lt;/p&gt;
+    &lt;div *ngIf&#x3D;&quot;error&quot; role&#x3D;&quot;alert&quot; class&#x3D;&quot;error&quot;&gt;{{ error }} &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;load()&quot;&gt;Riprova&lt;/button&gt;&lt;/div&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;!loading &amp;&amp; result&quot;&gt;
+      &lt;p *ngIf&#x3D;&quot;!result.items.length&quot; class&#x3D;&quot;hint&quot;&gt;Nessuna corrispondenza nei dati disponibili.
+        L&#x27;assenza di riferimenti non esclude un impatto.&lt;/p&gt;
+      &lt;article *ngFor&#x3D;&quot;let item of result.items&quot;&gt;
+        &lt;div class&#x3D;&quot;reference-heading&quot;&gt;
+          &lt;strong&gt;{{ label(item.type) }} · {{ item.label }}&lt;/strong&gt;
+          &lt;span class&#x3D;&quot;badge&quot; [class.direct]&#x3D;&quot;item.confidence &#x3D;&#x3D;&#x3D; &#x27;direct&#x27;&quot;&gt;
+            {{ item.confidence &#x3D;&#x3D;&#x3D; &#x27;direct&#x27; ? &#x27;Riferimento diretto&#x27; : &#x27;Potenziale / da verificare&#x27; }}
+          &lt;/span&gt;
+        &lt;/div&gt;
+        &lt;p *ngIf&#x3D;&quot;item.context&quot; class&#x3D;&quot;hint&quot;&gt;{{ item.context }}&lt;/p&gt;
+        &lt;ul&gt;&lt;li *ngFor&#x3D;&quot;let reason of item.reasons&quot;&gt;{{ reason }}&lt;/li&gt;&lt;/ul&gt;
+        &lt;div class&#x3D;&quot;actions&quot;&gt;
+          &lt;a [routerLink]&#x3D;&quot;route(item)&quot; [queryParams]&#x3D;&quot;query(item)&quot;&gt;Apri scheda&lt;/a&gt;
+          &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;explore(item)&quot;&gt;Esplora collegamenti&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;footer *ngIf&#x3D;&quot;result.total &gt; 0&quot;&gt;
+        &lt;span&gt;{{ result.total }} riferimenti · {{ result.page }} / {{ result.totalPages }}&lt;/span&gt;
+        &lt;button type&#x3D;&quot;button&quot; [disabled]&#x3D;&quot;page &lt;&#x3D; 1&quot; (click)&#x3D;&quot;load(page - 1)&quot;&gt;Precedenti&lt;/button&gt;
+        &lt;button type&#x3D;&quot;button&quot; [disabled]&#x3D;&quot;page &gt;&#x3D; result.totalPages&quot; (click)&#x3D;&quot;load(page + 1)&quot;&gt;Successivi&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/ng-container&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./cross-source.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host { display: block; width: 100%; }
+.cross-source { margin-top: 1rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-surface); color: var(--text-main); }
+header, .filters, .reference-heading, .actions, footer, .exploring { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; }
+header { justify-content: space-between; }
+h3 { margin: 0; font-size: 1rem; }
+.title-toggle { display: inline-flex; align-items: center; gap: .5rem; border: 0; padding: 0; background: transparent; }
+.title-toggle h3 { color: inherit; }
+.chevron { font-size: 1.2rem; line-height: 1; transition: transform .15s ease; }
+.chevron.collapsed { transform: rotate(-90deg); }
+.hint { color: var(--text-muted); font-size: .85rem; line-height: 1.5; overflow-wrap: anywhere; }
+button, a, input { border: 1px solid #8a99a8; border-radius: 8px; padding: .4rem .65rem; background: var(--bg-surface); color: inherit; font: inherit; font-size: .85rem; }
+button, a { cursor: pointer; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button.active, a { color: #005a9e; border-color: var(--accent-primary); }
+input { min-width: 0; flex: 1; }
+article { border-top: 1px solid var(--border-color); padding: .9rem 0; overflow-wrap: anywhere; }
+.filters { margin: 1rem 0; }
+.badge { font-size: .75rem; color: var(--status-warn); }
+.badge.direct { color: var(--status-ok); }
+ul { padding-left: 1.2rem; font-size: .85rem; line-height: 1.5; }
+footer { border-top: 1px solid var(--border-color); padding-top: .75rem; font-size: .85rem; }
+.error { color: var(--status-error); }
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="cross-source" aria-label="Riferimenti cross source">  <header>    <button type="button" class="title-toggle" (click)="toggleCollapsed()"      [attr.aria-expanded]="!collapsed" aria-controls="cross-source-content">      <h3>Riferimenti cross source</h3>      <span class="chevron" [class.collapsed]="collapsed" aria-hidden="true">⌄</span>    </button>    <button type="button" (click)="load()" [disabled]="loading">Aggiorna</button>  </header>  <div *ngIf="!collapsed" id="cross-source-content">    <p class="hint">Solo dati salvati. Le corrispondenze potenziali, incluse le CVE, richiedono verifica:      non dimostrano vulnerabilità né presenza di una versione software. Sono utilizzati solo dati persistiti.</p>    <div *ngIf="currentType !== sourceType || currentId !== sourceId" class="exploring">      <button type="button" (click)="reset()">Torna alla sorgente</button>      <span *ngIf="result">{{ label(currentType) }}: {{ result.source.label }}</span>    </div>    <div class="filters">      <button type="button" [class.active]="!target" (click)="filter(\'\')" [disabled]="loading">Tutti</button>      <button *ngFor="let category of categories" type="button" [class.active]="target === category.type"        (click)="filter(category.type)" [disabled]="loading">        {{ category.label }} <span *ngIf="result">({{ result.counts[category.type] }})</span>      </button>      <input type="search" aria-label="Cerca nei riferimenti" placeholder="Cerca nei riferimenti..."        maxlength="200" [(ngModel)]="search" (ngModelChange)="searchChanged()" />    </div>    <p *ngIf="loading" role="status">Caricamento riferimenti...</p>    <div *ngIf="error" role="alert" class="error">{{ error }} <button type="button" (click)="load()">Riprova</button></div>    <ng-container *ngIf="!loading && result">      <p *ngIf="!result.items.length" class="hint">Nessuna corrispondenza nei dati disponibili.        L\'assenza di riferimenti non esclude un impatto.</p>      <article *ngFor="let item of result.items">        <div class="reference-heading">          <strong>{{ label(item.type) }} · {{ item.label }}</strong>          <span class="badge" [class.direct]="item.confidence === \'direct\'">            {{ item.confidence === \'direct\' ? \'Riferimento diretto\' : \'Potenziale / da verificare\' }}          </span>        </div>        <p *ngIf="item.context" class="hint">{{ item.context }}</p>        <ul><li *ngFor="let reason of item.reasons">{{ reason }}</li></ul>        <div class="actions">          <a [routerLink]="route(item)" [queryParams]="query(item)">Apri scheda</a>          <button type="button" (click)="explore(item)">Esplora collegamenti</button>        </div>      </article>      <footer *ngIf="result.total > 0">        <span>{{ result.total }} riferimenti · {{ result.page }} / {{ result.totalPages }}</span>        <button type="button" [disabled]="page <= 1" (click)="load(page - 1)">Precedenti</button>        <button type="button" [disabled]="page >= result.totalPages" (click)="load(page + 1)">Successivi</button>      </footer>    </ng-container>  </div></section></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BigcardComponent', 'selector': 'app-bigcard'},{'name': 'CrossSourceComponent', 'selector': 'app-cross-source'},{'name': 'CveAnalysisComponent', 'selector': 'app-cve-analysis'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FilterItemComponent', 'selector': 'app-filter-item'},{'name': 'FixesComponent', 'selector': 'app-fixes'},{'name': 'GlobalFiltersComponent', 'selector': 'app-global-filters'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HostsComponent', 'selector': 'app-hosts'},{'name': 'ImportDialogComponent', 'selector': 'app-import-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineComponent', 'selector': 'app-machine'},{'name': 'MailingComponent', 'selector': 'app-mailing'},{'name': 'MainpageComponent', 'selector': 'app-mainpage'},{'name': 'MonitoringComponent', 'selector': 'app-monitoring'},{'name': 'SearchFieldComponent', 'selector': 'app-search-field'},{'name': 'ServicesComponent', 'selector': 'app-services'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedTableComponent', 'selector': 'app-shared-table'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SiteCardComponent', 'selector': 'app-site-card'},{'name': 'SitesComponent', 'selector': 'app-sites'},{'name': 'SmartcardComponent', 'selector': 'app-smartcard'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'WipComponent', 'selector': 'app-wip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CrossSourceComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CrossSourceComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

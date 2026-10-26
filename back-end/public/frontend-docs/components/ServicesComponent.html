@@ -1,0 +1,2005 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ServicesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/services/services.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente/Servizio ServicesComponent</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-services</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>InputTextModule</code>
+                                <code><a href="../components/SearchFieldComponent.html" target="_self" >SearchFieldComponent</a></code>
+                            <code>DialogModule</code>
+                            <code>TagModule</code>
+                                <code><a href="../components/CrossSourceComponent.html" target="_self" >CrossSourceComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./services.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./services.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#destroyRef" >destroyRef</a>
+                            </li>
+                            <li>
+                                <a href="#displayDialog" >displayDialog</a>
+                            </li>
+                            <li>
+                                <a href="#editMode" >editMode</a>
+                            </li>
+                            <li>
+                                <a href="#formData" >formData</a>
+                            </li>
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                <a href="#knowledgeFilter" >knowledgeFilter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#knowledgeOptions" >knowledgeOptions</a>
+                            </li>
+                            <li>
+                                <a href="#linkError" >linkError</a>
+                            </li>
+                            <li>
+                                <a href="#searchQuery" >searchQuery</a>
+                            </li>
+                            <li>
+                                <a href="#selectedService" >selectedService</a>
+                            </li>
+                            <li>
+                                <a href="#services" >services</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#closeDetails" >closeDetails</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#loadData" >loadData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSearchChange" >onSearchChange</a>
+                            </li>
+                            <li>
+                                <a href="#openCreateDialog" >openCreateDialog</a>
+                            </li>
+                            <li>
+                                <a href="#openEditDialog" >openEditDialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#saveService" >saveService</a>
+                            </li>
+                            <li>
+                                <a href="#setKnowledgeFilter" >setKnowledgeFilter</a>
+                            </li>
+                            <li>
+                                <a href="#showDetails" >showDetails</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#canWrite" >canWrite</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(backend: <a href="../injectables/BackendService.html" target="_self">BackendService</a>, auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, route: ActivatedRoute, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/services/services.component.ts:57</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Costruttore di ServicesComponent</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>backend</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BackendService.html" target="_self" >BackendService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeDetails"></a>
+                    <span class="name">
+                        <span ><b>closeDetails</b></span>
+                        <a href="#closeDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeDetails()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:131</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadData"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>loadData</b></span>
+                        <a href="#loadData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo loadData</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook ngOnInit</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearchChange"></a>
+                    <span class="name">
+                        <span ><b>onSearchChange</b></span>
+                        <a href="#onSearchChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearchChange()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo onSearchChange</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openCreateDialog"></a>
+                    <span class="name">
+                        <span ><b>openCreateDialog</b></span>
+                        <a href="#openCreateDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openCreateDialog()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo openCreateDialog</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openEditDialog"></a>
+                    <span class="name">
+                        <span ><b>openEditDialog</b></span>
+                        <a href="#openEditDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openEditDialog()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo openEditDialog</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveService"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>saveService</b></span>
+                        <a href="#saveService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>saveService()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="159"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:159</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo saveService</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setKnowledgeFilter"></a>
+                    <span class="name">
+                        <span ><b>setKnowledgeFilter</b></span>
+                        <a href="#setKnowledgeFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setKnowledgeFilter(value: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo setKnowledgeFilter</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showDetails"></a>
+                    <span class="name">
+                        <span ><b>showDetails</b></span>
+                        <a href="#showDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showDetails(service: <a href="../interfaces/Service.html" target="_self">Service</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/components/services/services.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo showDetails</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>service</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Service.html" target="_self" >Service</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>destroyRef</b></span>
+                        <a href="#destroyRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(DestroyRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/services/services.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayDialog"></a>
+                    <span class="name">
+                        <span ><b>displayDialog</b></span>
+                        <a href="#displayDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/services/services.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà displayDialog</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editMode"></a>
+                    <span class="name">
+                        <span ><b>editMode</b></span>
+                        <a href="#editMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/services/services.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà editMode</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formData"></a>
+                    <span class="name">
+                        <span ><b>formData</b></span>
+                        <a href="#formData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Service.html" target="_self" >Partial&lt;Service&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    servizio: &#x27;&#x27;,
+    knowledge: &#x27;&#x27;,
+    stato: &#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/services/services.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà formData</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/services/services.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà isLoading</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="knowledgeFilter"></a>
+                    <span class="name">
+                        <span ><b>knowledgeFilter</b></span>
+                        <a href="#knowledgeFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/services/services.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà knowledgeFilter</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="knowledgeOptions"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>knowledgeOptions</b></span>
+                        <a href="#knowledgeOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { label: &#x27;All&#x27;, value: null },
+    { label: &#x27;Full&#x27;, value: &#x27;Full&#x27; },
+    { label: &#x27;Limited&#x27;, value: &#x27;Limited&#x27; },
+    { label: &#x27;Absent&#x27;, value: &#x27;Absent&#x27; }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/components/services/services.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà knowledgeOptions</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="linkError"></a>
+                    <span class="name">
+                        <span ><b>linkError</b></span>
+                        <a href="#linkError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/services/services.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchQuery"></a>
+                    <span class="name">
+                        <span ><b>searchQuery</b></span>
+                        <a href="#searchQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/services/services.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà searchQuery</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedService"></a>
+                    <span class="name">
+                        <span ><b>selectedService</b></span>
+                        <a href="#selectedService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Service.html" target="_self" >Service | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/services/services.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà selectedService</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="services"></a>
+                    <span class="name">
+                        <span ><b>services</b></span>
+                        <a href="#services"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Service.html" target="_self" >Service[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/services/services.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà services</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="canWrite"></a>
+                        <span class="name"><b>canWrite</b><a href="#canWrite"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>canWrite()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/services/services.component.ts:63</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, DestroyRef, OnInit, inject } from &#x27;@angular/core&#x27;;
+import { takeUntilDestroyed } from &#x27;@angular/core/rxjs-interop&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { BackendService, Service } from &#x27;../../services/backend.service&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+import { TagModule } from &#x27;primeng/tag&#x27;;
+import { InputTextModule } from &#x27;primeng/inputtext&#x27;;
+import { SearchFieldComponent } from &#x27;../search-field/search-field.component&#x27;;
+import { DialogModule } from &#x27;primeng/dialog&#x27;;
+import { CrossSourceComponent } from &#x27;../cross-source/cross-source.component&#x27;;
+
+/** Componente/Servizio ServicesComponent */
+@Component({
+  selector: &#x27;app-services&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule, FormsModule, InputTextModule,
+    SearchFieldComponent, DialogModule, TagModule, CrossSourceComponent
+  ],
+  templateUrl: &#x27;./services.component.html&#x27;,
+  styleUrls: [&#x27;./services.component.css&#x27;]
+})
+export class ServicesComponent implements OnInit {
+  private readonly destroyRef &#x3D; inject(DestroyRef);
+  linkError: string | null &#x3D; null;
+  /** Proprietà services */
+    services: Service[] &#x3D; [];
+  /** Proprietà searchQuery */
+    searchQuery: string &#x3D; &#x27;&#x27;;
+  /** Proprietà knowledgeFilter */
+    knowledgeFilter: string | null &#x3D; null;
+  /** Proprietà isLoading */
+    isLoading &#x3D; true;
+  
+  /** Proprietà displayDialog */
+    displayDialog: boolean &#x3D; false;
+  /** Proprietà selectedService */
+    selectedService: Service | null &#x3D; null;
+  /** Proprietà editMode */
+    editMode: boolean &#x3D; false;
+  
+  /** Proprietà formData */
+    formData: Partial&lt;Service&gt; &#x3D; {
+    servizio: &#x27;&#x27;,
+    knowledge: &#x27;&#x27;,
+    stato: &#x27;&#x27;
+  };
+
+  /** Proprietà knowledgeOptions */
+    readonly knowledgeOptions &#x3D; [
+    { label: &#x27;All&#x27;, value: null },
+    { label: &#x27;Full&#x27;, value: &#x27;Full&#x27; },
+    { label: &#x27;Limited&#x27;, value: &#x27;Limited&#x27; },
+    { label: &#x27;Absent&#x27;, value: &#x27;Absent&#x27; }
+  ];
+
+  /** Costruttore di ServicesComponent */
+    constructor(private readonly backend: BackendService, private readonly auth: AuthService,
+      private readonly route: ActivatedRoute, private readonly router: Router) { }
+
+  get canWrite(): boolean {
+    return this.auth.canWrite();
+  }
+
+  /** Lifecycle hook ngOnInit */
+    ngOnInit(): void {
+    this.loadData();
+    this.route.queryParamMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(async params &#x3D;&gt; {
+      const id &#x3D; Number(params.get(&#x27;serviceId&#x27;));
+      this.linkError &#x3D; null;
+      if (!Number.isSafeInteger(id) || id &lt;&#x3D; 0) {
+        if (!this.editMode) this.displayDialog &#x3D; false;
+        return;
+      }
+      if (this.selectedService?.id &#x3D;&#x3D;&#x3D; id &amp;&amp; this.displayDialog) return;
+      try {
+        const service &#x3D; await this.backend.getService(id);
+        if (Number(this.route.snapshot.queryParamMap.get(&#x27;serviceId&#x27;)) &#x3D;&#x3D;&#x3D; id) {
+          this.selectedService &#x3D; service;
+          this.editMode &#x3D; false;
+          this.displayDialog &#x3D; true;
+        }
+      } catch (error) {
+        if (Number(this.route.snapshot.queryParamMap.get(&#x27;serviceId&#x27;)) !&#x3D;&#x3D; id) return;
+        console.error(&#x27;Failed to open linked service&#x27;, error);
+        this.linkError &#x3D; &#x27;Impossibile aprire il servizio collegato.&#x27;;
+      }
+    });
+  }
+
+  /** Metodo loadData */
+    async loadData() {
+    this.isLoading &#x3D; true;
+    try {
+      const response &#x3D; await this.backend.getServices(
+        this.searchQuery, 
+        this.knowledgeFilter || undefined, 
+        1, 
+        1000
+      );
+      console.log(&#x27;Services API response:&#x27;, response);
+      this.services &#x3D; response.items || [];
+    } catch (err) {
+      console.error(&quot;Error loading services&quot;, err);
+    } finally {
+      this.isLoading &#x3D; false;
+    }
+  }
+
+  /** Metodo onSearchChange */
+    onSearchChange() {
+    this.loadData();
+  }
+
+  /** Metodo setKnowledgeFilter */
+    setKnowledgeFilter(value: string | null) {
+    this.knowledgeFilter &#x3D; value;
+    this.loadData();
+  }
+
+  /** Metodo showDetails */
+    showDetails(service: Service) {
+    this.selectedService &#x3D; service;
+    this.editMode &#x3D; false;
+    this.displayDialog &#x3D; true;
+    this.router.navigate([], { relativeTo: this.route, queryParams: { serviceId: service.id }, queryParamsHandling: &#x27;merge&#x27; });
+  }
+
+  closeDetails(): void {
+    this.router.navigate([], { relativeTo: this.route, queryParams: { serviceId: null }, queryParamsHandling: &#x27;merge&#x27; });
+  }
+
+  /** Metodo openCreateDialog */
+    openCreateDialog() {
+    this.selectedService &#x3D; null;
+    this.editMode &#x3D; true;
+    this.formData &#x3D; {
+      servizio: &#x27;&#x27;,
+      knowledge: &#x27;&#x27;,
+      stato: &#x27;&#x27;
+    };
+    this.displayDialog &#x3D; true;
+  }
+
+  /** Metodo openEditDialog */
+    openEditDialog() {
+    if (!this.selectedService) return;
+    this.editMode &#x3D; true;
+    this.formData &#x3D; {
+      servizio: this.selectedService.servizio,
+      knowledge: this.selectedService.knowledge,
+      stato: this.selectedService.stato
+    };
+  }
+
+  /** Metodo saveService */
+    async saveService() {
+    if (!this.formData.servizio || !this.formData.knowledge) {
+      alert(&quot;Il nome del servizio e il grado di knowledge sono obbligatori.&quot;);
+      return;
+    }
+
+    try {
+      if (this.selectedService?.id) {
+        // Edit mode
+        await this.backend.updateService(this.selectedService.id, this.formData);
+      } else {
+        // Create mode
+        await this.backend.createService(this.formData);
+      }
+      this.displayDialog &#x3D; false;
+      this.loadData(); // Refresh list
+    } catch (err) {
+      console.error(&quot;Error saving service:&quot;, err);
+      alert(&quot;Errore durante il salvataggio del servizio.&quot;);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;services-container&quot;&gt;
+  &lt;div class&#x3D;&quot;header-actions&quot;&gt;
+    &lt;h1 class&#x3D;&quot;page-title&quot;&gt;Services&lt;/h1&gt;
+    &lt;button *ngIf&#x3D;&quot;canWrite&quot; class&#x3D;&quot;preset-btn create-btn&quot; (click)&#x3D;&quot;openCreateDialog()&quot;&gt;
+      &lt;i class&#x3D;&quot;fa-solid fa-plus&quot;&gt;&lt;/i&gt; Crea Servizio
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;filters-row&quot;&gt;
+    &lt;app-search-field class&#x3D;&quot;search-field&quot; inputId&#x3D;&quot;services-search-input&quot; label&#x3D;&quot;Search services&quot;
+      placeholder&#x3D;&quot;Search services...&quot; [(value)]&#x3D;&quot;searchQuery&quot; (valueChange)&#x3D;&quot;onSearchChange()&quot; /&gt;
+
+    &lt;div class&#x3D;&quot;filters-group&quot;&gt;
+      &lt;span class&#x3D;&quot;filter-label&quot;&gt;Grado knowledge:&lt;/span&gt;
+      &lt;div class&#x3D;&quot;quick-filters&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;filter-chip&quot; 
+             *ngFor&#x3D;&quot;let opt of knowledgeOptions&quot;
+             [class.active]&#x3D;&quot;knowledgeFilter &#x3D;&#x3D;&#x3D; opt.value&quot;
+             (click)&#x3D;&quot;setKnowledgeFilter(opt.value)&quot;
+             [attr.aria-label]&#x3D;&quot;&#x27;Filtra per knowledge &#x27; + opt.label&quot;&gt;
+          {{opt.label}}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;isLoading&quot; class&#x3D;&quot;loading-state&quot;&gt;
+    &lt;i class&#x3D;&quot;pi pi-spin pi-spinner&quot; style&#x3D;&quot;font-size: 2rem&quot;&gt;&lt;/i&gt;
+    &lt;p&gt;Loading services...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;!isLoading &amp;&amp; services.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;empty-state&quot;&gt;
+    &lt;p&gt;No services found matching the filters.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p *ngIf&#x3D;&quot;linkError&quot; role&#x3D;&quot;alert&quot;&gt;{{ linkError }}&lt;/p&gt;
+
+  &lt;div class&#x3D;&quot;cards-list&quot; *ngIf&#x3D;&quot;!isLoading&quot;&gt;
+    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;service-card&quot; *ngFor&#x3D;&quot;let service of services&quot; (click)&#x3D;&quot;showDetails(service)&quot; [attr.aria-label]&#x3D;&quot;&#x27;Apri dettagli servizio &#x27; + service.servizio&quot;&gt;
+      &lt;div class&#x3D;&quot;card-header&quot;&gt;
+        &lt;h2 class&#x3D;&quot;service-title&quot;&gt;{{service.servizio}}&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;card-actions&quot;&gt;
+          &lt;span class&#x3D;&quot;env-bubble env-{{ service.knowledge | lowercase }}&quot;&gt;{{service.knowledge}}&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;p-dialog [(visible)]&#x3D;&quot;displayDialog&quot; (onHide)&#x3D;&quot;closeDetails()&quot; [modal]&#x3D;&quot;true&quot; [style]&#x3D;&quot;{width: &#x27;60rem&#x27;, maxWidth: &#x27;95vw&#x27;}&quot; [header]&#x3D;&quot;editMode ? (selectedService ? &#x27;Modifica Servizio&#x27; : &#x27;Crea Nuovo Servizio&#x27;) : (selectedService?.servizio || &#x27;&#x27;)&quot; [draggable]&#x3D;&quot;false&quot; [resizable]&#x3D;&quot;false&quot;&gt;
+    
+    &lt;!-- View Mode --&gt;
+    &lt;div class&#x3D;&quot;dialog-content&quot; *ngIf&#x3D;&quot;!editMode &amp;&amp; selectedService&quot;&gt;
+        &lt;div class&#x3D;&quot;detail-row&quot;&gt;
+          &lt;span class&#x3D;&quot;detail-label&quot;&gt;Knowledge:&lt;/span&gt;
+          &lt;span class&#x3D;&quot;detail-value&quot;&gt;
+            &lt;span class&#x3D;&quot;env-bubble env-{{ selectedService.knowledge | lowercase }}&quot;&gt;{{selectedService.knowledge}}&lt;/span&gt;
+          &lt;/span&gt;
+        &lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;detail-row&quot;&gt;
+          &lt;span class&#x3D;&quot;detail-label&quot;&gt;Stato:&lt;/span&gt;
+          &lt;span class&#x3D;&quot;detail-value&quot;&gt;{{selectedService.stato}}&lt;/span&gt;
+        &lt;/div&gt;
+        
+        &lt;app-cross-source *ngIf&#x3D;&quot;displayDialog&quot; sourceType&#x3D;&quot;services&quot; [sourceId]&#x3D;&quot;selectedService.id&quot; /&gt;
+        
+        &lt;div class&#x3D;&quot;dialog-actions&quot; *ngIf&#x3D;&quot;canWrite&quot;&gt;
+          &lt;button class&#x3D;&quot;preset-btn edit-btn&quot; (click)&#x3D;&quot;openEditDialog()&quot;&gt;
+            &lt;i class&#x3D;&quot;fa-solid fa-pen&quot;&gt;&lt;/i&gt; Modifica
+          &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Edit Mode --&gt;
+    &lt;div class&#x3D;&quot;dialog-content form-content&quot; *ngIf&#x3D;&quot;editMode&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label class&#x3D;&quot;form-label&quot; for&#x3D;&quot;service-form-name&quot;&gt;Nome Servizio *&lt;/label&gt;
+          &lt;input id&#x3D;&quot;service-form-name&quot; type&#x3D;&quot;text&quot; pInputText [(ngModel)]&#x3D;&quot;formData.servizio&quot; placeholder&#x3D;&quot;Inserisci il nome del servizio&quot; class&#x3D;&quot;form-input&quot; /&gt;
+        &lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;span class&#x3D;&quot;form-label&quot;&gt;Grado Knowledge *&lt;/span&gt;
+          &lt;fieldset class&#x3D;&quot;quick-filters&quot; style&#x3D;&quot;margin-top: 5px; border: 0; padding: 0;&quot;&gt;
+            &lt;legend class&#x3D;&quot;visually-hidden&quot;&gt;Grado Knowledge&lt;/legend&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;filter-chip&quot; [class.active]&#x3D;&quot;formData.knowledge &#x3D;&#x3D;&#x3D; &#x27;Full&#x27;&quot; (click)&#x3D;&quot;formData.knowledge &#x3D; &#x27;Full&#x27;&quot;&gt;Full&lt;/button&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;filter-chip&quot; [class.active]&#x3D;&quot;formData.knowledge &#x3D;&#x3D;&#x3D; &#x27;Limited&#x27;&quot; (click)&#x3D;&quot;formData.knowledge &#x3D; &#x27;Limited&#x27;&quot;&gt;Limited&lt;/button&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;filter-chip&quot; [class.active]&#x3D;&quot;formData.knowledge &#x3D;&#x3D;&#x3D; &#x27;Absent&#x27;&quot; (click)&#x3D;&quot;formData.knowledge &#x3D; &#x27;Absent&#x27;&quot;&gt;Absent&lt;/button&gt;
+          &lt;/fieldset&gt;
+        &lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label class&#x3D;&quot;form-label&quot; for&#x3D;&quot;service-form-state&quot;&gt;Stato&lt;/label&gt;
+          &lt;input id&#x3D;&quot;service-form-state&quot; type&#x3D;&quot;text&quot; pInputText [(ngModel)]&#x3D;&quot;formData.stato&quot; placeholder&#x3D;&quot;Es. Ereditata&quot; class&#x3D;&quot;form-input&quot; /&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;dialog-actions&quot;&gt;
+          &lt;button class&#x3D;&quot;preset-btn cancel-btn&quot; (click)&#x3D;&quot;displayDialog &#x3D; false&quot;&gt;Annulla&lt;/button&gt;
+          &lt;button class&#x3D;&quot;preset-btn save-btn&quot; (click)&#x3D;&quot;saveService()&quot;&gt;Salva&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/p-dialog&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./services.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.services-container {
+  padding: 2rem;
+  color: var(--text-main);
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 4rem;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  color: var(--text-main);
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.filters-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-field {
+  width: 300px;
+  max-width: 100%;
+}
+
+.filters-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.quick-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.filter-chip:hover {
+  background-color: var(--bg-surface-hover);
+}
+
+.filter-chip.active {
+  background-color: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.loading-state, .empty-state {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--bg-surface);
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.service-card {
+  background-color: var(--bg-surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border-color);
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,45,90,0.1);
+  border-color: var(--accent-primary);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-main);
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+/* Environment tag styles for Services */
+.env-full { background-color: #f1faf1; color: var(--status-ok); border: 1px solid #9fd89f; }
+.env-limited { background-color: #fff8e6; color: var(--status-warn); border: 1px solid #dfc47a; }
+.env-absent { background-color: #fdf3f4; color: var(--status-error); border: 1px solid #e1a5a9; }
+
+/* Dialog Styles */
+::ng-deep .p-dialog {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+::ng-deep .p-dialog-header {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border-bottom: none !important;
+  padding: 1.5rem 1.5rem 0 1.5rem !important;
+}
+
+::ng-deep .p-dialog-content {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  padding: 1.5rem !important;
+}
+
+::ng-deep .p-dialog .p-dialog-header-icon {
+  color: var(--text-muted);
+}
+
+::ng-deep .p-dialog .p-dialog-header-icon:hover {
+  color: var(--text-main);
+  background: var(--accent-soft);
+}
+
+.dialog-content .detail-row {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dialog-content .detail-label {
+  font-weight: bold;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dialog-content .detail-value {
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+.hosts-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.host-tag {
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.host-tag:hover {
+  background-color: var(--accent-soft);
+  border-color: var(--accent-primary);
+  color: #005a9e;
+  transform: translateY(-2px);
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: var(--accent-primary);
+  outline: none;
+}
+
+/* Actions and Buttons */
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.create-btn {
+  background-color: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 15px;
+}
+
+.create-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.edit-btn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-btn:hover {
+  color: #005a9e;
+  border-color: var(--accent-primary);
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  color: #005a9e;
+  border-color: var(--accent-primary);
+}
+
+.save-btn {
+  background-color: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="services-container">  <div class="header-actions">    <h1 class="page-title">Services</h1>    <button *ngIf="canWrite" class="preset-btn create-btn" (click)="openCreateDialog()">      <i class="fa-solid fa-plus"></i> Crea Servizio    </button>  </div>  <div class="filters-row">    <app-search-field class="search-field" inputId="services-search-input" label="Search services"      placeholder="Search services..." [(value)]="searchQuery" (valueChange)="onSearchChange()" />    <div class="filters-group">      <span class="filter-label">Grado knowledge:</span>      <div class="quick-filters">        <button type="button" class="filter-chip"              *ngFor="let opt of knowledgeOptions"             [class.active]="knowledgeFilter === opt.value"             (click)="setKnowledgeFilter(opt.value)"             [attr.aria-label]="\'Filtra per knowledge \' + opt.label">          {{opt.label}}        </button>      </div>    </div>  </div>  <div *ngIf="isLoading" class="loading-state">    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>    <p>Loading services...</p>  </div>  <div *ngIf="!isLoading && services.length === 0" class="empty-state">    <p>No services found matching the filters.</p>  </div>  <p *ngIf="linkError" role="alert">{{ linkError }}</p>  <div class="cards-list" *ngIf="!isLoading">    <button type="button" class="service-card" *ngFor="let service of services" (click)="showDetails(service)" [attr.aria-label]="\'Apri dettagli servizio \' + service.servizio">      <div class="card-header">        <h2 class="service-title">{{service.servizio}}</h2>        <div class="card-actions">          <span class="env-bubble env-{{ service.knowledge | lowercase }}">{{service.knowledge}}</span>        </div>      </div>    </button>  </div>  <p-dialog [(visible)]="displayDialog" (onHide)="closeDetails()" [modal]="true" [style]="{width: \'60rem\', maxWidth: \'95vw\'}" [header]="editMode ? (selectedService ? \'Modifica Servizio\' : \'Crea Nuovo Servizio\') : (selectedService?.servizio || \'\')" [draggable]="false" [resizable]="false">        <!-- View Mode -->    <div class="dialog-content" *ngIf="!editMode && selectedService">        <div class="detail-row">          <span class="detail-label">Knowledge:</span>          <span class="detail-value">            <span class="env-bubble env-{{ selectedService.knowledge | lowercase }}">{{selectedService.knowledge}}</span>          </span>        </div>                <div class="detail-row">          <span class="detail-label">Stato:</span>          <span class="detail-value">{{selectedService.stato}}</span>        </div>                <app-cross-source *ngIf="displayDialog" sourceType="services" [sourceId]="selectedService.id" />                <div class="dialog-actions" *ngIf="canWrite">          <button class="preset-btn edit-btn" (click)="openEditDialog()">            <i class="fa-solid fa-pen"></i> Modifica          </button>        </div>    </div>    <!-- Edit Mode -->    <div class="dialog-content form-content" *ngIf="editMode">        <div class="form-group">          <label class="form-label" for="service-form-name">Nome Servizio *</label>          <input id="service-form-name" type="text" pInputText [(ngModel)]="formData.servizio" placeholder="Inserisci il nome del servizio" class="form-input" />        </div>                <div class="form-group">          <span class="form-label">Grado Knowledge *</span>          <fieldset class="quick-filters" style="margin-top: 5px; border: 0; padding: 0;">            <legend class="visually-hidden">Grado Knowledge</legend>            <button type="button" class="filter-chip" [class.active]="formData.knowledge === \'Full\'" (click)="formData.knowledge = \'Full\'">Full</button>            <button type="button" class="filter-chip" [class.active]="formData.knowledge === \'Limited\'" (click)="formData.knowledge = \'Limited\'">Limited</button>            <button type="button" class="filter-chip" [class.active]="formData.knowledge === \'Absent\'" (click)="formData.knowledge = \'Absent\'">Absent</button>          </fieldset>        </div>                <div class="form-group">          <label class="form-label" for="service-form-state">Stato</label>          <input id="service-form-state" type="text" pInputText [(ngModel)]="formData.stato" placeholder="Es. Ereditata" class="form-input" />        </div>        <div class="dialog-actions">          <button class="preset-btn cancel-btn" (click)="displayDialog = false">Annulla</button>          <button class="preset-btn save-btn" (click)="saveService()">Salva</button>        </div>    </div>  </p-dialog></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BigcardComponent', 'selector': 'app-bigcard'},{'name': 'CrossSourceComponent', 'selector': 'app-cross-source'},{'name': 'CveAnalysisComponent', 'selector': 'app-cve-analysis'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FilterItemComponent', 'selector': 'app-filter-item'},{'name': 'FixesComponent', 'selector': 'app-fixes'},{'name': 'GlobalFiltersComponent', 'selector': 'app-global-filters'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HostsComponent', 'selector': 'app-hosts'},{'name': 'ImportDialogComponent', 'selector': 'app-import-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineComponent', 'selector': 'app-machine'},{'name': 'MailingComponent', 'selector': 'app-mailing'},{'name': 'MainpageComponent', 'selector': 'app-mainpage'},{'name': 'MonitoringComponent', 'selector': 'app-monitoring'},{'name': 'SearchFieldComponent', 'selector': 'app-search-field'},{'name': 'ServicesComponent', 'selector': 'app-services'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedTableComponent', 'selector': 'app-shared-table'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SiteCardComponent', 'selector': 'app-site-card'},{'name': 'SitesComponent', 'selector': 'app-sites'},{'name': 'SmartcardComponent', 'selector': 'app-smartcard'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'WipComponent', 'selector': 'app-wip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ServicesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ServicesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

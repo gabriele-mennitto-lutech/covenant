@@ -1,0 +1,2259 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MailingComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/mailing/mailing.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-mailing</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>InputTextModule</code>
+                                <code><a href="../components/SearchFieldComponent.html" target="_self" >SearchFieldComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./mailing.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./mailing.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#apiUrl" >apiUrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#htmlContainer" >htmlContainer</a>
+                            </li>
+                            <li>
+                                <a href="#newTemplate" >newTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#renderedHtml" >renderedHtml</a>
+                            </li>
+                            <li>
+                                <a href="#searchQuery" >searchQuery</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTemplate" >selectedTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#showCreateModal" >showCreateModal</a>
+                            </li>
+                            <li>
+                                <a href="#showRendered" >showRendered</a>
+                            </li>
+                            <li>
+                                <a href="#showUseModal" >showUseModal</a>
+                            </li>
+                            <li>
+                                <a href="#templates" >templates</a>
+                            </li>
+                            <li>
+                                <a href="#templateVariables" >templateVariables</a>
+                            </li>
+                            <li>
+                                <a href="#useData" >useData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#closeCreateModal" >closeCreateModal</a>
+                            </li>
+                            <li>
+                                <a href="#closeUseModal" >closeUseModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#copyToClipboard" >copyToClipboard</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteTemplate" >deleteTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#escapeRegExp" >escapeRegExp</a>
+                            </li>
+                            <li>
+                                <a href="#filteredTemplates" >filteredTemplates</a>
+                            </li>
+                            <li>
+                                <a href="#generateMail" >generateMail</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#handleKeyboardEvent" >handleKeyboardEvent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#loadTemplates" >loadTemplates</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openCreateModal" >openCreateModal</a>
+                            </li>
+                            <li>
+                                <a href="#openEditModal" >openEditModal</a>
+                            </li>
+                            <li>
+                                <a href="#openUseModal" >openUseModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#parseMarkdown" >parseMarkdown</a>
+                            </li>
+                            <li>
+                                <a href="#renderPreview" >renderPreview</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#saveTemplate" >saveTemplate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#document:keydown" >document:keydown</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(notif: <a href="../injectables/NotificationService.html" target="_self">NotificationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/mailing/mailing.component.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>notif</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotificationService.html" target="_self" >NotificationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document:keydown"></a>
+                    <span class="name">
+                        <span ><b>document:keydown</b></span>
+                        <a href="#document:keydown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>document:keydown(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeCreateModal"></a>
+                    <span class="name">
+                        <span ><b>closeCreateModal</b></span>
+                        <a href="#closeCreateModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeCreateModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeUseModal"></a>
+                    <span class="name">
+                        <span ><b>closeUseModal</b></span>
+                        <a href="#closeUseModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeUseModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:155</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="copyToClipboard"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>copyToClipboard</b></span>
+                        <a href="#copyToClipboard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>copyToClipboard()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:205</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteTemplate</b></span>
+                        <a href="#deleteTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteTemplate(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="escapeRegExp"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>escapeRegExp</b></span>
+                        <a href="#escapeRegExp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>escapeRegExp(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:173</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredTemplates"></a>
+                    <span class="name">
+                        <span ><b>filteredTemplates</b></span>
+                        <a href="#filteredTemplates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filteredTemplates()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateMail"></a>
+                    <span class="name">
+                        <span ><b>generateMail</b></span>
+                        <a href="#generateMail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateMail()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="200"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:200</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleKeyboardEvent"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>handleKeyboardEvent</b></span>
+                        <a href="#handleKeyboardEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleKeyboardEvent(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;document:keydown&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>KeyboardEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadTemplates"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>loadTemplates</b></span>
+                        <a href="#loadTemplates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadTemplates()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openCreateModal"></a>
+                    <span class="name">
+                        <span ><b>openCreateModal</b></span>
+                        <a href="#openCreateModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openCreateModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openEditModal"></a>
+                    <span class="name">
+                        <span ><b>openEditModal</b></span>
+                        <a href="#openEditModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openEditModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openUseModal"></a>
+                    <span class="name">
+                        <span ><b>openUseModal</b></span>
+                        <a href="#openUseModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openUseModal(template: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:125</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>template</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseMarkdown"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>parseMarkdown</b></span>
+                        <a href="#parseMarkdown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>parseMarkdown(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:177</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>text</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderPreview"></a>
+                    <span class="name">
+                        <span ><b>renderPreview</b></span>
+                        <a href="#renderPreview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>renderPreview()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>saveTemplate</b></span>
+                        <a href="#saveTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>saveTemplate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/components/mailing/mailing.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apiUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>apiUrl</b></span>
+                        <a href="#apiUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;/api/mailing&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/mailing/mailing.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="htmlContainer"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>htmlContainer</b></span>
+                        <a href="#htmlContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;htmlContainer&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/mailing/mailing.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newTemplate"></a>
+                    <span class="name">
+                        <span ><b>newTemplate</b></span>
+                        <a href="#newTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    title: &#x27;&#x27;,
+    description: &#x27;&#x27;,
+    subject: &#x27;&#x27;,
+    recipients: &#x27;&#x27;,
+    content: &#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/mailing/mailing.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderedHtml"></a>
+                    <span class="name">
+                        <span ><b>renderedHtml</b></span>
+                        <a href="#renderedHtml"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/mailing/mailing.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchQuery"></a>
+                    <span class="name">
+                        <span ><b>searchQuery</b></span>
+                        <a href="#searchQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/mailing/mailing.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTemplate"></a>
+                    <span class="name">
+                        <span ><b>selectedTemplate</b></span>
+                        <a href="#selectedTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/mailing/mailing.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showCreateModal"></a>
+                    <span class="name">
+                        <span ><b>showCreateModal</b></span>
+                        <a href="#showCreateModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/mailing/mailing.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showRendered"></a>
+                    <span class="name">
+                        <span ><b>showRendered</b></span>
+                        <a href="#showRendered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/mailing/mailing.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUseModal"></a>
+                    <span class="name">
+                        <span ><b>showUseModal</b></span>
+                        <a href="#showUseModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/mailing/mailing.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="templates"></a>
+                    <span class="name">
+                        <span ><b>templates</b></span>
+                        <a href="#templates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/mailing/mailing.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="templateVariables"></a>
+                    <span class="name">
+                        <span ><b>templateVariables</b></span>
+                        <a href="#templateVariables"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/mailing/mailing.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useData"></a>
+                    <span class="name">
+                        <span ><b>useData</b></span>
+                        <a href="#useData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    subject: &#x27;&#x27;,
+    recipients: &#x27;&#x27;,
+    variables: {}
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/mailing/mailing.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ElementRef, ViewChild, HostListener } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { InputTextModule } from &#x27;primeng/inputtext&#x27;;
+import { SearchFieldComponent } from &#x27;../search-field/search-field.component&#x27;;
+import axios from &#x27;axios&#x27;;
+import { NotificationService } from &#x27;../../services/notification.service&#x27;;
+
+@Component({
+  selector: &#x27;app-mailing&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, InputTextModule, SearchFieldComponent],
+  templateUrl: &#x27;./mailing.component.html&#x27;,
+  styleUrls: [&#x27;./mailing.component.css&#x27;]
+})
+export class MailingComponent implements OnInit {
+  @ViewChild(&#x27;htmlContainer&#x27;) htmlContainer!: ElementRef;
+
+  templates: any[] &#x3D; [];
+  searchQuery: string &#x3D; &#x27;&#x27;;
+
+  showCreateModal: boolean &#x3D; false;
+  showUseModal: boolean &#x3D; false;
+  showRendered: boolean &#x3D; false;
+  renderedHtml: string &#x3D; &#x27;&#x27;;
+
+  newTemplate: any &#x3D; {
+    title: &#x27;&#x27;,
+    description: &#x27;&#x27;,
+    subject: &#x27;&#x27;,
+    recipients: &#x27;&#x27;,
+    content: &#x27;&#x27;
+  };
+
+  selectedTemplate: any &#x3D; null;
+  templateVariables: string[] &#x3D; [];
+  
+  useData: any &#x3D; {
+    subject: &#x27;&#x27;,
+    recipients: &#x27;&#x27;,
+    variables: {}
+  };
+
+  private readonly apiUrl &#x3D; &#x27;/api/mailing&#x27;;
+
+  constructor(private readonly notif: NotificationService) { }
+
+  @HostListener(&#x27;document:keydown&#x27;, [&#x27;$event&#x27;])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key &#x3D;&#x3D;&#x3D; &#x27;Backspace&#x27;) {
+      const target &#x3D; event.target as HTMLElement;
+      // Previene il comportamento &quot;Back&quot; del browser se l&#x27;utente preme backspace fuori da un input
+      if (target.tagName !&#x3D;&#x3D; &#x27;INPUT&#x27; &amp;&amp; target.tagName !&#x3D;&#x3D; &#x27;TEXTAREA&#x27;) {
+        event.preventDefault();
+      }
+    }
+  }
+
+  ngOnInit(): void {
+    this.loadTemplates();
+  }
+
+  async loadTemplates() {
+    try {
+      const response &#x3D; await axios.get(&#x60;${this.apiUrl}/templates&#x60;);
+      this.templates &#x3D; response.data;
+    } catch (err) {
+      console.error(&#x27;Error fetching templates&#x27;, err);
+    }
+  }
+
+  filteredTemplates() {
+    if (!this.searchQuery) return this.templates;
+    const q &#x3D; this.searchQuery.toLowerCase();
+    return this.templates.filter(t &#x3D;&gt; 
+      t.title?.toLowerCase().includes(q) || 
+      t.description?.toLowerCase().includes(q)
+    );
+  }
+
+  openCreateModal() {
+    this.newTemplate &#x3D; { title: &#x27;&#x27;, description: &#x27;&#x27;, subject: &#x27;&#x27;, recipients: &#x27;&#x27;, content: &#x27;&#x27; };
+    this.showCreateModal &#x3D; true;
+  }
+
+  openEditModal() {
+    this.newTemplate &#x3D; { ...this.selectedTemplate };
+    this.showUseModal &#x3D; false;
+    this.showCreateModal &#x3D; true;
+  }
+
+  closeCreateModal() {
+    this.showCreateModal &#x3D; false;
+  }
+
+  async saveTemplate() {
+    try {
+      if (this.newTemplate.id) {
+        await axios.put(&#x60;${this.apiUrl}/templates/${this.newTemplate.id}&#x60;, this.newTemplate);
+        this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Template &quot;${this.newTemplate.title}&quot; aggiornato&#x60; });
+      } else {
+        await axios.post(&#x60;${this.apiUrl}/templates&#x60;, this.newTemplate);
+        this.notif.showToast({ type: &#x27;success&#x27;, message: &#x60;Template &quot;${this.newTemplate.title}&quot; creato&#x60; });
+      }
+      this.closeCreateModal();
+      this.loadTemplates();
+    } catch (err) {
+      console.error(&#x27;Error saving template&#x27;, err);
+    }
+  }
+
+  async deleteTemplate(id: number) {
+    if (confirm(&#x27;Sei sicuro di voler eliminare questo template?&#x27;)) {
+      try {
+        await axios.delete(&#x60;${this.apiUrl}/templates/${id}&#x60;);
+        this.notif.showToast({ type: &#x27;warning&#x27;, message: &#x60;Template mail eliminato&#x60; });
+        this.closeUseModal();
+        this.loadTemplates();
+      } catch (err) {
+        console.error(&#x27;Error deleting template&#x27;, err);
+      }
+    }
+  }
+
+  openUseModal(template: any) {
+    this.selectedTemplate &#x3D; template;
+    this.useData.subject &#x3D; template.subject || &#x27;&#x27;;
+    this.useData.recipients &#x3D; template.recipients || &#x27;&#x27;;
+    this.useData.variables &#x3D; {};
+    this.showRendered &#x3D; false;
+    this.renderedHtml &#x3D; &#x27;&#x27;;
+
+    // Extract variables using regex \$\{([^}]+)\}
+    const contentRegex &#x3D; /\$\{([^}]+)\}/g;
+    let match: RegExpExecArray | null;
+    const vars &#x3D; new Set&lt;string&gt;();
+    while ((match &#x3D; contentRegex.exec(template.content ?? &#x27;&#x27;)) !&#x3D;&#x3D; null) {
+      vars.add(match[1]);
+    }
+    
+    // Check subject for variables too
+    const subjectRegex &#x3D; /\$\{([^}]+)\}/g;
+    while ((match &#x3D; subjectRegex.exec(this.useData.subject ?? &#x27;&#x27;)) !&#x3D;&#x3D; null) {
+      vars.add(match[1]);
+    }
+
+    this.templateVariables &#x3D; Array.from(vars);
+    this.templateVariables.forEach(v &#x3D;&gt; {
+      this.useData.variables[v] &#x3D; &#x27;&#x27;;
+    });
+
+    this.showUseModal &#x3D; true;
+  }
+
+  closeUseModal() {
+    this.showUseModal &#x3D; false;
+    this.selectedTemplate &#x3D; null;
+  }
+
+  renderPreview() {
+    if (!this.selectedTemplate) return;
+    
+    let parsedContent &#x3D; this.selectedTemplate.content || &#x27;&#x27;;
+    for (const v of this.templateVariables) {
+      const val &#x3D; this.useData.variables[v] || &#x27;&#x27;;
+      const escapedVar &#x3D; this.escapeRegExp(v);
+      parsedContent &#x3D; parsedContent.replace(new RegExp(String.raw&#x60;\$\{${escapedVar}\}&#x60;, &#x27;g&#x27;), val);
+    }
+    
+    this.renderedHtml &#x3D; this.parseMarkdown(parsedContent);
+  }
+
+  private escapeRegExp(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, String.raw&#x60;\$&amp;&#x60;);
+  }
+
+  private parseMarkdown(text: string): string {
+    if (!text) return &#x27;&#x27;;
+    let html &#x3D; text;
+    
+    // Headers
+    html &#x3D; html.replace(/^### (.*$)/gim, &#x27;&lt;h3&gt;$1&lt;/h3&gt;&#x27;);
+    html &#x3D; html.replace(/^## (.*$)/gim, &#x27;&lt;h2&gt;$1&lt;/h2&gt;&#x27;);
+    html &#x3D; html.replace(/^# (.*$)/gim, &#x27;&lt;h1&gt;$1&lt;/h1&gt;&#x27;);
+    
+    // Bold and Italic
+    html &#x3D; html.replace(/\*\*([^*]+)\*\*/gim, &#x27;&lt;strong&gt;$1&lt;/strong&gt;&#x27;);
+    html &#x3D; html.replace(/\*([^*]+)\*/gim, &#x27;&lt;em&gt;$1&lt;/em&gt;&#x27;);
+    
+    // Links
+    html &#x3D; html.replace(/\[([^\]]*)\]\(([^)]*)\)/gim, &#x27;&lt;a href&#x3D;&quot;$2&quot; target&#x3D;&quot;_blank&quot;&gt;$1&lt;/a&gt;&#x27;);
+    
+    // Paragraphs / Newlines
+    html &#x3D; html.replace(/\n$/gim, &#x27;&lt;br /&gt;&#x27;);
+    html &#x3D; html.replace(/\n/gim, &#x27;&lt;br /&gt;&#x27;);
+    
+    return html;
+  }
+
+  generateMail() {
+    this.renderPreview();
+    this.showRendered &#x3D; true;
+  }
+
+  async copyToClipboard() {
+    if (this.htmlContainer?.nativeElement) {
+      try {
+        await navigator.clipboard.writeText(this.htmlContainer.nativeElement.innerText || &#x27;&#x27;);
+        alert(&#x27;Testo copiato negli appunti! Ora puoi incollarlo su Outlook.&#x27;);
+      } catch (err) {
+        console.error(&#x27;Failed to copy&#x27;, err);
+        alert(&#x27;Errore durante la copia.&#x27;);
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;mailing-container active-view&quot;&gt;
+    &lt;div style&#x3D;&quot;margin-bottom: 24px;&quot;&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot; style&#x3D;&quot;margin-bottom: 20px;&quot;&gt;Mailing Templates&lt;/h1&gt;
+        &lt;div style&#x3D;&quot;display: flex; align-items: center; gap: 12px;&quot;&gt;
+            &lt;div class&#x3D;&quot;search-container&quot; style&#x3D;&quot;flex: 1;&quot;&gt;
+                &lt;app-search-field inputId&#x3D;&quot;mailing-search-input&quot; label&#x3D;&quot;Cerca template&quot;
+                    placeholder&#x3D;&quot;Cerca template...&quot; [(value)]&#x3D;&quot;searchQuery&quot; /&gt;
+            &lt;/div&gt;
+            &lt;i class&#x3D;&quot;fa-solid fa-circle-question&quot; style&#x3D;&quot;font-size: 1.5rem; color: var(--text-muted); cursor: help; flex-shrink: 0;&quot; title&#x3D;&quot;I template supportano Markdown.&amp;#10;Usa la sintassi {{ &#x27;$&#x27; }}{{ &#x27;{&#x27; }}NOMEVAR{{ &#x27;}&#x27; }} per inserire variabili dinamiche.&amp;#10;Esempio: Gentile {{ &#x27;$&#x27; }}{{ &#x27;{&#x27; }}NOME{{ &#x27;}&#x27; }}, il server {{ &#x27;$&#x27; }}{{ &#x27;{&#x27; }}SERVER{{ &#x27;}&#x27; }} è giù.&quot;&gt;&lt;/i&gt;
+            &lt;button class&#x3D;&quot;preset-btn preset-btn-danger rounded-btn&quot; style&#x3D;&quot;flex-shrink: 0; white-space: nowrap;&quot; (click)&#x3D;&quot;openCreateModal()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-plus&quot;&gt;&lt;/i&gt; Nuovo Template
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;template-grid&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;template-card&quot; *ngFor&#x3D;&quot;let template of filteredTemplates()&quot; (click)&#x3D;&quot;openUseModal(template)&quot; [attr.aria-label]&#x3D;&quot;&#x27;Apri template &#x27; + template.title&quot;&gt;
+            &lt;div class&#x3D;&quot;card-content&quot; style&#x3D;&quot;padding: 20px;&quot;&gt;
+                &lt;h3&gt;{{ template.title }}&lt;/h3&gt;
+                &lt;p&gt;{{ template.description }}&lt;/p&gt;
+                &lt;div style&#x3D;&quot;margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);&quot;&gt;
+                    &lt;strong&gt;Oggetto:&lt;/strong&gt; {{ template.subject }}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Create/Edit Modal --&gt;
+&lt;div class&#x3D;&quot;modal-overlay&quot; *ngIf&#x3D;&quot;showCreateModal&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content custom-modal&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot; (keydown)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+        &lt;h2 class&#x3D;&quot;modal-title&quot;&gt;{{ newTemplate.id ? &#x27;Modifica Template&#x27; : &#x27;Crea Nuovo Template&#x27; }}&lt;/h2&gt;
+        
+        &lt;div style&#x3D;&quot;display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;&quot;&gt;
+            &lt;div class&#x3D;&quot;var-input&quot;&gt;
+                &lt;label for&#x3D;&quot;new-template-title&quot;&gt;Titolo&lt;/label&gt;
+                &lt;input id&#x3D;&quot;new-template-title&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;newTemplate.title&quot; placeholder&#x3D;&quot;Es. Comunicazione di Manutenzione&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;var-input&quot;&gt;
+                &lt;label for&#x3D;&quot;new-template-description&quot;&gt;Descrizione&lt;/label&gt;
+                &lt;input id&#x3D;&quot;new-template-description&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;newTemplate.description&quot; placeholder&#x3D;&quot;Breve descrizione del template&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;var-input&quot;&gt;
+                &lt;label for&#x3D;&quot;new-template-subject&quot;&gt;Oggetto Mail&lt;/label&gt;
+                &lt;input id&#x3D;&quot;new-template-subject&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;newTemplate.subject&quot; placeholder&#x3D;&quot;Oggetto della mail (supporta variabili)&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;var-input&quot;&gt;
+                &lt;label for&#x3D;&quot;new-template-recipients&quot;&gt;Destinatari&lt;/label&gt;
+                &lt;input id&#x3D;&quot;new-template-recipients&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;newTemplate.recipients&quot; placeholder&#x3D;&quot;Indirizzi email separati da virgola&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;var-input&quot;&gt;
+                &lt;label for&#x3D;&quot;new-template-content&quot;&gt;Contenuto (Markdown supportato, usa {{ &#x27;$&#x27; }}{{ &#x27;{&#x27; }}VAR{{ &#x27;}&#x27; }} per le variabili)&lt;/label&gt;
+                &lt;textarea id&#x3D;&quot;new-template-content&quot; [(ngModel)]&#x3D;&quot;newTemplate.content&quot; rows&#x3D;&quot;10&quot; style&#x3D;&quot;font-family: monospace; resize: vertical;&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div style&#x3D;&quot;display: flex; justify-content: flex-end; gap: 15px;&quot;&gt;
+            &lt;button class&#x3D;&quot;preset-btn preset-btn-outline rounded-btn&quot; (click)&#x3D;&quot;closeCreateModal()&quot;&gt;Annulla&lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn preset-btn-danger rounded-btn&quot; (click)&#x3D;&quot;saveTemplate()&quot;&gt;Salva&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Use Template Modal --&gt;
+&lt;div class&#x3D;&quot;modal-overlay&quot; *ngIf&#x3D;&quot;showUseModal &amp;&amp; selectedTemplate&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content custom-modal&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot; (keydown)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+        &lt;h2 class&#x3D;&quot;modal-title&quot;&gt;{{ selectedTemplate.title }}&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;modal-subtitle&quot;&gt;{{ selectedTemplate.description }}&lt;/p&gt;
+
+        &lt;!-- Variabili e altri campi --&gt;
+        &lt;div class&#x3D;&quot;variables-section&quot;&gt;
+            &lt;h3 style&#x3D;&quot;color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-size: 1.1rem;&quot;&gt;Dettagli Mail&lt;/h3&gt;
+            &lt;div class&#x3D;&quot;var-input&quot;&gt;
+                &lt;label for&#x3D;&quot;use-template-recipients&quot;&gt;Destinatari (A)&lt;/label&gt;
+                &lt;input id&#x3D;&quot;use-template-recipients&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;useData.recipients&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;var-input&quot;&gt;
+                &lt;label for&#x3D;&quot;use-template-subject&quot;&gt;Oggetto&lt;/label&gt;
+                &lt;input id&#x3D;&quot;use-template-subject&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;useData.subject&quot; /&gt;
+            &lt;/div&gt;
+            
+            &lt;ng-container *ngIf&#x3D;&quot;templateVariables.length &gt; 0&quot;&gt;
+                &lt;hr style&#x3D;&quot;border-color: var(--border-color); margin: 15px 0;&quot;&gt;
+                &lt;h3 style&#x3D;&quot;color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-size: 1.1rem;&quot;&gt;Variabili Contenuto&lt;/h3&gt;
+                &lt;div class&#x3D;&quot;var-input&quot; *ngFor&#x3D;&quot;let v of templateVariables&quot;&gt;
+                    &lt;label [attr.for]&#x3D;&quot;&#x27;template-var-&#x27; + v&quot;&gt;{{ v }}&lt;/label&gt;
+                    &lt;input [id]&#x3D;&quot;&#x27;template-var-&#x27; + v&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;useData.variables[v]&quot; (keyup)&#x3D;&quot;renderPreview()&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+
+        &lt;div style&#x3D;&quot;display: flex; justify-content: space-between; align-items: center;&quot;&gt;
+            &lt;div style&#x3D;&quot;display: flex; gap: 15px;&quot;&gt;
+                &lt;button class&#x3D;&quot;preset-btn preset-btn-danger rounded-btn&quot; (click)&#x3D;&quot;deleteTemplate(selectedTemplate.id)&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-trash&quot;&gt;&lt;/i&gt; Elimina
+                &lt;/button&gt;
+                &lt;button class&#x3D;&quot;preset-btn preset-btn-outline rounded-btn&quot; (click)&#x3D;&quot;openEditModal()&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-pen&quot;&gt;&lt;/i&gt; Modifica
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div style&#x3D;&quot;display: flex; gap: 15px;&quot;&gt;
+                &lt;button class&#x3D;&quot;preset-btn preset-btn-outline rounded-btn&quot; (click)&#x3D;&quot;closeUseModal()&quot;&gt;Chiudi&lt;/button&gt;
+                &lt;button class&#x3D;&quot;preset-btn preset-btn-danger rounded-btn&quot; (click)&#x3D;&quot;generateMail()&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-wand-magic-sparkles&quot;&gt;&lt;/i&gt; Crea Mail
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div *ngIf&#x3D;&quot;showRendered&quot; style&#x3D;&quot;margin-top: 25px; animation: fadeIn 0.3s ease-in-out;&quot;&gt;
+            &lt;div style&#x3D;&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;&quot;&gt;
+                &lt;h3 style&#x3D;&quot;color: var(--text-main); margin: 0; font-size: 1.1rem;&quot;&gt;Anteprima Mail (Copiabile)&lt;/h3&gt;
+                &lt;button class&#x3D;&quot;preset-btn preset-btn-outline rounded-btn&quot; style&#x3D;&quot;padding: 6px 12px; font-size: 0.9rem;&quot; (click)&#x3D;&quot;copyToClipboard()&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-copy&quot;&gt;&lt;/i&gt; Copia negli appunti
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;!-- Div renderizzato per la copia rich text --&gt;
+            &lt;div class&#x3D;&quot;rendered-html&quot; [innerHTML]&#x3D;&quot;renderedHtml&quot; #htmlContainer&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./mailing.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.mailing-container {
+    padding: 20px;
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.page-title {
+    margin-bottom: 24px;
+    font-size: 2rem;
+    color: var(--text-main);
+}
+
+.search-container {
+    flex: 1;
+    min-width: 0;
+}
+
+.rounded-btn {
+    border-radius: 4px !important;
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.template-card {
+    cursor: pointer;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    width: 100%;
+    display: block;
+}
+
+.template-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,45,90,0.1);
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-main);
+}
+
+.card-content p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content.custom-modal {
+    background: var(--bg-surface);
+    padding: 30px;
+    border-radius: 12px;
+    width: 700px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,45,90,0.15);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-main);
+    font-size: 1.5rem;
+}
+
+.modal-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.rendered-html {
+    background: var(--bg-canvas);
+    color: var(--text-main);
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 200px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.rendered-html ::ng-deep p {
+    margin-bottom: 1em;
+}
+
+.variables-section {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.var-input {
+    margin-bottom: 10px;
+}
+
+.var-input label {
+    display: block;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.var-input input, .var-input textarea {
+    width: 100%;
+    padding: 8px;
+    background: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+.var-input input:focus, .var-input textarea:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.preset-btn {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.preset-btn-danger {
+    background-color: var(--status-error);
+    border: 1px solid var(--status-error);
+    color: white;
+}
+
+.preset-btn-danger:hover {
+    background-color: #8f2026;
+}
+
+.preset-btn-primary {
+    background-color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    color: white;
+}
+
+.preset-btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.preset-btn-outline {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+
+.preset-btn-outline:hover {
+    background: var(--accent-soft);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="mailing-container active-view">    <div style="margin-bottom: 24px;">        <h1 class="page-title" style="margin-bottom: 20px;">Mailing Templates</h1>        <div style="display: flex; align-items: center; gap: 12px;">            <div class="search-container" style="flex: 1;">                <app-search-field inputId="mailing-search-input" label="Cerca template"                    placeholder="Cerca template..." [(value)]="searchQuery" />            </div>            <i class="fa-solid fa-circle-question" style="font-size: 1.5rem; color: var(--text-muted); cursor: help; flex-shrink: 0;" title="I template supportano Markdown.&#10;Usa la sintassi {{ \'$\' }}{{ \'{\' }}NOMEVAR{{ \'}\' }} per inserire variabili dinamiche.&#10;Esempio: Gentile {{ \'$\' }}{{ \'{\' }}NOME{{ \'}\' }}, il server {{ \'$\' }}{{ \'{\' }}SERVER{{ \'}\' }} è giù."></i>            <button class="preset-btn preset-btn-danger rounded-btn" style="flex-shrink: 0; white-space: nowrap;" (click)="openCreateModal()">                <i class="fa-solid fa-plus"></i> Nuovo Template            </button>        </div>    </div>    <div class="template-grid">        <button type="button" class="template-card" *ngFor="let template of filteredTemplates()" (click)="openUseModal(template)" [attr.aria-label]="\'Apri template \' + template.title">            <div class="card-content" style="padding: 20px;">                <h3>{{ template.title }}</h3>                <p>{{ template.description }}</p>                <div style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">                    <strong>Oggetto:</strong> {{ template.subject }}                </div>            </div>        </button>    </div></div><!-- Create/Edit Modal --><div class="modal-overlay" *ngIf="showCreateModal">    <div class="modal-content custom-modal" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">        <h2 class="modal-title">{{ newTemplate.id ? \'Modifica Template\' : \'Crea Nuovo Template\' }}</h2>                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">            <div class="var-input">                <label for="new-template-title">Titolo</label>                <input id="new-template-title" type="text" [(ngModel)]="newTemplate.title" placeholder="Es. Comunicazione di Manutenzione" />            </div>            <div class="var-input">                <label for="new-template-description">Descrizione</label>                <input id="new-template-description" type="text" [(ngModel)]="newTemplate.description" placeholder="Breve descrizione del template" />            </div>            <div class="var-input">                <label for="new-template-subject">Oggetto Mail</label>                <input id="new-template-subject" type="text" [(ngModel)]="newTemplate.subject" placeholder="Oggetto della mail (supporta variabili)" />            </div>            <div class="var-input">                <label for="new-template-recipients">Destinatari</label>                <input id="new-template-recipients" type="text" [(ngModel)]="newTemplate.recipients" placeholder="Indirizzi email separati da virgola" />            </div>            <div class="var-input">                <label for="new-template-content">Contenuto (Markdown supportato, usa {{ \'$\' }}{{ \'{\' }}VAR{{ \'}\' }} per le variabili)</label>                <textarea id="new-template-content" [(ngModel)]="newTemplate.content" rows="10" style="font-family: monospace; resize: vertical;"></textarea>            </div>        </div>        <div style="display: flex; justify-content: flex-end; gap: 15px;">            <button class="preset-btn preset-btn-outline rounded-btn" (click)="closeCreateModal()">Annulla</button>            <button class="preset-btn preset-btn-danger rounded-btn" (click)="saveTemplate()">Salva</button>        </div>    </div></div><!-- Use Template Modal --><div class="modal-overlay" *ngIf="showUseModal && selectedTemplate">    <div class="modal-content custom-modal" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">        <h2 class="modal-title">{{ selectedTemplate.title }}</h2>        <p class="modal-subtitle">{{ selectedTemplate.description }}</p>        <!-- Variabili e altri campi -->        <div class="variables-section">            <h3 style="color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-size: 1.1rem;">Dettagli Mail</h3>            <div class="var-input">                <label for="use-template-recipients">Destinatari (A)</label>                <input id="use-template-recipients" type="text" [(ngModel)]="useData.recipients" />            </div>            <div class="var-input">                <label for="use-template-subject">Oggetto</label>                <input id="use-template-subject" type="text" [(ngModel)]="useData.subject" />            </div>                        <ng-container *ngIf="templateVariables.length > 0">                <hr style="border-color: var(--border-color); margin: 15px 0;">                <h3 style="color: var(--text-main); margin-top: 0; margin-bottom: 15px; font-size: 1.1rem;">Variabili Contenuto</h3>                <div class="var-input" *ngFor="let v of templateVariables">                    <label [attr.for]="\'template-var-\' + v">{{ v }}</label>                    <input [id]="\'template-var-\' + v" type="text" [(ngModel)]="useData.variables[v]" (keyup)="renderPreview()" />                </div>            </ng-container>        </div>        <div style="display: flex; justify-content: space-between; align-items: center;">            <div style="display: flex; gap: 15px;">                <button class="preset-btn preset-btn-danger rounded-btn" (click)="deleteTemplate(selectedTemplate.id)">                    <i class="fa-solid fa-trash"></i> Elimina                </button>                <button class="preset-btn preset-btn-outline rounded-btn" (click)="openEditModal()">                    <i class="fa-solid fa-pen"></i> Modifica                </button>            </div>            <div style="display: flex; gap: 15px;">                <button class="preset-btn preset-btn-outline rounded-btn" (click)="closeUseModal()">Chiudi</button>                <button class="preset-btn preset-btn-danger rounded-btn" (click)="generateMail()">                    <i class="fa-solid fa-wand-magic-sparkles"></i> Crea Mail                </button>            </div>        </div>        <div *ngIf="showRendered" style="margin-top: 25px; animation: fadeIn 0.3s ease-in-out;">            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">                <h3 style="color: var(--text-main); margin: 0; font-size: 1.1rem;">Anteprima Mail (Copiabile)</h3>                <button class="preset-btn preset-btn-outline rounded-btn" style="padding: 6px 12px; font-size: 0.9rem;" (click)="copyToClipboard()">                    <i class="fa-solid fa-copy"></i> Copia negli appunti                </button>            </div>            <!-- Div renderizzato per la copia rich text -->            <div class="rendered-html" [innerHTML]="renderedHtml" #htmlContainer></div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BigcardComponent', 'selector': 'app-bigcard'},{'name': 'CrossSourceComponent', 'selector': 'app-cross-source'},{'name': 'CveAnalysisComponent', 'selector': 'app-cve-analysis'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FilterItemComponent', 'selector': 'app-filter-item'},{'name': 'FixesComponent', 'selector': 'app-fixes'},{'name': 'GlobalFiltersComponent', 'selector': 'app-global-filters'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HostsComponent', 'selector': 'app-hosts'},{'name': 'ImportDialogComponent', 'selector': 'app-import-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineComponent', 'selector': 'app-machine'},{'name': 'MailingComponent', 'selector': 'app-mailing'},{'name': 'MainpageComponent', 'selector': 'app-mainpage'},{'name': 'MonitoringComponent', 'selector': 'app-monitoring'},{'name': 'SearchFieldComponent', 'selector': 'app-search-field'},{'name': 'ServicesComponent', 'selector': 'app-services'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedTableComponent', 'selector': 'app-shared-table'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SiteCardComponent', 'selector': 'app-site-card'},{'name': 'SitesComponent', 'selector': 'app-sites'},{'name': 'SmartcardComponent', 'selector': 'app-smartcard'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'WipComponent', 'selector': 'app-wip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MailingComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MailingComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,43 @@
+AVVIO COVENANT - SOC INFRA (WINDOWS / POWERSHELL)
+
+Aprire tre terminali nella directory principale del repository.
+Installare le dipendenze una sola volta con `npm ci` dentro ciascun servizio.
+
+TERMINALE 1 - DATASERVICE
+cd dataservice
+npm run dev
+
+TERMINALE 2 - BACKEND
+cd back-end
+npm run dev
+
+TERMINALE 3 - FRONTEND ANGULAR
+cd angular-app
+npm start
+
+URL:
+- frontend: http://localhost:4200/
+- backend Swagger: http://localhost:9991/api-docs/
+- dataservice Swagger: http://localhost:9992/docs/
+- Compodoc: http://localhost:9991/fe-docs/
+
+Il proxy Angular inoltra automaticamente `/api` al backend. Se il progetto
+viene eseguito in un ambiente in cui Node non è nel PATH, aggiungere al PATH
+il binario Node fornito dal setup locale prima di eseguire npm.
+
+BUILD PRODUCTION
+
+cd dataservice
+npm run build
+npm start
+
+cd back-end
+npm run build
+npm start
+
+cd angular-app
+npm run build
+
+Pubblicare angular-app/dist/angular-app/browser con IIS, configurando il
+fallback SPA e il reverse proxy /api verso il backend. Vedere il README.
+Usare un DB_PATH dedicato a Covenant, senza condividere il database originale.

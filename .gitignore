@@ -1,0 +1,7 @@
+# Locals
+local_utils/
+Excel/
+bin/
+data/
+tmp/
+.env

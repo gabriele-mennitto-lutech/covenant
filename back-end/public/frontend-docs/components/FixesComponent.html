@@ -1,0 +1,2681 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FixesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/fixes/fixes.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente/Servizio FixesComponent</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-fixes</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                                <code><a href="../components/SharedTableComponent.html" target="_self" >SharedTableComponent</a></code>
+                                <code><a href="../components/GlobalFiltersComponent.html" target="_self" >GlobalFiltersComponent</a></code>
+                            <code>InputSwitchModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./fixes.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./fixes.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeDivisions" >activeDivisions</a>
+                            </li>
+                            <li>
+                                <a href="#animateFilters" >animateFilters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#auth" >auth</a>
+                            </li>
+                            <li>
+                                <a href="#availableOS" >availableOS</a>
+                            </li>
+                            <li>
+                                <a href="#baseFilters" >baseFilters</a>
+                            </li>
+                            <li>
+                                <a href="#currentAvailableOSVersions" >currentAvailableOSVersions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#divisions" >divisions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#exportColumns" >exportColumns</a>
+                            </li>
+                            <li>
+                                <a href="#filterAmbiente" >filterAmbiente</a>
+                            </li>
+                            <li>
+                                <a href="#filterLocazione" >filterLocazione</a>
+                            </li>
+                            <li>
+                                <a href="#filterNodo" >filterNodo</a>
+                            </li>
+                            <li>
+                                <a href="#filterOS" >filterOS</a>
+                            </li>
+                            <li>
+                                <a href="#filterOSFamily" >filterOSFamily</a>
+                            </li>
+                            <li>
+                                <a href="#filtersCollapsed" >filtersCollapsed</a>
+                            </li>
+                            <li>
+                                <a href="#filterStatus" >filterStatus</a>
+                            </li>
+                            <li>
+                                <a href="#filterZona" >filterZona</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#fixesTables" >fixesTables</a>
+                            </li>
+                            <li>
+                                <a href="#hosts" >hosts</a>
+                            </li>
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                <a href="#selectionsByDivision" >selectionsByDivision</a>
+                            </li>
+                            <li>
+                                <a href="#showExportModal" >showExportModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#sub" >sub</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applyGlobalFilters" >applyGlobalFilters</a>
+                            </li>
+                            <li>
+                                <a href="#clearFilters" >clearFilters</a>
+                            </li>
+                            <li>
+                                <a href="#clearSelectionsAndReload" >clearSelectionsAndReload</a>
+                            </li>
+                            <li>
+                                <a href="#closeExportModal" >closeExportModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#exportSelected" >exportSelected</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#fixSelected" >fixSelected</a>
+                            </li>
+                            <li>
+                                <a href="#getAvailableOSVersions" >getAvailableOSVersions</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSelectionChange" >onSelectionChange</a>
+                            </li>
+                            <li>
+                                <a href="#openExportModal" >openExportModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#resetSelected" >resetSelected</a>
+                            </li>
+                            <li>
+                                <a href="#setExclusiveEnv" >setExclusiveEnv</a>
+                            </li>
+                            <li>
+                                <a href="#setPreset" >setPreset</a>
+                            </li>
+                            <li>
+                                <a href="#toggleFilters" >toggleFilters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#toggleFilterValue" >toggleFilterValue</a>
+                            </li>
+                            <li>
+                                <a href="#updateAvailableOSVersions" >updateAvailableOSVersions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#selectedHosts" >selectedHosts</a>
+                                </li>
+                                <li>
+                                    <a href="#canWrite" >canWrite</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(backend: <a href="../injectables/BackendService.html" target="_self">BackendService</a>, auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, notif: <a href="../injectables/NotificationService.html" target="_self">NotificationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/components/fixes/fixes.component.ts:103</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Costruttore di FixesComponent</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>backend</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BackendService.html" target="_self" >BackendService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>notif</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotificationService.html" target="_self" >NotificationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyGlobalFilters"></a>
+                    <span class="name">
+                        <span ><b>applyGlobalFilters</b></span>
+                        <a href="#applyGlobalFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyGlobalFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="171"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:171</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo applyGlobalFilters</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearFilters"></a>
+                    <span class="name">
+                        <span ><b>clearFilters</b></span>
+                        <a href="#clearFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="230"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:230</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo clearFilters</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearSelectionsAndReload"></a>
+                    <span class="name">
+                        <span ><b>clearSelectionsAndReload</b></span>
+                        <a href="#clearSelectionsAndReload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearSelectionsAndReload()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="275"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:275</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo clearSelectionsAndReload</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeExportModal"></a>
+                    <span class="name">
+                        <span ><b>closeExportModal</b></span>
+                        <a href="#closeExportModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeExportModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="293"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:293</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo closeExportModal</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportSelected"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>exportSelected</b></span>
+                        <a href="#exportSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportSelected()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="298"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:298</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo exportSelected</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fixSelected"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>fixSelected</b></span>
+                        <a href="#fixSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>fixSelected()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo fixSelected</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAvailableOSVersions"></a>
+                    <span class="name">
+                        <span ><b>getAvailableOSVersions</b></span>
+                        <a href="#getAvailableOSVersions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAvailableOSVersions()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getAvailableOSVersions</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>string[]</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook ngOnInit</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelectionChange"></a>
+                    <span class="name">
+                        <span ><b>onSelectionChange</b></span>
+                        <a href="#onSelectionChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelectionChange(division: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, selected: <a href="../interfaces/Host.html" target="_self">Host[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="242"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:242</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo onSelectionChange</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>division</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>selected</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openExportModal"></a>
+                    <span class="name">
+                        <span ><b>openExportModal</b></span>
+                        <a href="#openExportModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openExportModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="286"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:286</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo openExportModal</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetSelected"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>resetSelected</b></span>
+                        <a href="#resetSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetSelected()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="261"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:261</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo resetSelected</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setExclusiveEnv"></a>
+                    <span class="name">
+                        <span ><b>setExclusiveEnv</b></span>
+                        <a href="#setExclusiveEnv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setExclusiveEnv(env: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="223"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:223</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo setExclusiveEnv</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>env</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPreset"></a>
+                    <span class="name">
+                        <span ><b>setPreset</b></span>
+                        <a href="#setPreset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPreset(col: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, val: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo setPreset</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>col</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>val</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFilters"></a>
+                    <span class="name">
+                        <span ><b>toggleFilters</b></span>
+                        <a href="#toggleFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo toggleFilters</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFilterValue"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>toggleFilterValue</b></span>
+                        <a href="#toggleFilterValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>toggleFilterValue(filters: string[], value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:143</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filters</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateAvailableOSVersions"></a>
+                    <span class="name">
+                        <span ><b>updateAvailableOSVersions</b></span>
+                        <a href="#updateAvailableOSVersions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateAvailableOSVersions()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/components/fixes/fixes.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateAvailableOSVersions</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeDivisions"></a>
+                    <span class="name">
+                        <span ><b>activeDivisions</b></span>
+                        <a href="#activeDivisions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/fixes/fixes.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà activeDivisions</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="animateFilters"></a>
+                    <span class="name">
+                        <span ><b>animateFilters</b></span>
+                        <a href="#animateFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/components/fixes/fixes.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà animateFilters</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/components/fixes/fixes.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="availableOS"></a>
+                    <span class="name">
+                        <span ><b>availableOS</b></span>
+                        <a href="#availableOS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/fixes/fixes.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà availableOS</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="baseFilters"></a>
+                    <span class="name">
+                        <span ><b>baseFilters</b></span>
+                        <a href="#baseFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/fixes/fixes.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà baseFilters</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentAvailableOSVersions"></a>
+                    <span class="name">
+                        <span ><b>currentAvailableOSVersions</b></span>
+                        <a href="#currentAvailableOSVersions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/app/components/fixes/fixes.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà currentAvailableOSVersions</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="divisions"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>divisions</b></span>
+                        <a href="#divisions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { name: &#x27;Scheduled Pari&#x27;, filter: { divisione: &#x27;Scheduled-Pari&#x27;, fixable: true } },
+    { name: &#x27;Scheduled Dispari&#x27;, filter: { divisione: &#x27;Scheduled-Dispari&#x27;, fixable: true } },
+    { name: &#x27;Manuali&#x27;, filter: { divisione: &#x27;Manuale&#x27;, fixable: true } },
+    { name: &#x27;Manuali NOC&#x27;, filter: { divisione: &#x27;Manuale NOC&#x27;, fixable: true } }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/fixes/fixes.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà divisions</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportColumns"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>exportColumns</b></span>
+                        <a href="#exportColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { key: &#x27;hostname&#x27;, label: &#x27;Hostname&#x27;, selected: true },
+    { key: &#x27;applicazione&#x27;, label: &#x27;Applicazione&#x27;, selected: true },
+    { key: &#x27;riferimento&#x27;, label: &#x27;Riferimento&#x27;, selected: false },
+    { key: &#x27;ambiente&#x27;, label: &#x27;Ambiente&#x27;, selected: true },
+    { key: &#x27;company&#x27;, label: &#x27;Company&#x27;, selected: false },
+    { key: &#x27;servizio&#x27;, label: &#x27;Servizio&#x27;, selected: false },
+    { key: &#x27;appliance&#x27;, label: &#x27;Appliance&#x27;, selected: false },
+    { key: &#x27;zona&#x27;, label: &#x27;Zona&#x27;, selected: false },
+    { key: &#x27;riferimentoEs&#x27;, label: &#x27;Riferimento ES&#x27;, selected: false },
+    { key: &#x27;locazione&#x27;, label: &#x27;Locazione&#x27;, selected: false },
+    { key: &#x27;os&#x27;, label: &#x27;OS&#x27;, selected: true },
+    { key: &#x27;manutenzione&#x27;, label: &#x27;Manutenzione&#x27;, selected: true },
+    { key: &#x27;status&#x27;, label: &#x27;Status&#x27;, selected: true },
+    { key: &#x27;nodo&#x27;, label: &#x27;Nodo&#x27;, selected: true },
+    { key: &#x27;note&#x27;, label: &#x27;Note&#x27;, selected: false },
+    { key: &#x27;pianificazione&#x27;, label: &#x27;Pianificazione&#x27;, selected: false },
+    { key: &#x27;rfc&#x27;, label: &#x27;RFC&#x27;, selected: false },
+    { key: &#x27;fixed&#x27;, label: &#x27;Fixed&#x27;, selected: false },
+    { key: &#x27;fixable&#x27;, label: &#x27;Fixable&#x27;, selected: false },
+    { key: &#x27;divisione&#x27;, label: &#x27;Divisione&#x27;, selected: false },
+    { key: &#x27;ipfe&#x27;, label: &#x27;IP Frontend&#x27;, selected: false },
+    { key: &#x27;ipmgt&#x27;, label: &#x27;IP Management&#x27;, selected: false },
+    { key: &#x27;ipfe2al&#x27;, label: &#x27;IP FE2AL&#x27;, selected: false },
+    { key: &#x27;vlfe&#x27;, label: &#x27;VLAN Frontend&#x27;, selected: false },
+    { key: &#x27;vlmgt&#x27;, label: &#x27;VLAN Management&#x27;, selected: false },
+    { key: &#x27;vlfe2al&#x27;, label: &#x27;VLAN FE2AL&#x27;, selected: false }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/fixes/fixes.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà exportColumns</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterAmbiente"></a>
+                    <span class="name">
+                        <span ><b>filterAmbiente</b></span>
+                        <a href="#filterAmbiente"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;sviluppo&#x27;, &#x27;collaudo&#x27;, &#x27;produzione&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/fixes/fixes.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterAmbiente</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterLocazione"></a>
+                    <span class="name">
+                        <span ><b>filterLocazione</b></span>
+                        <a href="#filterLocazione"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/fixes/fixes.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterLocazione</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterNodo"></a>
+                    <span class="name">
+                        <span ><b>filterNodo</b></span>
+                        <a href="#filterNodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/fixes/fixes.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterNodo</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterOS"></a>
+                    <span class="name">
+                        <span ><b>filterOS</b></span>
+                        <a href="#filterOS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/fixes/fixes.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterOS</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterOSFamily"></a>
+                    <span class="name">
+                        <span ><b>filterOSFamily</b></span>
+                        <a href="#filterOSFamily"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/fixes/fixes.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterOSFamily</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtersCollapsed"></a>
+                    <span class="name">
+                        <span ><b>filtersCollapsed</b></span>
+                        <a href="#filtersCollapsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/fixes/fixes.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filtersCollapsed</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterStatus"></a>
+                    <span class="name">
+                        <span ><b>filterStatus</b></span>
+                        <a href="#filterStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/fixes/fixes.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterStatus</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterZona"></a>
+                    <span class="name">
+                        <span ><b>filterZona</b></span>
+                        <a href="#filterZona"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/fixes/fixes.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterZona</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fixesTables"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>fixesTables</b></span>
+                        <a href="#fixesTables"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/SharedTableComponent.html" target="_self" >QueryList&lt;SharedTableComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChildren(SharedTableComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/fixes/fixes.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà fixesTables</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hosts"></a>
+                    <span class="name">
+                        <span ><b>hosts</b></span>
+                        <a href="#hosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/fixes/fixes.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà hosts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/fixes/fixes.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà isLoading</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectionsByDivision"></a>
+                    <span class="name">
+                        <span ><b>selectionsByDivision</b></span>
+                        <a href="#selectionsByDivision"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/components/fixes/fixes.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà selectionsByDivision</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showExportModal"></a>
+                    <span class="name">
+                        <span ><b>showExportModal</b></span>
+                        <a href="#showExportModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/components/fixes/fixes.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà showExportModal</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>sub</b></span>
+                        <a href="#sub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/components/fixes/fixes.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà sub</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedHosts"></a>
+                        <span class="name"><b>selectedHosts</b><a href="#selectedHosts"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>selectedHosts()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/components/fixes/fixes.component.ts:97</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="canWrite"></a>
+                        <span class="name"><b>canWrite</b><a href="#canWrite"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>canWrite()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/components/fixes/fixes.component.ts:108</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChildren, QueryList } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { BackendService, Host } from &#x27;../../services/backend.service&#x27;;
+import { NotificationService } from &#x27;../../services/notification.service&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { SharedTableComponent } from &#x27;../shared-table/shared-table.component&#x27;;
+import { GlobalFiltersComponent } from &#x27;../global-filters/global-filters.component&#x27;;
+import { InputSwitchModule } from &#x27;primeng/inputswitch&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+
+/** Componente/Servizio FixesComponent */
+@Component({
+  selector: &#x27;app-fixes&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SharedTableComponent, GlobalFiltersComponent, InputSwitchModule],
+  templateUrl: &#x27;./fixes.component.html&#x27;,
+  styleUrl: &#x27;./fixes.component.css&#x27;
+})
+export class FixesComponent implements OnInit {
+  /** Proprietà fixesTables */
+    @ViewChildren(SharedTableComponent) readonly fixesTables!: QueryList&lt;SharedTableComponent&gt;;
+  /** Proprietà divisions */
+    readonly divisions &#x3D; [
+    { name: &#x27;Scheduled Pari&#x27;, filter: { divisione: &#x27;Scheduled-Pari&#x27;, fixable: true } },
+    { name: &#x27;Scheduled Dispari&#x27;, filter: { divisione: &#x27;Scheduled-Dispari&#x27;, fixable: true } },
+    { name: &#x27;Manuali&#x27;, filter: { divisione: &#x27;Manuale&#x27;, fixable: true } },
+    { name: &#x27;Manuali NOC&#x27;, filter: { divisione: &#x27;Manuale NOC&#x27;, fixable: true } }
+  ];
+  /** Proprietà activeDivisions */
+    activeDivisions: any[] &#x3D; [];
+
+  /** Proprietà hosts */
+    hosts: Host[] &#x3D; []; // Not used for rendering anymore, but might be fetched for export
+  /** Proprietà baseFilters */
+    baseFilters: any &#x3D; {};
+  /** Proprietà isLoading */
+    isLoading &#x3D; false;
+
+  /** Proprietà filterAmbiente */
+    filterAmbiente: string[] &#x3D; [&#x27;sviluppo&#x27;, &#x27;collaudo&#x27;, &#x27;produzione&#x27;];
+  /** Proprietà filterLocazione */
+    filterLocazione: string[] &#x3D; [];
+  /** Proprietà filterNodo */
+    filterNodo: string[] &#x3D; [];
+  /** Proprietà filterStatus */
+    filterStatus: string[] &#x3D; [];
+  /** Proprietà filterZona */
+    filterZona: string[] &#x3D; [];
+  /** Proprietà filterOSFamily */
+    filterOSFamily: string[] &#x3D; [];
+  /** Proprietà filterOS */
+    filterOS: string[] &#x3D; [];
+  /** Proprietà availableOS */
+    availableOS: string[] &#x3D; [];
+  /** Proprietà filtersCollapsed */
+    filtersCollapsed &#x3D; true;
+
+  /** Proprietà showExportModal */
+    showExportModal &#x3D; false;
+  /** Proprietà exportColumns */
+    readonly exportColumns &#x3D; [
+    { key: &#x27;hostname&#x27;, label: &#x27;Hostname&#x27;, selected: true },
+    { key: &#x27;applicazione&#x27;, label: &#x27;Applicazione&#x27;, selected: true },
+    { key: &#x27;riferimento&#x27;, label: &#x27;Riferimento&#x27;, selected: false },
+    { key: &#x27;ambiente&#x27;, label: &#x27;Ambiente&#x27;, selected: true },
+    { key: &#x27;company&#x27;, label: &#x27;Company&#x27;, selected: false },
+    { key: &#x27;servizio&#x27;, label: &#x27;Servizio&#x27;, selected: false },
+    { key: &#x27;appliance&#x27;, label: &#x27;Appliance&#x27;, selected: false },
+    { key: &#x27;zona&#x27;, label: &#x27;Zona&#x27;, selected: false },
+    { key: &#x27;riferimentoEs&#x27;, label: &#x27;Riferimento ES&#x27;, selected: false },
+    { key: &#x27;locazione&#x27;, label: &#x27;Locazione&#x27;, selected: false },
+    { key: &#x27;os&#x27;, label: &#x27;OS&#x27;, selected: true },
+    { key: &#x27;manutenzione&#x27;, label: &#x27;Manutenzione&#x27;, selected: true },
+    { key: &#x27;status&#x27;, label: &#x27;Status&#x27;, selected: true },
+    { key: &#x27;nodo&#x27;, label: &#x27;Nodo&#x27;, selected: true },
+    { key: &#x27;note&#x27;, label: &#x27;Note&#x27;, selected: false },
+    { key: &#x27;pianificazione&#x27;, label: &#x27;Pianificazione&#x27;, selected: false },
+    { key: &#x27;rfc&#x27;, label: &#x27;RFC&#x27;, selected: false },
+    { key: &#x27;fixed&#x27;, label: &#x27;Fixed&#x27;, selected: false },
+    { key: &#x27;fixable&#x27;, label: &#x27;Fixable&#x27;, selected: false },
+    { key: &#x27;divisione&#x27;, label: &#x27;Divisione&#x27;, selected: false },
+    { key: &#x27;ipfe&#x27;, label: &#x27;IP Frontend&#x27;, selected: false },
+    { key: &#x27;ipmgt&#x27;, label: &#x27;IP Management&#x27;, selected: false },
+    { key: &#x27;ipfe2al&#x27;, label: &#x27;IP FE2AL&#x27;, selected: false },
+    { key: &#x27;vlfe&#x27;, label: &#x27;VLAN Frontend&#x27;, selected: false },
+    { key: &#x27;vlmgt&#x27;, label: &#x27;VLAN Management&#x27;, selected: false },
+    { key: &#x27;vlfe2al&#x27;, label: &#x27;VLAN FE2AL&#x27;, selected: false }
+  ];
+
+  /** Proprietà sub */
+    private sub!: Subscription;
+
+  /** Proprietà selectionsByDivision */
+    selectionsByDivision: { [key: string]: Host[] } &#x3D; {};
+
+  get selectedHosts(): Host[] {
+      let all: Host[] &#x3D; [];
+      for (const key of Object.keys(this.selectionsByDivision)) {
+          all &#x3D; all.concat(this.selectionsByDivision[key]);
+      }
+      return all;
+  }
+
+  /** Costruttore di FixesComponent */
+    constructor(private readonly backend: BackendService, public readonly auth: AuthService, private readonly notif: NotificationService) {}
+
+  get canWrite(): boolean {
+    return this.auth.canWrite();
+  }
+
+  /** Proprietà animateFilters */
+    animateFilters &#x3D; false;
+
+  /** Metodo toggleFilters */
+    toggleFilters() {
+    this.animateFilters &#x3D; true;
+    this.filtersCollapsed &#x3D; !this.filtersCollapsed;
+  }
+
+  /** Lifecycle hook ngOnInit */
+    ngOnInit() {
+    this.backend.getHosts({ pageSize: -1 }).then(res &#x3D;&gt; {
+      const sanitized &#x3D; res.items.filter(h &#x3D;&gt; 
+          !(h.manutenzione || &#x27;&#x27;).toLowerCase().includes(&#x27;non da aggiornare&#x27;)
+        ).map(h &#x3D;&gt; {
+          if ((h.manutenzione || &#x27;&#x27;).toLowerCase().includes(&#x27;concordare&#x27;)) {
+            h.manutenzione &#x3D; &#x27;Concordare&#x27;;
+          }
+          return h;
+        });
+
+      const osSet &#x3D; new Set(sanitized.map(h &#x3D;&gt; h.os).filter(os &#x3D;&gt; os &amp;&amp; os !&#x3D;&#x3D; &#x27;-&#x27;));
+      this.availableOS &#x3D; (Array.from(osSet) as string[]).sort((a, b) &#x3D;&gt; a.localeCompare(b));
+      
+    }).catch(err &#x3D;&gt; console.error(err));
+    this.applyGlobalFilters();
+  }
+
+  /** Proprietà currentAvailableOSVersions */
+    currentAvailableOSVersions: string[] &#x3D; [];
+
+  private toggleFilterValue(filters: string[], value: string): void {
+    const idx &#x3D; filters.indexOf(value);
+    if (idx &gt; -1) {
+      filters.splice(idx, 1);
+      return;
+    }
+    filters.push(value);
+  }
+
+  /** Metodo getAvailableOSVersions */
+    getAvailableOSVersions(): string[] {
+    if (this.filterOSFamily.length &#x3D;&#x3D;&#x3D; 0) return [];
+    return this.availableOS.filter(os &#x3D;&gt; {
+      const osl &#x3D; os.toLowerCase();
+      return this.filterOSFamily.some(f &#x3D;&gt; {
+        if (f &#x3D;&#x3D;&#x3D; &#x27;Windows&#x27;) return /^windows (10|11)(?:\b|$)/.test(osl);
+        if (f &#x3D;&#x3D;&#x3D; &#x27;Windows Server&#x27;) return /^windows server (2016|2019|2022|2025)(?:\b|$)/.test(osl);
+        return false;
+      });
+    });
+  }
+
+  /** Metodo updateAvailableOSVersions */
+    updateAvailableOSVersions() {
+    this.currentAvailableOSVersions &#x3D; this.getAvailableOSVersions();
+  }
+
+  /** Metodo applyGlobalFilters */
+    applyGlobalFilters() {
+    this.updateAvailableOSVersions();
+    
+    const base: any &#x3D; {};
+    if (this.filterAmbiente.length &gt; 0) base.ambiente &#x3D; this.filterAmbiente.join(&#x27;,&#x27;);
+    else base.ambiente &#x3D; &#x27;__none__&#x27;; // If user unchecks all default environments, show none
+
+    if (this.filterNodo.length &gt; 0) base.nodo &#x3D; this.filterNodo.join(&#x27;,&#x27;);
+    if (this.filterLocazione.length &gt; 0) base.locazione &#x3D; this.filterLocazione.join(&#x27;,&#x27;);
+    if (this.filterStatus.length &gt; 0) base.fixed &#x3D; this.filterStatus.join(&#x27;,&#x27;);
+    if (this.filterZona.length &gt; 0) base.zona &#x3D; this.filterZona.join(&#x27;,&#x27;);
+    
+    if (this.filterOSFamily.length &gt; 0) base.osFamily &#x3D; this.filterOSFamily.join(&#x27;,&#x27;);
+    if (this.filterOS.length &gt; 0) base.os &#x3D; this.filterOS.join(&#x27;,&#x27;);
+
+    // exclude &#x27;non da aggiornare&#x27; - the backend would need to support excludeManutenzione,
+    // or we just send it as a base filter
+    base.excludeManutenzione &#x3D; &#x27;non da aggiornare&#x27;;
+
+    this.baseFilters &#x3D; base;
+    this.activeDivisions &#x3D; this.divisions.map(div &#x3D;&gt; ({
+        ...div,
+        combinedFilter: { ...base, ...div.filter }
+    }));
+  }
+
+  /** Metodo setPreset */
+    setPreset(col: string, val: string) {
+    const filterMap: Record&lt;string, string[]&gt; &#x3D; {
+      ambiente: this.filterAmbiente,
+      nodo: this.filterNodo,
+      locazione: this.filterLocazione,
+      status: this.filterStatus,
+      zona: this.filterZona,
+      os: this.filterOS,
+      osFamily: this.filterOSFamily
+    };
+
+    const target &#x3D; filterMap[col];
+    if (!target) return;
+
+    this.toggleFilterValue(target, val);
+
+    if (col &#x3D;&#x3D;&#x3D; &#x27;osFamily&#x27;) {
+      this.updateAvailableOSVersions();
+      const validVersions &#x3D; this.currentAvailableOSVersions;
+      this.filterOS &#x3D; this.filterOS.filter(v &#x3D;&gt; validVersions.includes(v));
+    }
+    this.applyGlobalFilters();
+  }
+
+  /** Metodo setExclusiveEnv */
+    setExclusiveEnv(env: string) {
+    this.clearFilters();
+    this.filterAmbiente &#x3D; [env];
+    this.applyGlobalFilters();
+  }
+
+  /** Metodo clearFilters */
+    clearFilters() {
+    this.filterAmbiente &#x3D; [];
+    this.filterLocazione &#x3D; [];
+    this.filterNodo &#x3D; [];
+    this.filterStatus &#x3D; [];
+    this.filterZona &#x3D; [];
+    this.filterOSFamily &#x3D; [];
+    this.filterOS &#x3D; [];
+    this.applyGlobalFilters();
+  }
+
+  /** Metodo onSelectionChange */
+    onSelectionChange(division: string, selected: Host[]) {
+    this.selectionsByDivision[division] &#x3D; selected;
+  }
+
+  /** Metodo fixSelected */
+    async fixSelected() {
+    if (!this.canWrite) return;
+    const hostsToUpdate &#x3D; this.selectedHosts.map(h &#x3D;&gt; h.id);
+    if (hostsToUpdate.length &#x3D;&#x3D;&#x3D; 0) return;
+    try {
+      await this.backend.updateHostsBulk(hostsToUpdate, { fixed: true });
+    } catch (e: any) {
+      this.notif.showToast({ type: &#x27;error&#x27;, message: e?.response?.data?.error || &#x27;Errore durante il fix&#x27; });
+    } finally {
+      this.clearSelectionsAndReload();
+    }
+  }
+
+  /** Metodo resetSelected */
+    async resetSelected() {
+    if (!this.canWrite) return;
+    const hostsToUpdate &#x3D; this.selectedHosts.map(h &#x3D;&gt; h.id);
+    if (hostsToUpdate.length &#x3D;&#x3D;&#x3D; 0) return;
+    try {
+      await this.backend.updateHostsBulk(hostsToUpdate, { fixed: false });
+    } catch (e: any) {
+      this.notif.showToast({ type: &#x27;error&#x27;, message: e?.response?.data?.error || &#x27;Errore durante il reset&#x27; });
+    } finally {
+      this.clearSelectionsAndReload();
+    }
+  }
+
+  /** Metodo clearSelectionsAndReload */
+    clearSelectionsAndReload() {
+    this.selectionsByDivision &#x3D; {};
+    if (this.fixesTables) {
+        this.fixesTables.forEach(table &#x3D;&gt; {
+            table.selectedHosts.clear();
+            table.loadData();
+        });
+    }
+  }
+
+  /** Metodo openExportModal */
+    openExportModal() {
+    if (!this.canWrite) return;
+    if (this.selectedHosts.length &#x3D;&#x3D;&#x3D; 0) return;
+    this.showExportModal &#x3D; true;
+  }
+
+  /** Metodo closeExportModal */
+    closeExportModal() {
+    this.showExportModal &#x3D; false;
+  }
+
+  /** Metodo exportSelected */
+    async exportSelected() {
+    const selectedIds &#x3D; new Set(this.selectedHosts.map(h &#x3D;&gt; h.id));
+    if (selectedIds.size &#x3D;&#x3D;&#x3D; 0) return;
+    
+    const res &#x3D; await this.backend.getHosts({ pageSize: -1 });
+    const hosts &#x3D; res.items.filter(h &#x3D;&gt; selectedIds.has(h.id));
+    
+    const selectedCols &#x3D; this.exportColumns.filter(c &#x3D;&gt; c.selected);
+    const headers &#x3D; selectedCols.map(c &#x3D;&gt; c.label);
+    const csvRows &#x3D; [headers.join(&#x27;;&#x27;)];
+    
+    for (const h of hosts) {
+      const row &#x3D; selectedCols.map(c &#x3D;&gt; {
+        let val &#x3D; (h as any)[c.key];
+        if (c.key &#x3D;&#x3D;&#x3D; &#x27;status&#x27;) {
+            val &#x3D; String(val || &#x27;&#x27;).toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;ok&#x27; ? &#x27;OK&#x27; : &#x27;NO&#x27;;
+        }
+        val ??&#x3D; &#x27;&#x27;;
+        return &#x60;&quot;${val.toString().replaceAll(&#x27;&quot;&#x27;, &#x27;&quot;&quot;&#x27;)}&quot;&#x60;;
+      });
+      csvRows.push(row.join(&#x27;;&#x27;));
+    }
+    
+    const csvContent &#x3D; csvRows.join(&#x27;\n&#x27;);
+    const blob &#x3D; new Blob([csvContent], { type: &#x27;text/csv;charset&#x3D;utf-8;&#x27; });
+    const url &#x3D; URL.createObjectURL(blob);
+    const link &#x3D; document.createElement(&#x27;a&#x27;);
+    link.setAttribute(&#x27;href&#x27;, url);
+    link.setAttribute(&#x27;download&#x27;, &#x27;export_fixes.csv&#x27;);
+    link.style.visibility &#x3D; &#x27;hidden&#x27;;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    this.closeExportModal();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;dashboard-container active-view&quot;&gt;
+    &lt;div style&#x3D;&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;&quot;&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot; style&#x3D;&quot;margin-bottom: 0;&quot;&gt;Fixes Tracker&lt;/h1&gt;
+        &lt;div style&#x3D;&quot;display: flex; align-items: center; gap: 15px;&quot;&gt;
+            &lt;i class&#x3D;&quot;fa-solid fa-circle-question&quot; style&#x3D;&quot;font-size: 1.5rem; color: var(--text-muted); cursor: help;&quot; title&#x3D;&quot;Shortcut di Selezione:&amp;#10;- Click normale: seleziona/deseleziona la riga&amp;#10;- Shift+Click: seleziona un gruppo di righe o tutte le righe filtrabili (se clicchi &#x27;Seleziona Tutti&#x27;)&amp;#10;- Shift+Click su una riga già selezionata: annulla tutta la selezione&amp;#10;&amp;#10;Filtri Globali:&amp;#10;- Usa i filtri globali per ridurre la lista in tutte le tabelle simultaneamente.&quot;&gt;&lt;/i&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; (click)&#x3D;&quot;toggleFilters()&quot;
+                style&#x3D;&quot;padding: 8px 16px; display: flex; align-items: center; gap: 8px;&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-filter&quot;&gt;&lt;/i&gt; &lt;span&gt;{{ filtersCollapsed ? &#x27;Mostra Filtri Globali&#x27; : &#x27;Nascondi Filtri Globali&#x27; }}&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Warning Banner --&gt;
+    &lt;div class&#x3D;&quot;fixes-warning-banner&quot;&gt;
+        &lt;div class&#x3D;&quot;fixes-warning-rule&quot;&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;fixes-warning-body&quot;&gt;
+            &lt;i class&#x3D;&quot;fa-solid fa-triangle-exclamation&quot;&gt;&lt;/i&gt;
+            &lt;div&gt;
+                &lt;strong&gt;Attenzione&lt;/strong&gt;
+                &lt;span&gt;Verifica la pianificazione con il Security Fix originale e con i dati Windows registrati in inventario. Le divisioni e lo stato dei fix sono gestiti manualmente.&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;fixes-warning-rule&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Filtri Condivisi (stesso componente di hosts, ma con modalità fixes e colori rossi) --&gt;
+    &lt;div class&#x3D;&quot;table-controls-wrapper fixes-theme&quot; style&#x3D;&quot;margin-bottom: 20px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); display: flex; flex-direction: column;&quot;&gt;
+        &lt;div class&#x3D;&quot;global-filters-container&quot; [class.collapsed]&#x3D;&quot;filtersCollapsed&quot; [class.animate-transition]&#x3D;&quot;animateFilters&quot;&gt;
+            &lt;app-global-filters
+                [mode]&#x3D;&quot;&#x27;fixes&#x27;&quot;
+                [filterAmbiente]&#x3D;&quot;filterAmbiente&quot;
+                [filterLocazione]&#x3D;&quot;filterLocazione&quot;
+                [filterNodo]&#x3D;&quot;filterNodo&quot;
+                [filterStatus]&#x3D;&quot;filterStatus&quot;
+                [filterZona]&#x3D;&quot;filterZona&quot;
+                [filterOSFamily]&#x3D;&quot;filterOSFamily&quot;
+                [filterOS]&#x3D;&quot;filterOS&quot;
+                [availableOSVersions]&#x3D;&quot;currentAvailableOSVersions&quot;
+                (presetClick)&#x3D;&quot;setPreset($event.col, $event.val)&quot;
+                (clearAll)&#x3D;&quot;clearFilters()&quot;&gt;
+            &lt;/app-global-filters&gt;
+        &lt;/div&gt;
+        &lt;!-- Bulk Actions under Environment per Fixes --&gt;
+        &lt;div class&#x3D;&quot;bulk-actions&quot;
+            style&#x3D;&quot;padding: 10px 20px; background: var(--bg-canvas); border-top: 1px solid var(--border-color); display: flex; gap: 10px; align-items: center;&quot;&gt;
+            &lt;span style&#x3D;&quot;color: var(--text-muted); font-size: 0.9rem;&quot;&gt;Azioni Rapide ({{ selectedHosts.length }}
+                selezionati):&lt;/span&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;color: white; background-color: var(--status-ok); border-color: var(--status-ok);&quot;
+                [disabled]&#x3D;&quot;!canWrite || selectedHosts.length &#x3D;&#x3D;&#x3D; 0&quot; (click)&#x3D;&quot;fixSelected()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-wrench&quot;&gt;&lt;/i&gt; Fix
+            &lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;color: var(--text-main); background-color: #ffc107; border-color: #ffc107;&quot;
+                [disabled]&#x3D;&quot;!canWrite || selectedHosts.length &#x3D;&#x3D;&#x3D; 0&quot; (click)&#x3D;&quot;resetSelected()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-rotate-left&quot;&gt;&lt;/i&gt; Reset
+            &lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn filter-btn-fixes&quot; style&#x3D;&quot;margin-left: auto;&quot;
+                [disabled]&#x3D;&quot;!canWrite || selectedHosts.length &#x3D;&#x3D;&#x3D; 0&quot; (click)&#x3D;&quot;openExportModal()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-file-csv&quot;&gt;&lt;/i&gt; Export CSV
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- FIXES TABLES --&gt;
+    &lt;div style&#x3D;&quot;display: flex; flex-direction: column; gap: 30px;&quot;&gt;
+        &lt;app-shared-table *ngFor&#x3D;&quot;let div of activeDivisions&quot;
+            [baseFilters]&#x3D;&quot;div.combinedFilter&quot; 
+            [title]&#x3D;&quot;div.name&quot; 
+            [iconClass]&#x3D;&quot;&#x27;fa-solid fa-layer-group&#x27;&quot; 
+            [mode]&#x3D;&quot;&#x27;fixes&#x27;&quot;
+            [filtersCollapsed]&#x3D;&quot;filtersCollapsed&quot;
+            (envClick)&#x3D;&quot;setExclusiveEnv($event)&quot;
+            (selectionChange)&#x3D;&quot;onSelectionChange(div.name, $event)&quot;&gt;
+        &lt;/app-shared-table&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Modal Esportazione CSV --&gt;
+&lt;div class&#x3D;&quot;modal-overlay&quot; *ngIf&#x3D;&quot;showExportModal&quot; (click)&#x3D;&quot;closeExportModal()&quot; (keydown.escape)&#x3D;&quot;closeExportModal()&quot; style&#x3D;&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot; (keydown)&#x3D;&quot;$event.stopPropagation()&quot; style&#x3D;&quot;background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);&quot;&gt;
+        &lt;h2 style&#x3D;&quot;margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);&quot;&gt;Seleziona Colonne da Esportare&lt;/h2&gt;
+        
+        &lt;div style&#x3D;&quot;max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;&quot;&gt;
+            &lt;div *ngFor&#x3D;&quot;let col of exportColumns&quot; style&#x3D;&quot;display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;&quot;&gt;
+                &lt;span style&#x3D;&quot;font-weight: 500;&quot;&gt;{{ col.label }}&lt;/span&gt;
+                &lt;p-inputSwitch [(ngModel)]&#x3D;&quot;col.selected&quot;&gt;&lt;/p-inputSwitch&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div style&#x3D;&quot;display: flex; justify-content: flex-end; gap: 15px;&quot;&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);&quot; (click)&#x3D;&quot;closeExportModal()&quot;&gt;Annulla&lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);&quot; (click)&#x3D;&quot;exportSelected()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-download&quot;&gt;&lt;/i&gt; Esporta
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="dashboard-container active-view">    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">        <h1 class="page-title" style="margin-bottom: 0;">Fixes Tracker</h1>        <div style="display: flex; align-items: center; gap: 15px;">            <i class="fa-solid fa-circle-question" style="font-size: 1.5rem; color: var(--text-muted); cursor: help;" title="Shortcut di Selezione:&#10;- Click normale: seleziona/deseleziona la riga&#10;- Shift+Click: seleziona un gruppo di righe o tutte le righe filtrabili (se clicchi \'Seleziona Tutti\')&#10;- Shift+Click su una riga già selezionata: annulla tutta la selezione&#10;&#10;Filtri Globali:&#10;- Usa i filtri globali per ridurre la lista in tutte le tabelle simultaneamente."></i>            <button class="preset-btn" (click)="toggleFilters()"                style="padding: 8px 16px; display: flex; align-items: center; gap: 8px;">                <i class="fa-solid fa-filter"></i> <span>{{ filtersCollapsed ? \'Mostra Filtri Globali\' : \'Nascondi Filtri Globali\' }}</span>            </button>        </div>    </div>    <!-- Warning Banner -->    <div class="fixes-warning-banner">        <div class="fixes-warning-rule"></div>        <div class="fixes-warning-body">            <i class="fa-solid fa-triangle-exclamation"></i>            <div>                <strong>Attenzione</strong>                <span>Verifica la pianificazione con il Security Fix originale e con i dati Windows registrati in inventario. Le divisioni e lo stato dei fix sono gestiti manualmente.</span>            </div>        </div>        <div class="fixes-warning-rule"></div>    </div>    <!-- Filtri Condivisi (stesso componente di hosts, ma con modalità fixes e colori rossi) -->    <div class="table-controls-wrapper fixes-theme" style="margin-bottom: 20px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); display: flex; flex-direction: column;">        <div class="global-filters-container" [class.collapsed]="filtersCollapsed" [class.animate-transition]="animateFilters">            <app-global-filters                [mode]="\'fixes\'"                [filterAmbiente]="filterAmbiente"                [filterLocazione]="filterLocazione"                [filterNodo]="filterNodo"                [filterStatus]="filterStatus"                [filterZona]="filterZona"                [filterOSFamily]="filterOSFamily"                [filterOS]="filterOS"                [availableOSVersions]="currentAvailableOSVersions"                (presetClick)="setPreset($event.col, $event.val)"                (clearAll)="clearFilters()">            </app-global-filters>        </div>        <!-- Bulk Actions under Environment per Fixes -->        <div class="bulk-actions"            style="padding: 10px 20px; background: var(--bg-canvas); border-top: 1px solid var(--border-color); display: flex; gap: 10px; align-items: center;">            <span style="color: var(--text-muted); font-size: 0.9rem;">Azioni Rapide ({{ selectedHosts.length }}                selezionati):</span>            <button class="preset-btn" style="color: white; background-color: var(--status-ok); border-color: var(--status-ok);"                [disabled]="!canWrite || selectedHosts.length === 0" (click)="fixSelected()">                <i class="fa-solid fa-wrench"></i> Fix            </button>            <button class="preset-btn" style="color: var(--text-main); background-color: #ffc107; border-color: #ffc107;"                [disabled]="!canWrite || selectedHosts.length === 0" (click)="resetSelected()">                <i class="fa-solid fa-rotate-left"></i> Reset            </button>            <button class="preset-btn filter-btn-fixes" style="margin-left: auto;"                [disabled]="!canWrite || selectedHosts.length === 0" (click)="openExportModal()">                <i class="fa-solid fa-file-csv"></i> Export CSV            </button>        </div>    </div>    <!-- FIXES TABLES -->    <div style="display: flex; flex-direction: column; gap: 30px;">        <app-shared-table *ngFor="let div of activeDivisions"            [baseFilters]="div.combinedFilter"             [title]="div.name"             [iconClass]="\'fa-solid fa-layer-group\'"             [mode]="\'fixes\'"            [filtersCollapsed]="filtersCollapsed"            (envClick)="setExclusiveEnv($event)"            (selectionChange)="onSelectionChange(div.name, $event)">        </app-shared-table>    </div></div><!-- Modal Esportazione CSV --><div class="modal-overlay" *ngIf="showExportModal" (click)="closeExportModal()" (keydown.escape)="closeExportModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Seleziona Colonne da Esportare</h2>                <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;">            <div *ngFor="let col of exportColumns" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;">                <span style="font-weight: 500;">{{ col.label }}</span>                <p-inputSwitch [(ngModel)]="col.selected"></p-inputSwitch>            </div>        </div>        <div style="display: flex; justify-content: flex-end; gap: 15px;">            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeExportModal()">Annulla</button>            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="exportSelected()">                <i class="fa-solid fa-download"></i> Esporta            </button>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BigcardComponent', 'selector': 'app-bigcard'},{'name': 'CrossSourceComponent', 'selector': 'app-cross-source'},{'name': 'CveAnalysisComponent', 'selector': 'app-cve-analysis'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FilterItemComponent', 'selector': 'app-filter-item'},{'name': 'FixesComponent', 'selector': 'app-fixes'},{'name': 'GlobalFiltersComponent', 'selector': 'app-global-filters'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HostsComponent', 'selector': 'app-hosts'},{'name': 'ImportDialogComponent', 'selector': 'app-import-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineComponent', 'selector': 'app-machine'},{'name': 'MailingComponent', 'selector': 'app-mailing'},{'name': 'MainpageComponent', 'selector': 'app-mainpage'},{'name': 'MonitoringComponent', 'selector': 'app-monitoring'},{'name': 'SearchFieldComponent', 'selector': 'app-search-field'},{'name': 'ServicesComponent', 'selector': 'app-services'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedTableComponent', 'selector': 'app-shared-table'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SiteCardComponent', 'selector': 'app-site-card'},{'name': 'SitesComponent', 'selector': 'app-sites'},{'name': 'SmartcardComponent', 'selector': 'app-smartcard'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'WipComponent', 'selector': 'app-wip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FixesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FixesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,212 @@
+<div class="dashboard-container host-detail">
+    <header class="detail-header">
+        <button type="button" class="back-button" (click)="goBack()">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i> Indietro
+        </button>
+        <div class="host-identity">
+            <span class="eyebrow">{{ isNewMode ? 'Inventario / Nuovo host' : 'Inventario / Dettaglio host' }}</span>
+            <h1>{{ isNewMode ? 'Crea nuova macchina' : host?.hostname || hostname || 'Dettaglio host' }}</h1>
+        </div>
+        <span *ngIf="host && !isLoading" class="access-hint">
+            <i [class]="canWrite ? 'pi pi-pencil' : 'pi pi-lock'" aria-hidden="true"></i>
+            {{ canWrite ? 'Modifica rapida sui singoli campi' : 'Sola lettura' }}
+        </span>
+    </header>
+
+    <div *ngIf="showSuccessPopup" class="feedback success" role="status">
+        <i class="pi pi-check-circle" aria-hidden="true"></i> Macchina creata con successo!
+    </div>
+    <div *ngIf="creationError" class="feedback error" role="alert">
+        <i class="pi pi-exclamation-circle" aria-hidden="true"></i> {{ creationError }}
+    </div>
+    <div *ngIf="isLoading" class="empty-state" role="status">
+        <i class="pi pi-spinner pi-spin" aria-hidden="true"></i>
+        <p>Caricamento dettagli...</p>
+    </div>
+    <div *ngIf="!isLoading && !host" class="empty-state">
+        <h2>Macchina non trovata</h2>
+        <p>L'host specificato non corrisponde a nessuna macchina in inventario.</p>
+    </div>
+    <ng-container *ngIf="!isLoading && host">
+        <div class="host-sheet">
+            <div class="sheet-summary">
+                <span><i class="pi pi-server" aria-hidden="true"></i> {{ host.appliance ? 'Appliance Windows' : 'Host Windows' }}</span>
+                <span>{{ host.ambiente || '-' }}</span>
+                <span>{{ host.os || '-' }}</span>
+                <span class="source-badge" *ngIf="infoSource"><i class="pi pi-database" aria-hidden="true"></i> Origine: {{ infoSource }}</span>
+            </div>
+
+            <div class="primary-sections">
+                <section class="detail-section" aria-labelledby="system-heading">
+                    <h2 id="system-heading"><i class="pi pi-server" aria-hidden="true"></i> Sistema</h2>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'hostname', label: 'Server' }"></ng-container>
+                    <div class="field-row">
+                        <span class="field-label">Sistema operativo</span>
+                        <div class="field-value">
+                            <span *ngIf="editingField !== 'os'" class="editable-value"><span class="field-text">{{ host.os || '-' }}</span><button *ngIf="canWrite" type="button" class="icon-edit-btn" (click)="startEditOS()" aria-label="Modifica sistema operativo"><i class="pi pi-pencil" aria-hidden="true"></i></button></span>
+                            <div *ngIf="editingField === 'os'" class="os-editor">
+                                <select class="theme-input" [(ngModel)]="osFamily" (change)="onFamilyChange()" aria-label="Famiglia sistema operativo">
+                                    <option value="Windows">Windows client</option>
+                                    <option value="Windows Server">Windows Server</option>
+                                    <option value="custom">Inserimento manuale / valore esistente</option>
+                                </select>
+                                <select *ngIf="osFamily === 'Windows'" class="theme-input" [(ngModel)]="osVersion" aria-label="Versione Windows client">
+                                    <option *ngFor="let ver of clientVersions" [value]="ver">{{ ver }}</option>
+                                </select>
+                                <select *ngIf="osFamily === 'Windows Server'" class="theme-input" [(ngModel)]="osVersion" aria-label="Versione Windows Server">
+                                    <option *ngFor="let ver of serverVersions" [value]="ver">{{ ver }}</option>
+                                </select>
+                                <input *ngIf="osFamily === 'custom'" class="theme-input" type="text" [(ngModel)]="customOsVersion" aria-label="Versione sistema operativo personalizzata" placeholder="Sistema operativo completo" (keyup.enter)="saveOS()">
+                                <div class="editor-actions">
+                                    <button type="button" (click)="saveOS()" class="action-button primary" aria-label="Salva sistema operativo"><i class="pi pi-check" aria-hidden="true"></i> Salva</button>
+                                    <button type="button" (click)="cancelEditOS()" class="action-button" aria-label="Annulla modifica sistema operativo">Annulla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'applicazione', label: 'Applicazione' }"></ng-container>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'servizio', label: 'Servizio' }"></ng-container>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'riferimento', label: 'Riferimento' }"></ng-container>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'riferimentoEs', label: 'Rif. ES' }"></ng-container>
+                </section>
+
+                <section class="detail-section" aria-labelledby="deployment-heading">
+                    <h2 id="deployment-heading"><i class="pi pi-sitemap" aria-hidden="true"></i> Collocazione</h2>
+                    <div class="field-row">
+                        <span class="field-label">Ambiente</span>
+                        <div class="field-value preset-group">
+                            <button *ngFor="let env of ['Sviluppo', 'Collaudo', 'Produzione', 'Dismessa', 'Spenta']" type="button" (click)="setAmbiente(env)" class="choice-button" [disabled]="!canWrite" [class.active]="(host.ambiente | lowercase) === (env | lowercase)" [attr.aria-pressed]="(host.ambiente | lowercase) === (env | lowercase)">{{ env }}</button>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Nodo</span>
+                        <div class="field-value preset-group">
+                            <button *ngFor="let n of ['Standalone', 'Nodo 1', 'Nodo 2', 'Nodo 3']" type="button" (click)="setNodo(n)" class="choice-button" [disabled]="!canWrite" [class.active]="isNodoActive(n)" [attr.aria-pressed]="isNodoActive(n)">{{ n }}</button>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Locazione</span>
+                        <div class="field-value preset-group">
+                            <button *ngFor="let loc of ['Torino', 'Teulada', 'Saxa']" type="button" (click)="setLocazione(loc)" class="choice-button" [disabled]="!canWrite" [class.active]="isLocazioneActive(loc)" [attr.aria-pressed]="isLocazioneActive(loc)">{{ loc }}</button>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Zona</span>
+                        <div class="field-value preset-group">
+                            <button *ngFor="let z of ['Intranet', 'DMZ', 'DB']" type="button" (click)="setZona(z)" class="choice-button" [disabled]="!canWrite" [class.active]="isZonaActive(z)" [attr.aria-pressed]="isZonaActive(z)">{{ z }}</button>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Compagnia</span>
+                        <div class="field-value toggle-value">
+                            <label class="toggle-switch">
+                                <input type="checkbox" [checked]="host.company === 'RAI PUBBLICITA\''" [disabled]="!canWrite" (change)="toggleCompagnia()" aria-label="Compagnia RAI pubblicita">
+                                <span class="slider"></span>
+                            </label>
+                            <span>{{ host.company || '-' }}</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="detail-section" aria-labelledby="maintenance-heading">
+                    <h2 id="maintenance-heading"><i class="pi pi-wrench" aria-hidden="true"></i> Manutenzione e fix</h2>
+                    <div class="field-row">
+                        <span class="field-label">Status FIX</span>
+                        <div class="field-value toggle-value">
+                            <label class="toggle-switch">
+                                <input type="checkbox" [checked]="host.fixed" [disabled]="!canWrite" (change)="toggleFixed()" aria-label="Stato fix macchina">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="state-label">{{ host.fixed ? 'FIX' : 'NO FIX' }}</span>
+                        </div>
+                    </div>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'manutenzione', label: 'Finestra manutenzione' }"></ng-container>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'pianificazione', label: 'Pianificazione' }"></ng-container>
+                    <div class="field-row">
+                        <span class="field-label">Divisione</span>
+                        <div class="field-value">
+                            <span *ngIf="editingField !== 'divisione'" class="editable-value"><span class="field-text">{{ host.divisione || '-' }}</span><button *ngIf="canWrite" type="button" class="icon-edit-btn" (click)="startEdit('divisione')" aria-label="Modifica divisione"><i class="pi pi-pencil" aria-hidden="true"></i></button></span>
+                            <select *ngIf="editingField === 'divisione'" class="theme-input" [(ngModel)]="editValue" (change)="saveEdit()" (blur)="saveEdit()" aria-label="Valore divisione" autofocus>
+                                <option [ngValue]="null">- Nessuna -</option>
+                                <option *ngFor="let div of divisioni" [value]="div">{{ div }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'rfc', label: 'RFC' }"></ng-container>
+                </section>
+            </div>
+
+            <div class="secondary-sections">
+                <section class="detail-section network-section" aria-labelledby="network-heading">
+                    <div class="section-heading">
+                        <h2 id="network-heading"><i class="pi pi-share-alt" aria-hidden="true"></i> Rete</h2>
+                        <span *ngIf="networkSource" class="source-badge">Origine: {{ networkSource }}</span>
+                    </div>
+                    <table class="network-table">
+                        <thead><tr><th scope="col">Interfaccia</th><th scope="col">Indirizzo IP</th><th scope="col">VLAN</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row">Front-end</th><td><ng-container *ngTemplateOutlet="editableValue; context: { $implicit: 'ipfe', label: 'IP front-end' }"></ng-container></td><td><ng-container *ngTemplateOutlet="editableValue; context: { $implicit: 'vlfe', label: 'VLAN front-end' }"></ng-container></td></tr>
+                            <tr><th scope="row">Management</th><td><ng-container *ngTemplateOutlet="editableValue; context: { $implicit: 'ipmgt', label: 'IP management' }"></ng-container></td><td><ng-container *ngTemplateOutlet="editableValue; context: { $implicit: 'vlmgt', label: 'VLAN management' }"></ng-container></td></tr>
+                            <tr><th scope="row">FE2AL</th><td><ng-container *ngTemplateOutlet="editableValue; context: { $implicit: 'ipfe2al', label: 'IP FE2AL' }"></ng-container></td><td><ng-container *ngTemplateOutlet="editableValue; context: { $implicit: 'vlfe2al', label: 'VLAN FE2AL' }"></ng-container></td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="detail-section" aria-labelledby="advanced-heading">
+                    <h2 id="advanced-heading"><i class="pi pi-sliders-h" aria-hidden="true"></i> Avanzate</h2>
+                    <div class="boolean-fields">
+                        <div class="field-row">
+                            <span class="field-label">Fixable</span>
+                            <div class="field-value toggle-value">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" [checked]="host.fixable" [disabled]="!canWrite" (change)="toggleFixable()" aria-label="Stato fixable macchina">
+                                    <span class="slider"></span>
+                                </label>
+                                <span>{{ host.fixable ? 'TRUE' : 'FALSE' }}</span>
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <span class="field-label">Appliance</span>
+                            <div class="field-value toggle-value">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" [checked]="host.appliance" [disabled]="!canWrite" (change)="toggleAppliance()" aria-label="Stato appliance macchina">
+                                    <span class="slider"></span>
+                                </label>
+                                <span>{{ host.appliance ? 'TRUE' : 'FALSE' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngTemplateOutlet="editableField; context: { $implicit: 'status', label: 'Status' }"></ng-container>
+                </section>
+
+                <section class="detail-section notes-section" aria-labelledby="notes-heading">
+                    <div class="section-heading">
+                        <h2 id="notes-heading"><i class="pi pi-align-left" aria-hidden="true"></i> Note</h2>
+                        <button *ngIf="canWrite && editingField !== 'note'" type="button" class="icon-edit-btn" (click)="startEdit('note')" aria-label="Modifica note"><i class="pi pi-pencil" aria-hidden="true"></i></button>
+                    </div>
+                    <p *ngIf="editingField !== 'note'" class="notes-content" [class.muted]="!host.note">{{ host.note || 'Nessuna nota presente.' }}</p>
+                    <textarea *ngIf="editingField === 'note'" class="theme-input notes-input" [(ngModel)]="editValue" (blur)="saveEdit()" aria-label="Valore note" autofocus></textarea>
+                </section>
+            </div>
+        </div>
+        <footer *ngIf="isNewMode && canWrite" class="creation-footer">
+            <button type="button" (click)="submitNewHost()" class="action-button primary" [disabled]="!host.hostname || !host.ambiente"><i class="pi pi-save" aria-hidden="true"></i> Crea macchina</button>
+        </footer>
+    </ng-container>
+
+    <app-cross-source *ngIf="!isLoading && host && !isNewMode" sourceType="hosts" [sourceId]="host.id" [revision]="host" />
+
+    <ng-template #editableField let-field let-label="label">
+        <div class="field-row">
+            <span class="field-label">{{ label }}</span>
+            <div class="field-value"><ng-container *ngTemplateOutlet="editableValue; context: { $implicit: field, label: label }"></ng-container></div>
+        </div>
+    </ng-template>
+    <ng-template #editableValue let-field let-label="label">
+        <span *ngIf="editingField !== field" class="editable-value">
+            <span class="field-text">{{ getFieldValue(field) }}</span>
+            <button *ngIf="canWrite" type="button" class="icon-edit-btn" (click)="startEdit(field)" [attr.aria-label]="'Modifica ' + label"><i class="pi pi-pencil" aria-hidden="true"></i></button>
+        </span>
+        <input *ngIf="editingField === field" type="text" class="theme-input" [(ngModel)]="editValue" (blur)="saveEdit()" (keyup.enter)="saveEdit()" [attr.aria-label]="'Valore ' + label" autofocus>
+    </ng-template>
+</div>

@@ -1,0 +1,3878 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">angular-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HostsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/hosts/hosts.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente/Servizio HostsComponent</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-hosts</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>RouterLink</code>
+                                <code><a href="../components/SharedTableComponent.html" target="_self" >SharedTableComponent</a></code>
+                                <code><a href="../components/GlobalFiltersComponent.html" target="_self" >GlobalFiltersComponent</a></code>
+                            <code>InputSwitchModule</code>
+                                <code><a href="../components/ImportDialogComponent.html" target="_self" >ImportDialogComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./hosts.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#animateFilters" >animateFilters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#applianceTable" >applianceTable</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#auth" >auth</a>
+                            </li>
+                            <li>
+                                <a href="#availableOS" >availableOS</a>
+                            </li>
+                            <li>
+                                <a href="#baseFiltersAppliance" >baseFiltersAppliance</a>
+                            </li>
+                            <li>
+                                <a href="#baseFiltersWindows" >baseFiltersWindows</a>
+                            </li>
+                            <li>
+                                <a href="#currentAvailableOSVersions" >currentAvailableOSVersions</a>
+                            </li>
+                            <li>
+                                <a href="#dismettiCount" >dismettiCount</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#exportColumns" >exportColumns</a>
+                            </li>
+                            <li>
+                                <a href="#filterAmbiente" >filterAmbiente</a>
+                            </li>
+                            <li>
+                                <a href="#filterLocazione" >filterLocazione</a>
+                            </li>
+                            <li>
+                                <a href="#filterNodo" >filterNodo</a>
+                            </li>
+                            <li>
+                                <a href="#filterOS" >filterOS</a>
+                            </li>
+                            <li>
+                                <a href="#filterOSFamily" >filterOSFamily</a>
+                            </li>
+                            <li>
+                                <a href="#filtersCollapsed" >filtersCollapsed</a>
+                            </li>
+                            <li>
+                                <a href="#filterZona" >filterZona</a>
+                            </li>
+                            <li>
+                                <a href="#hosts" >hosts</a>
+                            </li>
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                <a href="#modificaData" >modificaData</a>
+                            </li>
+                            <li>
+                                <a href="#pendingDismesse" >pendingDismesse</a>
+                            </li>
+                            <li>
+                                <a href="#pendingNotDismesse" >pendingNotDismesse</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#routeSub" >routeSub</a>
+                            </li>
+                            <li>
+                                <a href="#selectedHostsMap" >selectedHostsMap</a>
+                            </li>
+                            <li>
+                                <a href="#selectionAppliance" >selectionAppliance</a>
+                            </li>
+                            <li>
+                                <a href="#selectionWindows" >selectionWindows</a>
+                            </li>
+                            <li>
+                                <a href="#showDismettiModal" >showDismettiModal</a>
+                            </li>
+                            <li>
+                                <a href="#showExportModal" >showExportModal</a>
+                            </li>
+                            <li>
+                                <a href="#showImportDialog" >showImportDialog</a>
+                            </li>
+                            <li>
+                                <a href="#showModificaModal" >showModificaModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#sub" >sub</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#windowsTable" >windowsTable</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#windowsVersions" >windowsVersions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applyGlobalFilters" >applyGlobalFilters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildModificaPayload" >buildModificaPayload</a>
+                            </li>
+                            <li>
+                                <a href="#clearFilters" >clearFilters</a>
+                            </li>
+                            <li>
+                                <a href="#clearSelectionsAndReload" >clearSelectionsAndReload</a>
+                            </li>
+                            <li>
+                                <a href="#closeDismettiModal" >closeDismettiModal</a>
+                            </li>
+                            <li>
+                                <a href="#closeExportModal" >closeExportModal</a>
+                            </li>
+                            <li>
+                                <a href="#closeModificaModal" >closeModificaModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#confirmDismetti" >confirmDismetti</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#confirmModifica" >confirmModifica</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#dismettiSelected" >dismettiSelected</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#exportSelected" >exportSelected</a>
+                            </li>
+                            <li>
+                                <a href="#getAvailableOSVersions" >getAvailableOSVersions</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#normalizeModificaValue" >normalizeModificaValue</a>
+                            </li>
+                            <li>
+                                <a href="#onApplianceSelection" >onApplianceSelection</a>
+                            </li>
+                            <li>
+                                <a href="#onHostsImported" >onHostsImported</a>
+                            </li>
+                            <li>
+                                <a href="#onSelectionChange" >onSelectionChange</a>
+                            </li>
+                            <li>
+                                <a href="#onWindowsSelection" >onWindowsSelection</a>
+                            </li>
+                            <li>
+                                <a href="#openExportModal" >openExportModal</a>
+                            </li>
+                            <li>
+                                <a href="#openImportDialog" >openImportDialog</a>
+                            </li>
+                            <li>
+                                <a href="#openModificaModal" >openModificaModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#salvaModificaMassiva" >salvaModificaMassiva</a>
+                            </li>
+                            <li>
+                                <a href="#setExclusiveEnv" >setExclusiveEnv</a>
+                            </li>
+                            <li>
+                                <a href="#setPreset" >setPreset</a>
+                            </li>
+                            <li>
+                                <a href="#toggleFilters" >toggleFilters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#toggleFilterValue" >toggleFilterValue</a>
+                            </li>
+                            <li>
+                                <a href="#updateAvailableOSVersions" >updateAvailableOSVersions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#canWrite" >canWrite</a>
+                                </li>
+                                <li>
+                                    <a href="#allSelectedHosts" >allSelectedHosts</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(backend: <a href="../injectables/BackendService.html" target="_self">BackendService</a>, route: ActivatedRoute, auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, notif: <a href="../injectables/NotificationService.html" target="_self">NotificationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/components/hosts/hosts.component.ts:110</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Costruttore di HostsComponent</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>backend</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BackendService.html" target="_self" >BackendService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>notif</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotificationService.html" target="_self" >NotificationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyGlobalFilters"></a>
+                    <span class="name">
+                        <span ><b>applyGlobalFilters</b></span>
+                        <a href="#applyGlobalFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyGlobalFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="182"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:182</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo applyGlobalFilters</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildModificaPayload"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildModificaPayload</b></span>
+                        <a href="#buildModificaPayload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildModificaPayload()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="432"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:432</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Record&lt;string, any&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearFilters"></a>
+                    <span class="name">
+                        <span ><b>clearFilters</b></span>
+                        <a href="#clearFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="231"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:231</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo clearFilters</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearSelectionsAndReload"></a>
+                    <span class="name">
+                        <span ><b>clearSelectionsAndReload</b></span>
+                        <a href="#clearSelectionsAndReload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearSelectionsAndReload()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="331"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:331</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo clearSelectionsAndReload</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeDismettiModal"></a>
+                    <span class="name">
+                        <span ><b>closeDismettiModal</b></span>
+                        <a href="#closeDismettiModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeDismettiModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="297"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:297</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo closeDismettiModal</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeExportModal"></a>
+                    <span class="name">
+                        <span ><b>closeExportModal</b></span>
+                        <a href="#closeExportModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeExportModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="363"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:363</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo closeExportModal</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeModificaModal"></a>
+                    <span class="name">
+                        <span ><b>closeModificaModal</b></span>
+                        <a href="#closeModificaModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeModificaModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="416"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:416</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo closeModificaModal</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmDismetti"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>confirmDismetti</b></span>
+                        <a href="#confirmDismetti"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>confirmDismetti()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="315"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:315</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo confirmDismetti</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmModifica"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>confirmModifica</b></span>
+                        <a href="#confirmModifica"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>confirmModifica()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="444"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:444</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo confirmModifica</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dismettiSelected"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>dismettiSelected</b></span>
+                        <a href="#dismettiSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dismettiSelected()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="274"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:274</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo dismettiSelected</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportSelected"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>exportSelected</b></span>
+                        <a href="#exportSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportSelected()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="368"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:368</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo exportSelected</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAvailableOSVersions"></a>
+                    <span class="name">
+                        <span ><b>getAvailableOSVersions</b></span>
+                        <a href="#getAvailableOSVersions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAvailableOSVersions()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="163"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:163</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo getAvailableOSVersions</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>string[]</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook ngOnDestroy</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook ngOnInit</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="normalizeModificaValue"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>normalizeModificaValue</b></span>
+                        <a href="#normalizeModificaValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>normalizeModificaValue(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, rawVal: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="420"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:420</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>rawVal</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>string | number | boolean</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onApplianceSelection"></a>
+                    <span class="name">
+                        <span ><b>onApplianceSelection</b></span>
+                        <a href="#onApplianceSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onApplianceSelection(selected: <a href="../interfaces/Host.html" target="_self">Host[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="265"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:265</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo onApplianceSelection</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selected</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onHostsImported"></a>
+                    <span class="name">
+                        <span ><b>onHostsImported</b></span>
+                        <a href="#onHostsImported"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onHostsImported()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="351"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:351</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo onHostsImported: ricarica le tabelle dopo un import</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelectionChange"></a>
+                    <span class="name">
+                        <span ><b>onSelectionChange</b></span>
+                        <a href="#onSelectionChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelectionChange(selected: <a href="../interfaces/Host.html" target="_self">Host[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="245"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:245</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo onSelectionChange</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selected</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onWindowsSelection"></a>
+                    <span class="name">
+                        <span ><b>onWindowsSelection</b></span>
+                        <a href="#onWindowsSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onWindowsSelection(selected: <a href="../interfaces/Host.html" target="_self">Host[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="260"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:260</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo onWindowsSelection</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selected</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openExportModal"></a>
+                    <span class="name">
+                        <span ><b>openExportModal</b></span>
+                        <a href="#openExportModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openExportModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="356"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:356</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo openExportModal</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openImportDialog"></a>
+                    <span class="name">
+                        <span ><b>openImportDialog</b></span>
+                        <a href="#openImportDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openImportDialog()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="345"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:345</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo openImportDialog</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openModificaModal"></a>
+                    <span class="name">
+                        <span ><b>openModificaModal</b></span>
+                        <a href="#openModificaModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openModificaModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="406"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:406</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo openModificaModal</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="salvaModificaMassiva"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>salvaModificaMassiva</b></span>
+                        <a href="#salvaModificaMassiva"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>salvaModificaMassiva()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="302"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:302</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo salvaModificaMassiva</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setExclusiveEnv"></a>
+                    <span class="name">
+                        <span ><b>setExclusiveEnv</b></span>
+                        <a href="#setExclusiveEnv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setExclusiveEnv(env: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:224</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo setExclusiveEnv</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>env</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPreset"></a>
+                    <span class="name">
+                        <span ><b>setPreset</b></span>
+                        <a href="#setPreset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPreset(col: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, val: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="200"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:200</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo setPreset</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>col</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>val</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFilters"></a>
+                    <span class="name">
+                        <span ><b>toggleFilters</b></span>
+                        <a href="#toggleFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo toggleFilters</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFilterValue"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>toggleFilterValue</b></span>
+                        <a href="#toggleFilterValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>toggleFilterValue(filters: string[], value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filters</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateAvailableOSVersions"></a>
+                    <span class="name">
+                        <span ><b>updateAvailableOSVersions</b></span>
+                        <a href="#updateAvailableOSVersions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateAvailableOSVersions()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">src/app/components/hosts/hosts.component.ts:177</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Metodo updateAvailableOSVersions</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="animateFilters"></a>
+                    <span class="name">
+                        <span ><b>animateFilters</b></span>
+                        <a href="#animateFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/app/components/hosts/hosts.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà animateFilters</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applianceTable"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>applianceTable</b></span>
+                        <a href="#applianceTable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/SharedTableComponent.html" target="_self" >SharedTableComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;applianceTable&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/hosts/hosts.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà applianceTable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/components/hosts/hosts.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="availableOS"></a>
+                    <span class="name">
+                        <span ><b>availableOS</b></span>
+                        <a href="#availableOS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/hosts/hosts.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà availableOS</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="baseFiltersAppliance"></a>
+                    <span class="name">
+                        <span ><b>baseFiltersAppliance</b></span>
+                        <a href="#baseFiltersAppliance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ appliance: true }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/hosts/hosts.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà baseFiltersAppliance</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="baseFiltersWindows"></a>
+                    <span class="name">
+                        <span ><b>baseFiltersWindows</b></span>
+                        <a href="#baseFiltersWindows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ appliance: false }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/hosts/hosts.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà baseFiltersWindows</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentAvailableOSVersions"></a>
+                    <span class="name">
+                        <span ><b>currentAvailableOSVersions</b></span>
+                        <a href="#currentAvailableOSVersions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/app/components/hosts/hosts.component.ts:160</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà currentAvailableOSVersions</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dismettiCount"></a>
+                    <span class="name">
+                        <span ><b>dismettiCount</b></span>
+                        <a href="#dismettiCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/components/hosts/hosts.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà dismettiCount</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportColumns"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>exportColumns</b></span>
+                        <a href="#exportColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { key: &#x27;hostname&#x27;, label: &#x27;Hostname&#x27;, selected: true },
+    { key: &#x27;applicazione&#x27;, label: &#x27;Applicazione&#x27;, selected: true },
+    { key: &#x27;riferimento&#x27;, label: &#x27;Riferimento&#x27;, selected: false },
+    { key: &#x27;ambiente&#x27;, label: &#x27;Ambiente&#x27;, selected: true },
+    { key: &#x27;company&#x27;, label: &#x27;Company&#x27;, selected: false },
+    { key: &#x27;servizio&#x27;, label: &#x27;Servizio&#x27;, selected: true },
+    { key: &#x27;appliance&#x27;, label: &#x27;Appliance&#x27;, selected: false },
+    { key: &#x27;zona&#x27;, label: &#x27;Zona&#x27;, selected: false },
+    { key: &#x27;riferimentoEs&#x27;, label: &#x27;Riferimento ES&#x27;, selected: false },
+    { key: &#x27;locazione&#x27;, label: &#x27;Locazione&#x27;, selected: false },
+    { key: &#x27;os&#x27;, label: &#x27;OS&#x27;, selected: true },
+    { key: &#x27;manutenzione&#x27;, label: &#x27;Manutenzione&#x27;, selected: true },
+    { key: &#x27;status&#x27;, label: &#x27;Status&#x27;, selected: true },
+    { key: &#x27;nodo&#x27;, label: &#x27;Nodo&#x27;, selected: true },
+    { key: &#x27;note&#x27;, label: &#x27;Note&#x27;, selected: false },
+    { key: &#x27;pianificazione&#x27;, label: &#x27;Pianificazione&#x27;, selected: false },
+    { key: &#x27;rfc&#x27;, label: &#x27;RFC&#x27;, selected: false },
+    { key: &#x27;fixed&#x27;, label: &#x27;Fixed&#x27;, selected: false },
+    { key: &#x27;fixable&#x27;, label: &#x27;Fixable&#x27;, selected: false },
+    { key: &#x27;divisione&#x27;, label: &#x27;Divisione&#x27;, selected: false },
+    { key: &#x27;ipfe&#x27;, label: &#x27;IP Frontend&#x27;, selected: false },
+    { key: &#x27;ipmgt&#x27;, label: &#x27;IP Management&#x27;, selected: false },
+    { key: &#x27;ipfe2al&#x27;, label: &#x27;IP FE2AL&#x27;, selected: false },
+    { key: &#x27;vlfe&#x27;, label: &#x27;VLAN Frontend&#x27;, selected: false },
+    { key: &#x27;vlmgt&#x27;, label: &#x27;VLAN Management&#x27;, selected: false },
+    { key: &#x27;vlfe2al&#x27;, label: &#x27;VLAN FE2AL&#x27;, selected: false }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/components/hosts/hosts.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà exportColumns</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterAmbiente"></a>
+                    <span class="name">
+                        <span ><b>filterAmbiente</b></span>
+                        <a href="#filterAmbiente"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/hosts/hosts.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterAmbiente</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterLocazione"></a>
+                    <span class="name">
+                        <span ><b>filterLocazione</b></span>
+                        <a href="#filterLocazione"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/hosts/hosts.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterLocazione</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterNodo"></a>
+                    <span class="name">
+                        <span ><b>filterNodo</b></span>
+                        <a href="#filterNodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/hosts/hosts.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterNodo</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterOS"></a>
+                    <span class="name">
+                        <span ><b>filterOS</b></span>
+                        <a href="#filterOS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/hosts/hosts.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterOS</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterOSFamily"></a>
+                    <span class="name">
+                        <span ><b>filterOSFamily</b></span>
+                        <a href="#filterOSFamily"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/components/hosts/hosts.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterOSFamily</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtersCollapsed"></a>
+                    <span class="name">
+                        <span ><b>filtersCollapsed</b></span>
+                        <a href="#filtersCollapsed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/hosts/hosts.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filtersCollapsed</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterZona"></a>
+                    <span class="name">
+                        <span ><b>filterZona</b></span>
+                        <a href="#filterZona"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/hosts/hosts.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà filterZona</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hosts"></a>
+                    <span class="name">
+                        <span ><b>hosts</b></span>
+                        <a href="#hosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/hosts/hosts.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà hosts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/hosts/hosts.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà isLoading</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modificaData"></a>
+                    <span class="name">
+                        <span ><b>modificaData</b></span>
+                        <a href="#modificaData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/components/hosts/hosts.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà modificaData</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pendingDismesse"></a>
+                    <span class="name">
+                        <span ><b>pendingDismesse</b></span>
+                        <a href="#pendingDismesse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/hosts/hosts.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà pendingDismesse</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pendingNotDismesse"></a>
+                    <span class="name">
+                        <span ><b>pendingNotDismesse</b></span>
+                        <a href="#pendingNotDismesse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/components/hosts/hosts.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà pendingNotDismesse</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routeSub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>routeSub</b></span>
+                        <a href="#routeSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/components/hosts/hosts.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà routeSub</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedHostsMap"></a>
+                    <span class="name">
+                        <span ><b>selectedHostsMap</b></span>
+                        <a href="#selectedHostsMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Host.html" target="_self" >Map&lt;string | Host&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/components/hosts/hosts.component.ts:105</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà selectedHostsMap</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectionAppliance"></a>
+                    <span class="name">
+                        <span ><b>selectionAppliance</b></span>
+                        <a href="#selectionAppliance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">src/app/components/hosts/hosts.component.ts:257</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà selectionAppliance</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectionWindows"></a>
+                    <span class="name">
+                        <span ><b>selectionWindows</b></span>
+                        <a href="#selectionWindows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Host.html" target="_self" >Host[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">src/app/components/hosts/hosts.component.ts:255</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà selectionWindows</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showDismettiModal"></a>
+                    <span class="name">
+                        <span ><b>showDismettiModal</b></span>
+                        <a href="#showDismettiModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/components/hosts/hosts.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà showDismettiModal</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showExportModal"></a>
+                    <span class="name">
+                        <span ><b>showExportModal</b></span>
+                        <a href="#showExportModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/hosts/hosts.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà showExportModal</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showImportDialog"></a>
+                    <span class="name">
+                        <span ><b>showImportDialog</b></span>
+                        <a href="#showImportDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/hosts/hosts.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà showImportDialog</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showModificaModal"></a>
+                    <span class="name">
+                        <span ><b>showModificaModal</b></span>
+                        <a href="#showModificaModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/hosts/hosts.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà showModificaModal</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>sub</b></span>
+                        <a href="#sub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/components/hosts/hosts.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà sub</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="windowsTable"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>windowsTable</b></span>
+                        <a href="#windowsTable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/SharedTableComponent.html" target="_self" >SharedTableComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;windowsTable&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/hosts/hosts.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Proprietà windowsTable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="windowsVersions"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>windowsVersions</b></span>
+                        <a href="#windowsVersions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+      &#x27;Windows 10&#x27;, &#x27;Windows 11&#x27;, &#x27;Windows Server 2016&#x27;,
+      &#x27;Windows Server 2019&#x27;, &#x27;Windows Server 2022&#x27;, &#x27;Windows Server 2025&#x27;
+    ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/hosts/hosts.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="canWrite"></a>
+                        <span class="name"><b>canWrite</b><a href="#canWrite"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>canWrite()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/components/hosts/hosts.component.ts:115</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="allSelectedHosts"></a>
+                        <span class="name"><b>allSelectedHosts</b><a href="#allSelectedHosts"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>allSelectedHosts()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="269" class="link-to-prism">src/app/components/hosts/hosts.component.ts:269</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnDestroy, ViewChild } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { RouterLink, ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { BackendService, Host } from &#x27;../../services/backend.service&#x27;;
+import { NotificationService } from &#x27;../../services/notification.service&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { SharedTableComponent } from &#x27;../shared-table/shared-table.component&#x27;;
+import { GlobalFiltersComponent } from &#x27;../global-filters/global-filters.component&#x27;;
+import { InputSwitchModule } from &#x27;primeng/inputswitch&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+import { ImportDialogComponent } from &#x27;../import-dialog/import-dialog.component&#x27;;
+
+/** Componente/Servizio HostsComponent */
+@Component({
+  selector: &#x27;app-hosts&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink, SharedTableComponent, GlobalFiltersComponent, InputSwitchModule, ImportDialogComponent],
+  templateUrl: &#x27;./hosts.component.html&#x27;,
+})
+export class HostsComponent implements OnInit, OnDestroy {
+  /** Proprietà windowsTable */
+    @ViewChild(&#x27;windowsTable&#x27;) readonly windowsTable!: SharedTableComponent;
+  /** Proprietà applianceTable */
+    @ViewChild(&#x27;applianceTable&#x27;) readonly applianceTable!: SharedTableComponent;
+
+  /** Proprietà hosts */
+    hosts: Host[] &#x3D; []; // Only used for export if we want to fetch full, but wait, export now uses allSelectedHosts which are just mock Host objects with hostname!
+  // We need to fix export later, since selectedHosts now only has hostnames.
+  /** Proprietà baseFiltersWindows */
+    baseFiltersWindows: any &#x3D; { appliance: false };
+  /** Proprietà baseFiltersAppliance */
+    baseFiltersAppliance: any &#x3D; { appliance: true };
+  /** Proprietà isLoading */
+    isLoading &#x3D; false;
+
+  /** Proprietà filterAmbiente */
+    filterAmbiente: string[] &#x3D; [];
+  /** Proprietà filterNodo */
+    filterNodo: string[] &#x3D; [];
+  /** Proprietà filterZona */
+    filterZona: string[] &#x3D; [];
+  /** Proprietà filterLocazione */
+    filterLocazione: string[] &#x3D; [];
+  /** Proprietà filterOSFamily */
+    filterOSFamily: string[] &#x3D; [];
+  /** Proprietà filterOS */
+    filterOS: string[] &#x3D; [];
+  /** Proprietà availableOS */
+    availableOS: string[] &#x3D; [];
+    readonly windowsVersions &#x3D; [
+      &#x27;Windows 10&#x27;, &#x27;Windows 11&#x27;, &#x27;Windows Server 2016&#x27;,
+      &#x27;Windows Server 2019&#x27;, &#x27;Windows Server 2022&#x27;, &#x27;Windows Server 2025&#x27;
+    ];
+  /** Proprietà filtersCollapsed */
+    filtersCollapsed &#x3D; true;
+
+  /** Proprietà showExportModal */
+    showExportModal &#x3D; false;
+  /** Proprietà showDismettiModal */
+    showDismettiModal &#x3D; false;
+  /** Proprietà showModificaModal */
+    showModificaModal &#x3D; false;
+  /** Proprietà showImportDialog */
+    showImportDialog &#x3D; false;
+  /** Proprietà modificaData */
+    modificaData: any &#x3D; {};
+  /** Proprietà dismettiCount */
+    dismettiCount &#x3D; 0;
+  /** Proprietà pendingDismesse */
+    pendingDismesse: Host[] &#x3D; [];
+  /** Proprietà pendingNotDismesse */
+    pendingNotDismesse: Host[] &#x3D; [];
+  /** Proprietà exportColumns */
+    readonly exportColumns &#x3D; [
+    { key: &#x27;hostname&#x27;, label: &#x27;Hostname&#x27;, selected: true },
+    { key: &#x27;applicazione&#x27;, label: &#x27;Applicazione&#x27;, selected: true },
+    { key: &#x27;riferimento&#x27;, label: &#x27;Riferimento&#x27;, selected: false },
+    { key: &#x27;ambiente&#x27;, label: &#x27;Ambiente&#x27;, selected: true },
+    { key: &#x27;company&#x27;, label: &#x27;Company&#x27;, selected: false },
+    { key: &#x27;servizio&#x27;, label: &#x27;Servizio&#x27;, selected: true },
+    { key: &#x27;appliance&#x27;, label: &#x27;Appliance&#x27;, selected: false },
+    { key: &#x27;zona&#x27;, label: &#x27;Zona&#x27;, selected: false },
+    { key: &#x27;riferimentoEs&#x27;, label: &#x27;Riferimento ES&#x27;, selected: false },
+    { key: &#x27;locazione&#x27;, label: &#x27;Locazione&#x27;, selected: false },
+    { key: &#x27;os&#x27;, label: &#x27;OS&#x27;, selected: true },
+    { key: &#x27;manutenzione&#x27;, label: &#x27;Manutenzione&#x27;, selected: true },
+    { key: &#x27;status&#x27;, label: &#x27;Status&#x27;, selected: true },
+    { key: &#x27;nodo&#x27;, label: &#x27;Nodo&#x27;, selected: true },
+    { key: &#x27;note&#x27;, label: &#x27;Note&#x27;, selected: false },
+    { key: &#x27;pianificazione&#x27;, label: &#x27;Pianificazione&#x27;, selected: false },
+    { key: &#x27;rfc&#x27;, label: &#x27;RFC&#x27;, selected: false },
+    { key: &#x27;fixed&#x27;, label: &#x27;Fixed&#x27;, selected: false },
+    { key: &#x27;fixable&#x27;, label: &#x27;Fixable&#x27;, selected: false },
+    { key: &#x27;divisione&#x27;, label: &#x27;Divisione&#x27;, selected: false },
+    { key: &#x27;ipfe&#x27;, label: &#x27;IP Frontend&#x27;, selected: false },
+    { key: &#x27;ipmgt&#x27;, label: &#x27;IP Management&#x27;, selected: false },
+    { key: &#x27;ipfe2al&#x27;, label: &#x27;IP FE2AL&#x27;, selected: false },
+    { key: &#x27;vlfe&#x27;, label: &#x27;VLAN Frontend&#x27;, selected: false },
+    { key: &#x27;vlmgt&#x27;, label: &#x27;VLAN Management&#x27;, selected: false },
+    { key: &#x27;vlfe2al&#x27;, label: &#x27;VLAN FE2AL&#x27;, selected: false }
+  ];
+
+  /** Proprietà selectedHostsMap */
+    selectedHostsMap: Map&lt;string, Host&gt; &#x3D; new Map();
+
+  /** Proprietà sub */
+    private sub!: Subscription;
+  /** Proprietà routeSub */
+    private routeSub!: Subscription;
+
+  /** Costruttore di HostsComponent */
+    constructor(private readonly backend: BackendService, private readonly route: ActivatedRoute, public readonly auth: AuthService, private readonly notif: NotificationService) {}
+
+  get canWrite(): boolean {
+    return this.auth.canWrite();
+  }
+
+  /** Proprietà animateFilters */
+    animateFilters &#x3D; false;
+
+  /** Metodo toggleFilters */
+    toggleFilters() {
+    this.animateFilters &#x3D; true;
+    this.filtersCollapsed &#x3D; !this.filtersCollapsed;
+  }
+
+  /** Lifecycle hook ngOnInit */
+    ngOnInit() {
+    this.backend.getHosts({ pageSize: -1 }).then(res &#x3D;&gt; {
+      const osSet &#x3D; new Set(res.items.map(h &#x3D;&gt; h.os).filter(os &#x3D;&gt; os &amp;&amp; os !&#x3D;&#x3D; &#x27;-&#x27;));
+      this.availableOS &#x3D; Array.from(osSet).sort((a, b) &#x3D;&gt; a.localeCompare(b));
+    }).catch(err &#x3D;&gt; console.error(err));
+
+    this.routeSub &#x3D; this.route.queryParams.subscribe(params &#x3D;&gt; {
+      if (params[&#x27;ambiente&#x27;]) {
+        const amb &#x3D; params[&#x27;ambiente&#x27;].toLowerCase();
+        this.filterAmbiente &#x3D; [amb];
+      }
+      this.applyGlobalFilters();
+      this.isLoading &#x3D; false;
+    });
+  }
+
+  /** Lifecycle hook ngOnDestroy */
+    ngOnDestroy() {
+    this.routeSub?.unsubscribe();
+  }
+
+  private toggleFilterValue(filters: string[], value: string): void {
+    const idx &#x3D; filters.indexOf(value);
+    if (idx &gt; -1) {
+      filters.splice(idx, 1);
+      return;
+    }
+    filters.push(value);
+  }
+
+  /** Proprietà currentAvailableOSVersions */
+    currentAvailableOSVersions: string[] &#x3D; [];
+
+  /** Metodo getAvailableOSVersions */
+    getAvailableOSVersions(): string[] {
+    if (this.filterOSFamily.length &#x3D;&#x3D;&#x3D; 0) return [];
+    return this.availableOS.filter(os &#x3D;&gt; {
+
+      const osl &#x3D; os.toLowerCase();
+      return this.filterOSFamily.some(f &#x3D;&gt; {
+        if (f &#x3D;&#x3D;&#x3D; &#x27;Windows&#x27;) return /^windows (10|11)(?:\b|$)/.test(osl);
+        if (f &#x3D;&#x3D;&#x3D; &#x27;Windows Server&#x27;) return /^windows server (2016|2019|2022|2025)(?:\b|$)/.test(osl);
+        return false;
+      });
+    });
+  }
+
+  /** Metodo updateAvailableOSVersions */
+    updateAvailableOSVersions() {
+    this.currentAvailableOSVersions &#x3D; this.getAvailableOSVersions();
+  }
+
+  /** Metodo applyGlobalFilters */
+    applyGlobalFilters() {
+    this.updateAvailableOSVersions();
+    
+    const base: any &#x3D; {};
+    if (this.filterAmbiente.length &gt; 0) base.ambiente &#x3D; this.filterAmbiente.join(&#x27;,&#x27;);
+
+    if (this.filterNodo.length &gt; 0) base.nodo &#x3D; this.filterNodo.join(&#x27;,&#x27;);
+    if (this.filterZona.length &gt; 0) base.zona &#x3D; this.filterZona.join(&#x27;,&#x27;);
+    if (this.filterLocazione.length &gt; 0) base.locazione &#x3D; this.filterLocazione.join(&#x27;,&#x27;);
+    
+    if (this.filterOSFamily.length &gt; 0) base.osFamily &#x3D; this.filterOSFamily.join(&#x27;,&#x27;);
+    if (this.filterOS.length &gt; 0) base.os &#x3D; this.filterOS.join(&#x27;,&#x27;);
+
+    this.baseFiltersWindows &#x3D; { ...base, appliance: false };
+    this.baseFiltersAppliance &#x3D; { ...base, appliance: true };
+  }
+
+  /** Metodo setPreset */
+    setPreset(col: string, val: string) {
+    const filterMap: Record&lt;string, string[]&gt; &#x3D; {
+      ambiente: this.filterAmbiente,
+      nodo: this.filterNodo,
+      zona: this.filterZona,
+      locazione: this.filterLocazione,
+      osFamily: this.filterOSFamily,
+      os: this.filterOS
+    };
+
+    const target &#x3D; filterMap[col];
+    if (!target) return;
+
+    this.toggleFilterValue(target, val);
+
+    if (col &#x3D;&#x3D;&#x3D; &#x27;osFamily&#x27;) {
+      this.updateAvailableOSVersions();
+      const validVersions &#x3D; this.currentAvailableOSVersions;
+      this.filterOS &#x3D; this.filterOS.filter(v &#x3D;&gt; validVersions.includes(v));
+    }
+    this.applyGlobalFilters();
+  }
+
+  /** Metodo setExclusiveEnv */
+    setExclusiveEnv(env: string) {
+    this.clearFilters();
+    this.filterAmbiente &#x3D; [env];
+    this.applyGlobalFilters();
+  }
+
+  /** Metodo clearFilters */
+    clearFilters() {
+    this.filterAmbiente &#x3D; [];
+    this.filterNodo &#x3D; [];
+    this.filterZona &#x3D; [];
+    this.filterLocazione &#x3D; [];
+    this.filterOSFamily &#x3D; [];
+    this.filterOS &#x3D; [];
+    this.applyGlobalFilters();
+    
+    if (this.windowsTable) this.windowsTable.clearTextFilters();
+    if (this.applianceTable) this.applianceTable.clearTextFilters();
+  }
+
+  /** Metodo onSelectionChange */
+    onSelectionChange(selected: Host[]) {
+    // We get selected hosts from each table. We need to maintain a global set of selected hosts.
+    // However, it&#x27;s easier if each table emits its selection, and we just merge them.
+    // We can&#x27;t just overwrite, because an event from table 1 shouldn&#x27;t clear table 2&#x27;s selection.
+    // Let&#x27;s use a method that takes the table id and its selection.
+    // Actually, each table emits its full selection. If we want global selection, we can just ask the child components, or have &#x60;onSelectionChange&#x60; store them in a Map keyed by table.
+  }
+
+  // To properly handle selection from multiple tables:
+  /** Proprietà selectionWindows */
+    selectionWindows: Host[] &#x3D; [];
+  /** Proprietà selectionAppliance */
+    selectionAppliance: Host[] &#x3D; [];
+
+  /** Metodo onWindowsSelection */
+    onWindowsSelection(selected: Host[]) {
+    this.selectionWindows &#x3D; selected;
+  }
+
+  /** Metodo onApplianceSelection */
+    onApplianceSelection(selected: Host[]) {
+    this.selectionAppliance &#x3D; selected;
+  }
+
+  get allSelectedHosts(): Host[] {
+    return [...this.selectionWindows, ...this.selectionAppliance];
+  }
+
+  /** Metodo dismettiSelected */
+    async dismettiSelected() {
+    if (!this.canWrite) return;
+    const hosts &#x3D; this.allSelectedHosts;
+    if (hosts.length &#x3D;&#x3D;&#x3D; 0) return;
+
+    this.pendingDismesse &#x3D; hosts.filter(h &#x3D;&gt; (h.ambiente || &#x27;&#x27;).toLowerCase().includes(&#x27;dismessa&#x27;));
+    this.pendingNotDismesse &#x3D; hosts.filter(h &#x3D;&gt; !(h.ambiente || &#x27;&#x27;).toLowerCase().includes(&#x27;dismessa&#x27;));
+
+    if (this.pendingDismesse.length &gt; 0) {
+      this.dismettiCount &#x3D; this.pendingDismesse.length;
+      this.showDismettiModal &#x3D; true;
+    } else {
+      try {
+        await this.backend.updateHostsBulk(this.pendingNotDismesse.map(h &#x3D;&gt; h.id), { ambiente: &#x27;Dismessa&#x27; });
+      } catch (e: any) {
+        this.notif.showToast({ type: &#x27;error&#x27;, message: e?.response?.data?.error || &#x27;Errore durante la dismissione&#x27; });
+      } finally {
+        this.clearSelectionsAndReload();
+      }
+    }
+  }
+
+  /** Metodo closeDismettiModal */
+    closeDismettiModal() {
+    this.showDismettiModal &#x3D; false;
+  }
+
+  /** Metodo salvaModificaMassiva */
+    async salvaModificaMassiva() {
+    if (!this.canWrite) return;
+    try {
+      await this.backend.updateHostsBulk(this.allSelectedHosts.map(h &#x3D;&gt; h.id), this.modificaData);
+    } catch (e: any) {
+      this.notif.showToast({ type: &#x27;error&#x27;, message: e?.response?.data?.error || &#x27;Errore durante la modifica massiva&#x27; });
+    } finally {
+      this.clearSelectionsAndReload();
+      this.closeModificaModal();
+    }
+  }
+
+  /** Metodo confirmDismetti */
+    async confirmDismetti() {
+    if (!this.canWrite) return;
+    try {
+      await this.backend.deleteHostsBulk(this.pendingDismesse.map(h &#x3D;&gt; h.id));
+      if (this.pendingNotDismesse.length &gt; 0) {
+        await this.backend.updateHostsBulk(this.pendingNotDismesse.map(h &#x3D;&gt; h.id), { ambiente: &#x27;Dismessa&#x27; });
+      }
+    } catch (e: any) {
+      this.notif.showToast({ type: &#x27;error&#x27;, message: e?.response?.data?.error || &#x27;Errore durante la dismissione&#x27; });
+    } finally {
+      this.clearSelectionsAndReload();
+      this.closeDismettiModal();
+    }
+  }
+
+  /** Metodo clearSelectionsAndReload */
+    clearSelectionsAndReload() {
+    this.selectionWindows &#x3D; [];
+    this.selectionAppliance &#x3D; [];
+    if (this.windowsTable) {
+        this.windowsTable.selectedHosts.clear();
+        this.windowsTable.loadData();
+    }
+    if (this.applianceTable) {
+        this.applianceTable.selectedHosts.clear();
+        this.applianceTable.loadData();
+    }
+  }
+
+  /** Metodo openImportDialog */
+    openImportDialog() {
+    if (!this.canWrite) return;
+    this.showImportDialog &#x3D; true;
+  }
+
+  /** Metodo onHostsImported: ricarica le tabelle dopo un import */
+    onHostsImported() {
+    this.clearSelectionsAndReload();
+  }
+
+  /** Metodo openExportModal */
+    openExportModal() {
+    if (!this.canWrite) return;
+    if (this.allSelectedHosts.length &#x3D;&#x3D;&#x3D; 0) return;
+    this.showExportModal &#x3D; true;
+  }
+
+  /** Metodo closeExportModal */
+    closeExportModal() {
+    this.showExportModal &#x3D; false;
+  }
+
+  /** Metodo exportSelected */
+    async exportSelected() {
+    const selectedIds &#x3D; new Set(this.allSelectedHosts.map(h &#x3D;&gt; h.id));
+    if (selectedIds.size &#x3D;&#x3D;&#x3D; 0) return;
+    
+    // We only have hostnames. We must fetch full hosts from backend!
+    const res &#x3D; await this.backend.getHosts({ pageSize: -1 }); // get all
+    const hosts &#x3D; res.items.filter(h &#x3D;&gt; selectedIds.has(h.id));
+
+    const selectedCols &#x3D; this.exportColumns.filter(c &#x3D;&gt; c.selected);
+    const headers &#x3D; selectedCols.map(c &#x3D;&gt; c.label);
+    const csvRows &#x3D; [headers.join(&#x27;;&#x27;)];
+    
+    for (const h of hosts) {
+      const row &#x3D; selectedCols.map(c &#x3D;&gt; {
+        let val &#x3D; (h as any)[c.key];
+        if (c.key &#x3D;&#x3D;&#x3D; &#x27;status&#x27;) {
+            const strVal &#x3D; String(val || &#x27;&#x27;).toLowerCase();
+            val &#x3D; (val &#x3D;&#x3D;&#x3D; true || strVal &#x3D;&#x3D;&#x3D; &#x27;ok&#x27; || strVal &#x3D;&#x3D;&#x3D; &#x27;true&#x27;) ? &#x27;OK&#x27; : &#x27;NO&#x27;;
+        }
+        val ??&#x3D; &#x27;&#x27;;
+        return &#x60;&quot;${val.toString().replaceAll(&#x27;&quot;&#x27;, &#x27;&quot;&quot;&#x27;)}&quot;&#x60;;
+      });
+      csvRows.push(row.join(&#x27;;&#x27;));
+    }
+    
+    const csvContent &#x3D; csvRows.join(&#x27;\n&#x27;);
+    const blob &#x3D; new Blob([csvContent], { type: &#x27;text/csv;charset&#x3D;utf-8;&#x27; });
+    const url &#x3D; URL.createObjectURL(blob);
+    const link &#x3D; document.createElement(&#x27;a&#x27;);
+    link.setAttribute(&#x27;href&#x27;, url);
+    link.setAttribute(&#x27;download&#x27;, &#x27;export_hosts.csv&#x27;);
+    link.style.visibility &#x3D; &#x27;hidden&#x27;;
+    document.body.appendChild(link);
+    link.click();
+    this.closeExportModal();
+  }
+
+  /** Metodo openModificaModal */
+    openModificaModal() {
+    if (!this.canWrite) return;
+    if (this.allSelectedHosts.length &#x3D;&#x3D;&#x3D; 0) return;
+    this.modificaData &#x3D; {
+        ambiente: &#x27;&#x27;, company: &#x27;&#x27;, servizio: &#x27;&#x27;, zona: &#x27;&#x27;, locazione: &#x27;&#x27;, manutenzione: &#x27;&#x27;
+    };
+    this.showModificaModal &#x3D; true;
+  }
+
+  /** Metodo closeModificaModal */
+    closeModificaModal() {
+    this.showModificaModal &#x3D; false;
+  }
+
+  private normalizeModificaValue(key: string, rawVal: string): string | number | boolean {
+    const val &#x3D; rawVal.trim();
+    if ([&#x27;fixable&#x27;, &#x27;fixed&#x27;, &#x27;appliance&#x27;].includes(key)) {
+        if (val.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;true&#x27;) return true;
+        if (val.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;false&#x27;) return false;
+    }
+    if (key &#x3D;&#x3D;&#x3D; &#x27;nodo&#x27;) {
+        return Number.parseInt(val, 10);
+    }
+    return val;
+  }
+
+  private buildModificaPayload(): Record&lt;string, any&gt; {
+    const payload: Record&lt;string, any&gt; &#x3D; {};
+    for (const key of Object.keys(this.modificaData)) {
+        const rawVal &#x3D; this.modificaData[key];
+        if (rawVal &amp;&amp; rawVal.trim() !&#x3D;&#x3D; &#x27;&#x27;) {
+            payload[key] &#x3D; this.normalizeModificaValue(key, rawVal);
+        }
+    }
+    return payload;
+  }
+
+  /** Metodo confirmModifica */
+    async confirmModifica() {
+    if (!this.canWrite) return;
+    const hostsToUpdate &#x3D; this.allSelectedHosts.map(h &#x3D;&gt; h.id);
+    if (hostsToUpdate.length &#x3D;&#x3D;&#x3D; 0) return;
+
+    const payload &#x3D; this.buildModificaPayload();
+
+    if (Object.keys(payload).length &gt; 0) {
+        await this.backend.updateHostsBulk(hostsToUpdate, payload);
+        this.clearSelectionsAndReload();
+    }
+    
+    this.closeModificaModal();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;dashboard-container active-view&quot;&gt;
+    &lt;div style&#x3D;&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;&quot;&gt;
+        &lt;h1 class&#x3D;&quot;page-title&quot; style&#x3D;&quot;margin-bottom: 0;&quot;&gt;Hosts Inventory&lt;/h1&gt;
+        &lt;div style&#x3D;&quot;display: flex; align-items: center; gap: 15px;&quot;&gt;
+            &lt;button *ngIf&#x3D;&quot;canWrite&quot; class&#x3D;&quot;preset-btn&quot; routerLink&#x3D;&quot;/machine/new&quot; style&#x3D;&quot;padding: 8px 16px; display: flex; align-items: center; gap: 8px; background-color: var(--accent-primary); border-color: var(--accent-primary); color: white;&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-plus&quot;&gt;&lt;/i&gt; &lt;span&gt;Crea Nuova Macchina&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;button *ngIf&#x3D;&quot;canWrite&quot; class&#x3D;&quot;preset-btn&quot; (click)&#x3D;&quot;openImportDialog()&quot; style&#x3D;&quot;padding: 8px 16px; display: flex; align-items: center; gap: 8px;&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-file-import&quot;&gt;&lt;/i&gt; &lt;span&gt;Importa CSV&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;i class&#x3D;&quot;fa-solid fa-circle-question&quot; style&#x3D;&quot;font-size: 1.5rem; color: var(--text-muted); cursor: help;&quot; title&#x3D;&quot;Shortcut di Selezione:&amp;#10;- Click normale: seleziona/deseleziona la riga&amp;#10;- Shift+Click: seleziona un gruppo di righe o tutte le righe filtrabili (se clicchi &#x27;Seleziona Tutti&#x27;)&amp;#10;- Shift+Click su una riga già selezionata: annulla tutta la selezione&amp;#10;&amp;#10;Filtri Globali:&amp;#10;- Usa i filtri globali per ridurre la lista in tutte le tabelle simultaneamente.&amp;#10;&amp;#10;TIP:&amp;#10;- Shift+Click sull&#x27;intestazione di una colonna per mostrare/nascondere la sua casella di ricerca testuale.&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; (click)&#x3D;&quot;toggleFilters()&quot; style&#x3D;&quot;padding: 8px 16px; display: flex; align-items: center; gap: 8px;&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-filter&quot;&gt;&lt;/i&gt; &lt;span&gt;{{ filtersCollapsed ? &#x27;Mostra Filtri Globali&#x27; : &#x27;Nascondi Filtri Globali&#x27; }}&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class&#x3D;&quot;table-controls-wrapper&quot; style&#x3D;&quot;margin-bottom: 20px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); display: flex; flex-direction: column;&quot;&gt;
+        &lt;div class&#x3D;&quot;global-filters-container&quot; [class.collapsed]&#x3D;&quot;filtersCollapsed&quot; [class.animate-transition]&#x3D;&quot;animateFilters&quot;&gt;
+            &lt;app-global-filters
+                [mode]&#x3D;&quot;&#x27;hosts&#x27;&quot;
+                [filterAmbiente]&#x3D;&quot;filterAmbiente&quot;
+                [filterNodo]&#x3D;&quot;filterNodo&quot;
+                [filterZona]&#x3D;&quot;filterZona&quot;
+                [filterLocazione]&#x3D;&quot;filterLocazione&quot;
+                [filterOSFamily]&#x3D;&quot;filterOSFamily&quot;
+                [filterOS]&#x3D;&quot;filterOS&quot;
+                [availableOSVersions]&#x3D;&quot;currentAvailableOSVersions&quot;
+                (presetClick)&#x3D;&quot;setPreset($event.col, $event.val)&quot;
+                (clearAll)&#x3D;&quot;clearFilters()&quot;&gt;
+            &lt;/app-global-filters&gt;
+        &lt;/div&gt;
+        &lt;!-- Bulk Actions under Environment --&gt;
+        &lt;div class&#x3D;&quot;bulk-actions&quot; style&#x3D;&quot;padding: 10px 20px; background: var(--bg-canvas); border-top: 1px solid var(--border-color); display: flex; gap: 10px; align-items: center;&quot;&gt;
+            &lt;span style&#x3D;&quot;color: var(--text-muted); font-size: 0.9rem;&quot;&gt;Azioni Rapide ({{ allSelectedHosts.length }} selezionati):&lt;/span&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;color: white; background-color: var(--accent-primary); border-color: var(--accent-primary);&quot; [disabled]&#x3D;&quot;!canWrite || allSelectedHosts.length &#x3D;&#x3D;&#x3D; 0&quot; (click)&#x3D;&quot;dismettiSelected()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-trash&quot;&gt;&lt;/i&gt; Dismetti
+            &lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;color: white; background-color: var(--accent-primary); border-color: var(--accent-primary);&quot; [disabled]&#x3D;&quot;!canWrite || allSelectedHosts.length &#x3D;&#x3D;&#x3D; 0&quot; (click)&#x3D;&quot;openModificaModal()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-pen-to-square&quot;&gt;&lt;/i&gt; Modifica
+            &lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;color: white; background-color: var(--accent-primary); border-color: var(--accent-primary); margin-left: auto;&quot; [disabled]&#x3D;&quot;!canWrite || allSelectedHosts.length &#x3D;&#x3D;&#x3D; 0&quot; (click)&#x3D;&quot;openExportModal()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-file-csv&quot;&gt;&lt;/i&gt; Export CSV
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- MACCHINE WINDOWS --&gt;
+    &lt;app-shared-table 
+        #windowsTable
+        [baseFilters]&#x3D;&quot;baseFiltersWindows&quot;
+        [title]&#x3D;&quot;&#x27;Macchine Windows&#x27;&quot;
+        [iconClass]&#x3D;&quot;&#x27;fa-brands fa-windows&#x27;&quot;
+        [filtersCollapsed]&#x3D;&quot;filtersCollapsed&quot;
+        (envClick)&#x3D;&quot;setExclusiveEnv($event)&quot;
+        (selectionChange)&#x3D;&quot;onWindowsSelection($event)&quot;&gt;
+    &lt;/app-shared-table&gt;
+
+    &lt;!-- APPLIANCES --&gt;
+    &lt;app-shared-table 
+        #applianceTable
+        [baseFilters]&#x3D;&quot;baseFiltersAppliance&quot; 
+        [title]&#x3D;&quot;&#x27;Appliances&#x27;&quot; 
+        [iconClass]&#x3D;&quot;&#x27;fa-solid fa-server&#x27;&quot; 
+        [filtersCollapsed]&#x3D;&quot;filtersCollapsed&quot;
+        (envClick)&#x3D;&quot;setExclusiveEnv($event)&quot;
+        (selectionChange)&#x3D;&quot;onApplianceSelection($event)&quot;&gt;
+    &lt;/app-shared-table&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal Esportazione CSV --&gt;
+&lt;div class&#x3D;&quot;modal-overlay&quot; *ngIf&#x3D;&quot;showExportModal&quot; (click)&#x3D;&quot;closeExportModal()&quot; (keydown.escape)&#x3D;&quot;closeExportModal()&quot; style&#x3D;&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot; (keydown)&#x3D;&quot;$event.stopPropagation()&quot; style&#x3D;&quot;background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);&quot;&gt;
+        &lt;h2 style&#x3D;&quot;margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);&quot;&gt;Seleziona Colonne da Esportare&lt;/h2&gt;
+        
+        &lt;div style&#x3D;&quot;max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;&quot;&gt;
+            &lt;div *ngFor&#x3D;&quot;let col of exportColumns&quot; style&#x3D;&quot;display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;&quot;&gt;
+                &lt;span style&#x3D;&quot;font-weight: 500;&quot;&gt;{{ col.label }}&lt;/span&gt;
+                &lt;p-inputSwitch [(ngModel)]&#x3D;&quot;col.selected&quot;&gt;&lt;/p-inputSwitch&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div style&#x3D;&quot;display: flex; justify-content: flex-end; gap: 15px;&quot;&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);&quot; (click)&#x3D;&quot;closeExportModal()&quot;&gt;Annulla&lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);&quot; (click)&#x3D;&quot;exportSelected()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-download&quot;&gt;&lt;/i&gt; Esporta
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal Conferma Dismissione --&gt;
+&lt;div class&#x3D;&quot;modal-overlay&quot; *ngIf&#x3D;&quot;showDismettiModal&quot; (click)&#x3D;&quot;closeDismettiModal()&quot; (keydown.escape)&#x3D;&quot;closeDismettiModal()&quot; style&#x3D;&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot; (keydown)&#x3D;&quot;$event.stopPropagation()&quot; style&#x3D;&quot;background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);&quot;&gt;
+        &lt;h2 style&#x3D;&quot;margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);&quot;&gt;Conferma Eliminazione&lt;/h2&gt;
+        
+        &lt;p style&#x3D;&quot;color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;&quot;&gt;
+            Tra le macchine selezionate, &lt;b&gt;{{ dismettiCount }}&lt;/b&gt; sono già in stato DISMESSA.&lt;br&gt;&lt;br&gt;Vuoi eliminarle definitivamente dal database?
+        &lt;/p&gt;
+
+        &lt;div style&#x3D;&quot;display: flex; justify-content: flex-end; gap: 15px;&quot;&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);&quot; (click)&#x3D;&quot;closeDismettiModal()&quot;&gt;Annulla&lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);&quot; (click)&#x3D;&quot;confirmDismetti()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-trash&quot;&gt;&lt;/i&gt; Elimina
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal Modifica Massiva --&gt;
+&lt;div class&#x3D;&quot;modal-overlay&quot; *ngIf&#x3D;&quot;showModificaModal&quot; (click)&#x3D;&quot;closeModificaModal()&quot; (keydown.escape)&#x3D;&quot;closeModificaModal()&quot; style&#x3D;&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot; (keydown)&#x3D;&quot;$event.stopPropagation()&quot; style&#x3D;&quot;background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 500px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);&quot;&gt;
+        &lt;h2 style&#x3D;&quot;margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);&quot;&gt;Modifica Massiva ({{ allSelectedHosts.length }} hosts)&lt;/h2&gt;
+        
+        &lt;div style&#x3D;&quot;max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px;&quot;&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-ambiente&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Ambiente&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-ambiente&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.ambiente&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-applicazione&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Applicazione&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-applicazione&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.applicazione&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-riferimento&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Riferimento&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-riferimento&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.riferimento&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-riferimentoes&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Rif. ES&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-riferimentoes&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.riferimentoEs&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-os&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Sistema Operativo&lt;/label&gt;
+                &lt;select id&#x3D;&quot;bulk-os&quot; [(ngModel)]&#x3D;&quot;modificaData.os&quot; class&#x3D;&quot;theme-input&quot;&gt;
+                    &lt;option [ngValue]&#x3D;&quot;undefined&quot;&gt;Non modificare&lt;/option&gt;
+                    &lt;option *ngFor&#x3D;&quot;let version of windowsVersions&quot; [value]&#x3D;&quot;version&quot;&gt;{{ version }}&lt;/option&gt;
+                &lt;/select&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-nodo&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Nodo&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-nodo&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.nodo&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-pianificazione&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Pianificazione&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-pianificazione&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.pianificazione&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-company&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Compagnia&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-company&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.company&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-servizio&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Servizio&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-servizio&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.servizio&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-zona&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Zona&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-zona&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.zona&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-locazione&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Locazione&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-locazione&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.locazione&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-manutenzione&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Finestra manutenzione&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-manutenzione&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.manutenzione&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+
+            &lt;!-- Group 2: Avanzate --&gt;
+            &lt;h3 style&#x3D;&quot;margin-top: 10px; margin-bottom: 5px; font-size: 1.1rem; color: var(--text-primary);&quot;&gt;Avanzate&lt;/h3&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-fixable&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Fixable (true/false)&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-fixable&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.fixable&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-appliance&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Appliance (true/false)&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-appliance&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.appliance&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-fixed&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Status FIX (true/false)&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-fixed&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.fixed&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-divisione&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Divisione&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-divisione&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.divisione&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-rfc&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;RFC&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-rfc&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.rfc&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;label for&#x3D;&quot;bulk-status&quot; style&#x3D;&quot;display: block; margin-bottom: 5px; color: var(--text-muted);&quot;&gt;Status FIX (Testo)&lt;/label&gt;
+                &lt;input id&#x3D;&quot;bulk-status&quot; type&#x3D;&quot;text&quot; pInputText class&#x3D;&quot;theme-input&quot; [(ngModel)]&#x3D;&quot;modificaData.status&quot; placeholder&#x3D;&quot;Lascia vuoto per non modificare&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div style&#x3D;&quot;display: flex; justify-content: flex-end; gap: 15px;&quot;&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);&quot; (click)&#x3D;&quot;closeModificaModal()&quot;&gt;Annulla&lt;/button&gt;
+            &lt;button class&#x3D;&quot;preset-btn&quot; style&#x3D;&quot;background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);&quot; (click)&#x3D;&quot;confirmModifica()&quot;&gt;
+                &lt;i class&#x3D;&quot;fa-solid fa-check&quot;&gt;&lt;/i&gt; Conferma
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Popup Import CSV/JSON --&gt;
+&lt;app-import-dialog
+    [entity]&#x3D;&quot;&#x27;hosts&#x27;&quot;
+    [entityLabel]&#x3D;&quot;&#x27;host&#x27;&quot;
+    [mergeKeyDescription]&#x3D;&quot;&#x27;hostname + ambiente + servizio&#x27;&quot;
+    [(visible)]&#x3D;&quot;showImportDialog&quot;
+    (imported)&#x3D;&quot;onHostsImported()&quot;&gt;
+&lt;/app-import-dialog&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="dashboard-container active-view">    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">        <h1 class="page-title" style="margin-bottom: 0;">Hosts Inventory</h1>        <div style="display: flex; align-items: center; gap: 15px;">            <button *ngIf="canWrite" class="preset-btn" routerLink="/machine/new" style="padding: 8px 16px; display: flex; align-items: center; gap: 8px; background-color: var(--accent-primary); border-color: var(--accent-primary); color: white;">                <i class="fa-solid fa-plus"></i> <span>Crea Nuova Macchina</span>            </button>            <button *ngIf="canWrite" class="preset-btn" (click)="openImportDialog()" style="padding: 8px 16px; display: flex; align-items: center; gap: 8px;">                <i class="fa-solid fa-file-import"></i> <span>Importa CSV</span>            </button>            <i class="fa-solid fa-circle-question" style="font-size: 1.5rem; color: var(--text-muted); cursor: help;" title="Shortcut di Selezione:&#10;- Click normale: seleziona/deseleziona la riga&#10;- Shift+Click: seleziona un gruppo di righe o tutte le righe filtrabili (se clicchi \'Seleziona Tutti\')&#10;- Shift+Click su una riga già selezionata: annulla tutta la selezione&#10;&#10;Filtri Globali:&#10;- Usa i filtri globali per ridurre la lista in tutte le tabelle simultaneamente.&#10;&#10;TIP:&#10;- Shift+Click sull\'intestazione di una colonna per mostrare/nascondere la sua casella di ricerca testuale." aria-hidden="true"></i>            <button class="preset-btn" (click)="toggleFilters()" style="padding: 8px 16px; display: flex; align-items: center; gap: 8px;">                <i class="fa-solid fa-filter"></i> <span>{{ filtersCollapsed ? \'Mostra Filtri Globali\' : \'Nascondi Filtri Globali\' }}</span>            </button>        </div>    </div>        <div class="table-controls-wrapper" style="margin-bottom: 20px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); display: flex; flex-direction: column;">        <div class="global-filters-container" [class.collapsed]="filtersCollapsed" [class.animate-transition]="animateFilters">            <app-global-filters                [mode]="\'hosts\'"                [filterAmbiente]="filterAmbiente"                [filterNodo]="filterNodo"                [filterZona]="filterZona"                [filterLocazione]="filterLocazione"                [filterOSFamily]="filterOSFamily"                [filterOS]="filterOS"                [availableOSVersions]="currentAvailableOSVersions"                (presetClick)="setPreset($event.col, $event.val)"                (clearAll)="clearFilters()">            </app-global-filters>        </div>        <!-- Bulk Actions under Environment -->        <div class="bulk-actions" style="padding: 10px 20px; background: var(--bg-canvas); border-top: 1px solid var(--border-color); display: flex; gap: 10px; align-items: center;">            <span style="color: var(--text-muted); font-size: 0.9rem;">Azioni Rapide ({{ allSelectedHosts.length }} selezionati):</span>            <button class="preset-btn" style="color: white; background-color: var(--accent-primary); border-color: var(--accent-primary);" [disabled]="!canWrite || allSelectedHosts.length === 0" (click)="dismettiSelected()">                <i class="fa-solid fa-trash"></i> Dismetti            </button>            <button class="preset-btn" style="color: white; background-color: var(--accent-primary); border-color: var(--accent-primary);" [disabled]="!canWrite || allSelectedHosts.length === 0" (click)="openModificaModal()">                <i class="fa-solid fa-pen-to-square"></i> Modifica            </button>            <button class="preset-btn" style="color: white; background-color: var(--accent-primary); border-color: var(--accent-primary); margin-left: auto;" [disabled]="!canWrite || allSelectedHosts.length === 0" (click)="openExportModal()">                <i class="fa-solid fa-file-csv"></i> Export CSV            </button>        </div>    </div>    <!-- MACCHINE WINDOWS -->    <app-shared-table         #windowsTable        [baseFilters]="baseFiltersWindows"        [title]="\'Macchine Windows\'"        [iconClass]="\'fa-brands fa-windows\'"        [filtersCollapsed]="filtersCollapsed"        (envClick)="setExclusiveEnv($event)"        (selectionChange)="onWindowsSelection($event)">    </app-shared-table>    <!-- APPLIANCES -->    <app-shared-table         #applianceTable        [baseFilters]="baseFiltersAppliance"         [title]="\'Appliances\'"         [iconClass]="\'fa-solid fa-server\'"         [filtersCollapsed]="filtersCollapsed"        (envClick)="setExclusiveEnv($event)"        (selectionChange)="onApplianceSelection($event)">    </app-shared-table></div><!-- Modal Esportazione CSV --><div class="modal-overlay" *ngIf="showExportModal" (click)="closeExportModal()" (keydown.escape)="closeExportModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Seleziona Colonne da Esportare</h2>                <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;">            <div *ngFor="let col of exportColumns" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;">                <span style="font-weight: 500;">{{ col.label }}</span>                <p-inputSwitch [(ngModel)]="col.selected"></p-inputSwitch>            </div>        </div>        <div style="display: flex; justify-content: flex-end; gap: 15px;">            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeExportModal()">Annulla</button>            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="exportSelected()">                <i class="fa-solid fa-download"></i> Esporta            </button>        </div>    </div></div><!-- Modal Conferma Dismissione --><div class="modal-overlay" *ngIf="showDismettiModal" (click)="closeDismettiModal()" (keydown.escape)="closeDismettiModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Conferma Eliminazione</h2>                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">            Tra le macchine selezionate, <b>{{ dismettiCount }}</b> sono già in stato DISMESSA.<br><br>Vuoi eliminarle definitivamente dal database?        </p>        <div style="display: flex; justify-content: flex-end; gap: 15px;">            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeDismettiModal()">Annulla</button>            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="confirmDismetti()">                <i class="fa-solid fa-trash"></i> Elimina            </button>        </div>    </div></div><!-- Modal Modifica Massiva --><div class="modal-overlay" *ngIf="showModificaModal" (click)="closeModificaModal()" (keydown.escape)="closeModificaModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 500px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Modifica Massiva ({{ allSelectedHosts.length }} hosts)</h2>                <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px;">            <div><label for="bulk-ambiente" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Ambiente</label>                <input id="bulk-ambiente" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.ambiente" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-applicazione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Applicazione</label>                <input id="bulk-applicazione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.applicazione" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-riferimento" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Riferimento</label>                <input id="bulk-riferimento" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.riferimento" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-riferimentoes" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Rif. ES</label>                <input id="bulk-riferimentoes" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.riferimentoEs" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-os" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Sistema Operativo</label>                <select id="bulk-os" [(ngModel)]="modificaData.os" class="theme-input">                    <option [ngValue]="undefined">Non modificare</option>                    <option *ngFor="let version of windowsVersions" [value]="version">{{ version }}</option>                </select></div>            <div><label for="bulk-nodo" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Nodo</label>                <input id="bulk-nodo" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.nodo" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-pianificazione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Pianificazione</label>                <input id="bulk-pianificazione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.pianificazione" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-company" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Compagnia</label>                <input id="bulk-company" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.company" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-servizio" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Servizio</label>                <input id="bulk-servizio" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.servizio" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-zona" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Zona</label>                <input id="bulk-zona" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.zona" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-locazione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Locazione</label>                <input id="bulk-locazione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.locazione" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-manutenzione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Finestra manutenzione</label>                <input id="bulk-manutenzione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.manutenzione" placeholder="Lascia vuoto per non modificare"></div>            <!-- Group 2: Avanzate -->            <h3 style="margin-top: 10px; margin-bottom: 5px; font-size: 1.1rem; color: var(--text-primary);">Avanzate</h3>            <div><label for="bulk-fixable" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Fixable (true/false)</label>                <input id="bulk-fixable" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.fixable" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-appliance" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Appliance (true/false)</label>                <input id="bulk-appliance" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.appliance" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-fixed" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Status FIX (true/false)</label>                <input id="bulk-fixed" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.fixed" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-divisione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Divisione</label>                <input id="bulk-divisione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.divisione" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-rfc" style="display: block; margin-bottom: 5px; color: var(--text-muted);">RFC</label>                <input id="bulk-rfc" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.rfc" placeholder="Lascia vuoto per non modificare"></div>            <div><label for="bulk-status" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Status FIX (Testo)</label>                <input id="bulk-status" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.status" placeholder="Lascia vuoto per non modificare"></div>        </div>        <div style="display: flex; justify-content: flex-end; gap: 15px;">            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeModificaModal()">Annulla</button>            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="confirmModifica()">                <i class="fa-solid fa-check"></i> Conferma            </button>        </div>    </div></div><!-- Popup Import CSV/JSON --><app-import-dialog    [entity]="\'hosts\'"    [entityLabel]="\'host\'"    [mergeKeyDescription]="\'hostname + ambiente + servizio\'"    [(visible)]="showImportDialog"    (imported)="onHostsImported()"></app-import-dialog></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BigcardComponent', 'selector': 'app-bigcard'},{'name': 'CrossSourceComponent', 'selector': 'app-cross-source'},{'name': 'CveAnalysisComponent', 'selector': 'app-cve-analysis'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FilterItemComponent', 'selector': 'app-filter-item'},{'name': 'FixesComponent', 'selector': 'app-fixes'},{'name': 'GlobalFiltersComponent', 'selector': 'app-global-filters'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HostsComponent', 'selector': 'app-hosts'},{'name': 'ImportDialogComponent', 'selector': 'app-import-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineComponent', 'selector': 'app-machine'},{'name': 'MailingComponent', 'selector': 'app-mailing'},{'name': 'MainpageComponent', 'selector': 'app-mainpage'},{'name': 'MonitoringComponent', 'selector': 'app-monitoring'},{'name': 'SearchFieldComponent', 'selector': 'app-search-field'},{'name': 'ServicesComponent', 'selector': 'app-services'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedTableComponent', 'selector': 'app-shared-table'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SiteCardComponent', 'selector': 'app-site-card'},{'name': 'SitesComponent', 'selector': 'app-sites'},{'name': 'SmartcardComponent', 'selector': 'app-smartcard'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'WipComponent', 'selector': 'app-wip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HostsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HostsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

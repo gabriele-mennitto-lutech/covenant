@@ -1,0 +1,43 @@
+<div class="site-card" (click)="onCardClick()" (keydown.enter)="onCardClick()" role="button" tabindex="0">
+  <div class="card-header">
+    <div class="url-container">
+      <h2 class="site-url" [title]="site.urlAliases || site.nomeBilanciatore || 'Unnamed Site'">{{ site.urlAliases || site.nomeBilanciatore || 'Unnamed Site' }}</h2>
+      <button class="icon-btn" (click)="copyToClipboard(site.urlAliases || site.nomeBilanciatore || '', $event)" title="Copy URL">
+        <i class="pi pi-copy"></i>
+      </button>
+    </div>
+    <div class="tags-container" style="display: flex; gap: 0.5rem; align-items: center;">
+      <p-tag [value]="site.tls" [styleClass]="site.tls === 'PASSTHROUGH' ? 'tag-passthrough' : (site.tls === 'EDGE' ? 'tag-edge' : 'tag-reencrypt')" [rounded]="true"></p-tag>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="info-row">
+      <span class="label">IP VIP:</span>
+      <span class="value font-mono" [ngClass]="{'text-gray-500 italic': !site.ipVip}">{{ site.ipVip || 'N/A' }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Balancer:</span>
+      <span class="value truncate" [title]="site.nomeBilanciatore || 'N/A'" [ngClass]="{'text-gray-500 italic': !site.nomeBilanciatore}">{{ site.nomeBilanciatore || 'N/A' }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Protocol:</span>
+      <span class="value" [ngClass]="{'text-gray-500 italic': !site.servizio}">{{ site.servizio || 'N/A' }}</span>
+    </div>
+
+    <div class="hosts-section mt-4">
+      <span class="label block mb-2">Real Hosts:</span>
+      <div class="hosts-list">
+        <a *ngFor="let host of site.hostReali" 
+           [routerLink]="['/machine/by-name']" [queryParams]="{ hostname: host, ambiente: site.ambiente || null }" 
+           (click)="$event.stopPropagation()"
+           class="host-pill transition-all duration-300">
+          {{ host }}
+        </a>
+        <span *ngIf="!site.hostReali || site.hostReali.length === 0" class="text-gray-400 text-sm italic">
+          No hosts listed
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

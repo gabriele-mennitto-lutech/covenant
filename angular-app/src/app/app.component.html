@@ -1,0 +1,14 @@
+<ng-container *ngIf="!isLoginRoute; else loginOnlyView">
+    <app-sidebar></app-sidebar>
+
+    <main class="main-content">
+        <app-header></app-header>
+        <router-outlet></router-outlet>
+    </main>
+</ng-container>
+
+<ng-template #loginOnlyView>
+    <router-outlet></router-outlet>
+</ng-template>
+
+<app-toast></app-toast>

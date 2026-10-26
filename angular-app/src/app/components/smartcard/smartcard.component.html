@@ -1,0 +1,26 @@
+<div class="card interactive" 
+     [routerLink]="routerLinkTarget" 
+     [queryParams]="queryParamsTarget" 
+     [style.borderTop]="color ? '3px solid ' + color : null">
+    <span class="card-title">{{ title }}</span>
+    
+    <ng-container *ngIf="hasHoverAnimation && (zoneDetails || hoverText); else simpleValue">
+        <div class="card-hover-wrapper">
+            <span class="card-value hover-slide-up" [style.color]="color">{{ value }}</span>
+            <div class="hover-details">
+                <ng-container *ngIf="zoneDetails">
+                    <div>TO: <span style="color: var(--text-main);">{{ zoneDetails.torino }}</span></div>
+                    <div>TEU: <span style="color: var(--text-main);">{{ zoneDetails.teulada }}</span></div>
+                    <div>SAXA: <span style="color: var(--text-main);">{{ zoneDetails.saxa }}</span></div>
+                </ng-container>
+                <ng-container *ngIf="hoverText">
+                    <div style="color: var(--text-muted); font-size: 0.9rem;">{{ hoverText }}</div>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #simpleValue>
+        <span class="card-value" [style.color]="color">{{ value }}</span>
+    </ng-template>
+</div>

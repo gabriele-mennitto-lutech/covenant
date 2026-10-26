@@ -1,0 +1,52 @@
+<section class="login-shell">
+  <div class="login-grid-lines"></div>
+  <div class="login-bg-shape shape-one"></div>
+  <div class="login-bg-shape shape-two"></div>
+  <div class="login-bg-shape shape-three"></div>
+
+  <div class="login-card">
+    <div class="login-panel">
+      <div class="brand-row compact">
+        <img src="/logo.svg" alt="SOC INFRA Covenant" class="brand-logo" />
+        <div>
+          <p class="eyebrow">SOC INFRA PLATFORM</p>
+          <h1>Covenant</h1>
+        </div>
+      </div>
+
+      <h2>Accesso</h2>
+      <p class="panel-subtitle">Accedi con il tuo account LDAP.</p>
+
+      <form (ngSubmit)="onSubmit()" class="login-form">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          [(ngModel)]="username"
+          placeholder="Inserisci il tuo username"
+          autocomplete="username"
+        />
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          [(ngModel)]="password"
+          autocomplete="current-password"
+        />
+
+        <button type="submit" [disabled]="isLoading">
+          {{ isLoading ? 'Accesso in corso...' : 'Accedi' }}
+        </button>
+
+        <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+      </form>
+
+      <p class="panel-note">
+        Accedi con la tua utenza RAI.
+      </p>
+    </div>
+  </div>
+</section>

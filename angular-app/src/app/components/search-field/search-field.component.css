@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.search-control {
+  position: relative;
+}
+
+.search-control i {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-control input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  padding-inline-start: 2.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  background: var(--bg-surface);
+  color: var(--text-main);
+  font: inherit;
+}
+
+.search-control input:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}

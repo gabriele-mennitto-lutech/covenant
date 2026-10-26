@@ -1,0 +1,12 @@
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+    <span class="preset-group-label" [style.width]="labelWidth" [style.marginLeft]="labelMarginLeft" [style.color]="labelColor">
+        {{ label }}
+    </span>
+    <button *ngFor="let opt of options" 
+            class="preset-btn" 
+            [ngClass]="opt.cssClass ? opt.cssClass : ''" 
+            [class.active]="isActive(opt.value)" 
+            (click)="onPresetClick(opt.value)">
+        {{ opt.label }}
+    </button>
+</div>

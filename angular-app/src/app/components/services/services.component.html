@@ -1,0 +1,101 @@
+<div class="services-container">
+  <div class="header-actions">
+    <h1 class="page-title">Services</h1>
+    <button *ngIf="canWrite" class="preset-btn create-btn" (click)="openCreateDialog()">
+      <i class="fa-solid fa-plus"></i> Crea Servizio
+    </button>
+  </div>
+
+  <div class="filters-row">
+    <app-search-field class="search-field" inputId="services-search-input" label="Search services"
+      placeholder="Search services..." [(value)]="searchQuery" (valueChange)="onSearchChange()" />
+
+    <div class="filters-group">
+      <span class="filter-label">Grado knowledge:</span>
+      <div class="quick-filters">
+        <button type="button" class="filter-chip" 
+             *ngFor="let opt of knowledgeOptions"
+             [class.active]="knowledgeFilter === opt.value"
+             (click)="setKnowledgeFilter(opt.value)"
+             [attr.aria-label]="'Filtra per knowledge ' + opt.label">
+          {{opt.label}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-state">
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+    <p>Loading services...</p>
+  </div>
+
+  <div *ngIf="!isLoading && services.length === 0" class="empty-state">
+    <p>No services found matching the filters.</p>
+  </div>
+  <p *ngIf="linkError" role="alert">{{ linkError }}</p>
+
+  <div class="cards-list" *ngIf="!isLoading">
+    <button type="button" class="service-card" *ngFor="let service of services" (click)="showDetails(service)" [attr.aria-label]="'Apri dettagli servizio ' + service.servizio">
+      <div class="card-header">
+        <h2 class="service-title">{{service.servizio}}</h2>
+        <div class="card-actions">
+          <span class="env-bubble env-{{ service.knowledge | lowercase }}">{{service.knowledge}}</span>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <p-dialog [(visible)]="displayDialog" (onHide)="closeDetails()" [modal]="true" [style]="{width: '60rem', maxWidth: '95vw'}" [header]="editMode ? (selectedService ? 'Modifica Servizio' : 'Crea Nuovo Servizio') : (selectedService?.servizio || '')" [draggable]="false" [resizable]="false">
+    
+    <!-- View Mode -->
+    <div class="dialog-content" *ngIf="!editMode && selectedService">
+        <div class="detail-row">
+          <span class="detail-label">Knowledge:</span>
+          <span class="detail-value">
+            <span class="env-bubble env-{{ selectedService.knowledge | lowercase }}">{{selectedService.knowledge}}</span>
+          </span>
+        </div>
+        
+        <div class="detail-row">
+          <span class="detail-label">Stato:</span>
+          <span class="detail-value">{{selectedService.stato}}</span>
+        </div>
+        
+        <app-cross-source *ngIf="displayDialog" sourceType="services" [sourceId]="selectedService.id" />
+        
+        <div class="dialog-actions" *ngIf="canWrite">
+          <button class="preset-btn edit-btn" (click)="openEditDialog()">
+            <i class="fa-solid fa-pen"></i> Modifica
+          </button>
+        </div>
+    </div>
+
+    <!-- Edit Mode -->
+    <div class="dialog-content form-content" *ngIf="editMode">
+        <div class="form-group">
+          <label class="form-label" for="service-form-name">Nome Servizio *</label>
+          <input id="service-form-name" type="text" pInputText [(ngModel)]="formData.servizio" placeholder="Inserisci il nome del servizio" class="form-input" />
+        </div>
+        
+        <div class="form-group">
+          <span class="form-label">Grado Knowledge *</span>
+          <fieldset class="quick-filters" style="margin-top: 5px; border: 0; padding: 0;">
+            <legend class="visually-hidden">Grado Knowledge</legend>
+            <button type="button" class="filter-chip" [class.active]="formData.knowledge === 'Full'" (click)="formData.knowledge = 'Full'">Full</button>
+            <button type="button" class="filter-chip" [class.active]="formData.knowledge === 'Limited'" (click)="formData.knowledge = 'Limited'">Limited</button>
+            <button type="button" class="filter-chip" [class.active]="formData.knowledge === 'Absent'" (click)="formData.knowledge = 'Absent'">Absent</button>
+          </fieldset>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="service-form-state">Stato</label>
+          <input id="service-form-state" type="text" pInputText [(ngModel)]="formData.stato" placeholder="Es. Ereditata" class="form-input" />
+        </div>
+
+        <div class="dialog-actions">
+          <button class="preset-btn cancel-btn" (click)="displayDialog = false">Annulla</button>
+          <button class="preset-btn save-btn" (click)="saveService()">Salva</button>
+        </div>
+    </div>
+  </p-dialog>
+</div>

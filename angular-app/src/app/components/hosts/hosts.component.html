@@ -1,0 +1,176 @@
+<div class="dashboard-container active-view">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h1 class="page-title" style="margin-bottom: 0;">Hosts Inventory</h1>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button *ngIf="canWrite" class="preset-btn" routerLink="/machine/new" style="padding: 8px 16px; display: flex; align-items: center; gap: 8px; background-color: var(--accent-primary); border-color: var(--accent-primary); color: white;">
+                <i class="fa-solid fa-plus"></i> <span>Crea Nuova Macchina</span>
+            </button>
+            <button *ngIf="canWrite" class="preset-btn" (click)="openImportDialog()" style="padding: 8px 16px; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-file-import"></i> <span>Importa CSV</span>
+            </button>
+            <i class="fa-solid fa-circle-question" style="font-size: 1.5rem; color: var(--text-muted); cursor: help;" title="Shortcut di Selezione:&#10;- Click normale: seleziona/deseleziona la riga&#10;- Shift+Click: seleziona un gruppo di righe o tutte le righe filtrabili (se clicchi 'Seleziona Tutti')&#10;- Shift+Click su una riga già selezionata: annulla tutta la selezione&#10;&#10;Filtri Globali:&#10;- Usa i filtri globali per ridurre la lista in tutte le tabelle simultaneamente.&#10;&#10;TIP:&#10;- Shift+Click sull'intestazione di una colonna per mostrare/nascondere la sua casella di ricerca testuale." aria-hidden="true"></i>
+            <button class="preset-btn" (click)="toggleFilters()" style="padding: 8px 16px; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-filter"></i> <span>{{ filtersCollapsed ? 'Mostra Filtri Globali' : 'Nascondi Filtri Globali' }}</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="table-controls-wrapper" style="margin-bottom: 20px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); display: flex; flex-direction: column;">
+        <div class="global-filters-container" [class.collapsed]="filtersCollapsed" [class.animate-transition]="animateFilters">
+            <app-global-filters
+                [mode]="'hosts'"
+                [filterAmbiente]="filterAmbiente"
+                [filterNodo]="filterNodo"
+                [filterZona]="filterZona"
+                [filterLocazione]="filterLocazione"
+                [filterOSFamily]="filterOSFamily"
+                [filterOS]="filterOS"
+                [availableOSVersions]="currentAvailableOSVersions"
+                (presetClick)="setPreset($event.col, $event.val)"
+                (clearAll)="clearFilters()">
+            </app-global-filters>
+        </div>
+        <!-- Bulk Actions under Environment -->
+        <div class="bulk-actions" style="padding: 10px 20px; background: var(--bg-canvas); border-top: 1px solid var(--border-color); display: flex; gap: 10px; align-items: center;">
+            <span style="color: var(--text-muted); font-size: 0.9rem;">Azioni Rapide ({{ allSelectedHosts.length }} selezionati):</span>
+            <button class="preset-btn" style="color: white; background-color: var(--accent-primary); border-color: var(--accent-primary);" [disabled]="!canWrite || allSelectedHosts.length === 0" (click)="dismettiSelected()">
+                <i class="fa-solid fa-trash"></i> Dismetti
+            </button>
+            <button class="preset-btn" style="color: white; background-color: var(--accent-primary); border-color: var(--accent-primary);" [disabled]="!canWrite || allSelectedHosts.length === 0" (click)="openModificaModal()">
+                <i class="fa-solid fa-pen-to-square"></i> Modifica
+            </button>
+            <button class="preset-btn" style="color: white; background-color: var(--accent-primary); border-color: var(--accent-primary); margin-left: auto;" [disabled]="!canWrite || allSelectedHosts.length === 0" (click)="openExportModal()">
+                <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
+        </div>
+    </div>
+
+    <!-- MACCHINE WINDOWS -->
+    <app-shared-table 
+        #windowsTable
+        [baseFilters]="baseFiltersWindows"
+        [title]="'Macchine Windows'"
+        [iconClass]="'fa-brands fa-windows'"
+        [filtersCollapsed]="filtersCollapsed"
+        (envClick)="setExclusiveEnv($event)"
+        (selectionChange)="onWindowsSelection($event)">
+    </app-shared-table>
+
+    <!-- APPLIANCES -->
+    <app-shared-table 
+        #applianceTable
+        [baseFilters]="baseFiltersAppliance" 
+        [title]="'Appliances'" 
+        [iconClass]="'fa-solid fa-server'" 
+        [filtersCollapsed]="filtersCollapsed"
+        (envClick)="setExclusiveEnv($event)"
+        (selectionChange)="onApplianceSelection($event)">
+    </app-shared-table>
+</div>
+
+<!-- Modal Esportazione CSV -->
+<div class="modal-overlay" *ngIf="showExportModal" (click)="closeExportModal()" (keydown.escape)="closeExportModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">
+        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Seleziona Colonne da Esportare</h2>
+        
+        <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;">
+            <div *ngFor="let col of exportColumns" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-canvas); border-radius: 8px;">
+                <span style="font-weight: 500;">{{ col.label }}</span>
+                <p-inputSwitch [(ngModel)]="col.selected"></p-inputSwitch>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeExportModal()">Annulla</button>
+            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="exportSelected()">
+                <i class="fa-solid fa-download"></i> Esporta
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Conferma Dismissione -->
+<div class="modal-overlay" *ngIf="showDismettiModal" (click)="closeDismettiModal()" (keydown.escape)="closeDismettiModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 400px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">
+        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Conferma Eliminazione</h2>
+        
+        <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+            Tra le macchine selezionate, <b>{{ dismettiCount }}</b> sono già in stato DISMESSA.<br><br>Vuoi eliminarle definitivamente dal database?
+        </p>
+
+        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeDismettiModal()">Annulla</button>
+            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="confirmDismetti()">
+                <i class="fa-solid fa-trash"></i> Elimina
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Modifica Massiva -->
+<div class="modal-overlay" *ngIf="showModificaModal" (click)="closeModificaModal()" (keydown.escape)="closeModificaModal()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; width: 500px; max-width: 90vw; box-shadow: 0 10px 30px rgba(0,0,0,0.18); border: 1px solid var(--border-color);">
+        <h2 style="margin-top: 0; margin-bottom: 20px; font-size: 1.5rem; color: var(--text-primary);">Modifica Massiva ({{ allSelectedHosts.length }} hosts)</h2>
+        
+        <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px;">
+            <div><label for="bulk-ambiente" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Ambiente</label>
+                <input id="bulk-ambiente" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.ambiente" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-applicazione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Applicazione</label>
+                <input id="bulk-applicazione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.applicazione" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-riferimento" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Riferimento</label>
+                <input id="bulk-riferimento" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.riferimento" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-riferimentoes" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Rif. ES</label>
+                <input id="bulk-riferimentoes" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.riferimentoEs" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-os" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Sistema Operativo</label>
+                <select id="bulk-os" [(ngModel)]="modificaData.os" class="theme-input">
+                    <option [ngValue]="undefined">Non modificare</option>
+                    <option *ngFor="let version of windowsVersions" [value]="version">{{ version }}</option>
+                </select></div>
+            <div><label for="bulk-nodo" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Nodo</label>
+                <input id="bulk-nodo" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.nodo" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-pianificazione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Pianificazione</label>
+                <input id="bulk-pianificazione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.pianificazione" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-company" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Compagnia</label>
+                <input id="bulk-company" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.company" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-servizio" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Servizio</label>
+                <input id="bulk-servizio" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.servizio" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-zona" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Zona</label>
+                <input id="bulk-zona" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.zona" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-locazione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Locazione</label>
+                <input id="bulk-locazione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.locazione" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-manutenzione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Finestra manutenzione</label>
+                <input id="bulk-manutenzione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.manutenzione" placeholder="Lascia vuoto per non modificare"></div>
+
+            <!-- Group 2: Avanzate -->
+            <h3 style="margin-top: 10px; margin-bottom: 5px; font-size: 1.1rem; color: var(--text-primary);">Avanzate</h3>
+            <div><label for="bulk-fixable" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Fixable (true/false)</label>
+                <input id="bulk-fixable" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.fixable" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-appliance" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Appliance (true/false)</label>
+                <input id="bulk-appliance" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.appliance" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-fixed" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Status FIX (true/false)</label>
+                <input id="bulk-fixed" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.fixed" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-divisione" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Divisione</label>
+                <input id="bulk-divisione" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.divisione" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-rfc" style="display: block; margin-bottom: 5px; color: var(--text-muted);">RFC</label>
+                <input id="bulk-rfc" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.rfc" placeholder="Lascia vuoto per non modificare"></div>
+            <div><label for="bulk-status" style="display: block; margin-bottom: 5px; color: var(--text-muted);">Status FIX (Testo)</label>
+                <input id="bulk-status" type="text" pInputText class="theme-input" [(ngModel)]="modificaData.status" placeholder="Lascia vuoto per non modificare"></div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+            <button class="preset-btn" style="background: transparent; color: var(--text-muted); border: 1px solid var(--border-color);" (click)="closeModificaModal()">Annulla</button>
+            <button class="preset-btn" style="background: var(--accent-primary); color: white; border: 1px solid var(--accent-primary);" (click)="confirmModifica()">
+                <i class="fa-solid fa-check"></i> Conferma
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Import CSV/JSON -->
+<app-import-dialog
+    [entity]="'hosts'"
+    [entityLabel]="'host'"
+    [mergeKeyDescription]="'hostname + ambiente + servizio'"
+    [(visible)]="showImportDialog"
+    (imported)="onHostsImported()">
+</app-import-dialog>

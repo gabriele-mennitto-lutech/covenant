@@ -1,0 +1,8 @@
+<div class="dashboard-container active-view">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h1 class="page-title" style="margin-bottom: 0;">{{ title }}</h1>
+        <ng-content select="[header-actions]"></ng-content>
+    </div>
+    
+    <ng-content></ng-content>
+</div>
