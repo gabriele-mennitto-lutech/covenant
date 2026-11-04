@@ -1,19 +1,27 @@
 AVVIO COVENANT - SOC INFRA (WINDOWS / POWERSHELL)
 
 Aprire tre terminali nella directory principale del repository.
-Installare le dipendenze una sola volta con `npm ci` dentro ciascun servizio.
+Configurare il PATH in ciascun terminale prima di usare npm.
+Eseguire npm.cmd ci --include=dev al primo avvio e dopo modifiche al lockfile.
+Le directory assolute funzionano anche se il terminale e' gia' in un servizio.
 
 TERMINALE 1 - DATASERVICE
-cd dataservice
-npm run dev
+$env:PATH = "C:\Users\elut235\Documents\VSCode\Unix CMDB\bin\node;" + $env:PATH
+Set-Location "C:\Users\elut235\Documents\VSCode\Infra CMDB\dataservice"
+npm.cmd ci --include=dev
+npm.cmd run dev
 
 TERMINALE 2 - BACKEND
-cd back-end
-npm run dev
+$env:PATH = "C:\Users\elut235\Documents\VSCode\Unix CMDB\bin\node;" + $env:PATH
+Set-Location "C:\Users\elut235\Documents\VSCode\Infra CMDB\back-end"
+npm.cmd ci --include=dev
+npm.cmd run dev
 
 TERMINALE 3 - FRONTEND ANGULAR
-cd angular-app
-npm start
+$env:PATH = "C:\Users\elut235\Documents\VSCode\Unix CMDB\bin\node;" + $env:PATH
+Set-Location "C:\Users\elut235\Documents\VSCode\Infra CMDB\angular-app"
+npm.cmd ci --include=dev
+npm.cmd start
 
 URL:
 - frontend: http://localhost:4200/
